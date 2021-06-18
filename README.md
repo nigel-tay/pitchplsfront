@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Pitch Please!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Pitch Please is a platform for like minded tech individuals to connect. Be it Recruiter or Job Seeker, we hope that our application can be the bridge that connects potential talents with companies based only on a single post-it elevator pitch. No photos, no judgement, just give us your Pitch Please!
 
-In the project directory, you can run:
+### Technical Used
 
-### `npm start`
+- React
+- Bootstrap with react
+- Ajax (axios) for API
+- Passport
+- MongoDB
+- Mongoose
+- Font Awesome Icons for rating Icons
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Wireframes
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Your step by step planning sketch of your project, that you can post them as an image in here.
 
-### `npm test`
+### User Stories
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+User(Job Seeker) must be able to:
 
-### `npm run build`
+- Easily locate and register/sign up for an account on Pitch Please.
+- Intuitively create a pitch and post/draft it to their pitch list once signed up/logged in.
+- When pitch is successfully picked up by a recruiter, the User should see a notification. (where?)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+User(Recruiter) must be able to:
+- Easily locate and register/sign up for an account on Pitch Please.
+- Search for pitches by category. (e.g. React, Javascript)
+- Add favourite pitches to their Short List.
+- Make contact with Job Seekers.
+- Blacklist a Job Seeker if they are a troll.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Planning and Development Process
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Phase 1: Pre-Project week
+- Discuss on potential project ideas and shortlist the best few. Eventually decided on our current project Pitch Please.
+- After discussing as a group what we foresee the app to need, each member was delegated a task to further research upon.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Phase 2: First half of Project Week
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Phase 3: The final stretch; Finishing up the Project
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Problem-Solving Strategy
 
-## Learn More
+What strategy did you use to solve your problems.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Unsolved problems
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+List unsolved problems which would be fixed in future iterations.
 
-### Code Splitting
+## APIs Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+List your APIs you have used in this project and explain why did you use it.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Acknowledgments
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ ## References
