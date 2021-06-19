@@ -13,6 +13,25 @@ function Login({auth, setAuth}) {
     const form = useRef(null)
 
 
+    async function facebook(){
+        try {
+            let data = await axios.get("/auth/facebook/callback")
+            console.log(data)
+            // return <Redirect to="/auth/linkedin/callback" />
+            // localStorage.setItem("token", token)
+            // setAuth(true)
+
+        } catch (e) {
+            console.log(e)
+            alert('try again!')
+        }
+    }
+
+
+
+
+
+
     async function submitForm(e) {
         e.preventDefault()
         try {
@@ -89,7 +108,13 @@ function Login({auth, setAuth}) {
                                 </button>
                             </div>
                         </Form>
+                        <a href='http://localhost:8000/auth/linkedin/callback' > Login with LinkedIn</a>
+                        <a href='http://localhost:8000/auth/facebook/callback' > Login with Facebook</a>
                     </fieldset>
+
+                    <button onClick={facebook} className="btn border-dark text-center mx-2">
+                        Login with Facebook
+                    </button>
                 </div>
             </div>
 

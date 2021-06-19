@@ -3,11 +3,34 @@ import {Nav, Navbar, Form} from "react-bootstrap";
 import {NavLink, Redirect} from 'react-router-dom';
 import axios from "axios";
 
-function Navigation({user, auth, setUser, setAuth}) {
+function Navigation({setAuth, setUser, user}) {
+
+    // const [auth, setAuth] = useState({})
+    // const [user, setUser] = useState({})
+    //
+    // useEffect(() => {
+    //     async function setUserStats() {
+    //         try {
+    //             let {data} = await axios.get("/auth/user", {
+    //                 headers: {
+    //                     authorization: `Bearer ${localStorage.token}`
+    //                 }
+    //             })
+    //             setAuth(true)
+    //             setUser(data.user)
+    //
+    //         } catch (e) {
+    //             setAuth(false)
+    //             setUser({})
+    //             localStorage.removeItem("token")
+    //         }
+    //     }
+    //
+    //     setUserStats()
+    // }, [])
 
 
-
-    async function logoutHandler(e){
+     function logout(e) {
         e.preventDefault()
         setAuth(false)
         setUser(null)
@@ -33,13 +56,13 @@ function Navigation({user, auth, setUser, setAuth}) {
                     <NavLink to="/" className="nav-link">Home</NavLink>
                     <NavLink to="/" className="nav-link"> About</NavLink>
                 </Nav>
-                {user ? <>
-                    <NavLink to="/dashboard" className="nav-link">{user.name}'s Page</NavLink>
-                    <NavLink to="/login" onClick={logoutHandler} className="nav-link">Logout</NavLink>
-                </> :<>
+                {/*{user ? <>*/}
+                    <NavLink to="/dashboard" className="nav-link">My Page</NavLink>
+                    <NavLink to="/login" onClick={logout} className="nav-link">Logout</NavLink>
+                {/*</> :<>*/}
                     <NavLink to="/login" className="nav-link">Login</NavLink>
                     <NavLink to="/register" className="nav-link">Register</NavLink>
-                </> }
+                {/*</> }*/}
 
 
             </Navbar.Collapse>

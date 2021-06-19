@@ -4,8 +4,8 @@ import axios from "axios";
 
 
 const Dashboard = ({auth}) => {
+    // const [auth, setAuth] = useState({})
     const [user, setUser] = useState({})
-
 
     useEffect(() => {
         async function setUserStats() {
@@ -15,28 +15,37 @@ const Dashboard = ({auth}) => {
                         authorization: `Bearer ${localStorage.token}`
                     }
                 })
+                // setAuth(true)
                 setUser(data.user)
+
             } catch (e) {
+                // setAuth(false)
+                setUser({})
+                localStorage.removeItem("token")
             }
         }
 
         setUserStats()
     }, [])
 
+console.log(user)
 
 
-
-
-    if(!auth){
-        return < Redirect to="/login" />
-    }
-
+ if(user.role === "jobseeker"){
     return (
         <div>
-        <h3> HELLO THIS IS <h2 className="font-weight-light text-danger">{user.name}'s</h2> SPACE</h3>
-            <h4>insert pitch here</h4>
+            <h3> HELLO THIS IS A SPACE FOR JOBSEEKERS </h3>
+            Welcome back <strong className="text-danger">{user.name}</strong>, insert pitch here
         </div>
-    );
+    )
+ }else {
+     return (
+         <div>
+             <h3> HELLO THIS IS A SPACE FOR RECRUITERS</h3>
+             Welcome back, <strong className="text-danger">{user.name}</strong>, search pitch here
+         </div>
+     )
+ }
 };
 
 export default Dashboard;

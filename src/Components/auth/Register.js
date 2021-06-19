@@ -29,7 +29,7 @@ function Register({auth, setAuth}) {
         setData(prevState => ({...prevState, [e.target.name]: e.target.value}))
     }
 
-    if (auth === true) {
+    if (auth ) {
         return < Redirect to="/dashboard"/>
     }
 
@@ -85,10 +85,27 @@ function Register({auth, setAuth}) {
                                            className="form-control"
                                            id="inputForPassword"
                                            placeholder="Enter password"
-                                           required="true"
+                                           required={true}
                                            minLength={6}
                                     />
                                 </div>
+                                <div className="form-group">
+                                    <label htmlFor="inputForRole">Role</label>
+                                    <span className="mandatory">*</span>
+                                <Row className="w-auto mx-2 my-1">
+                                    <select
+                                        name="role"
+                                        onChange={change}
+                                        required={true}
+                                        className="py-2"
+                                >
+                                    <option value="">Select One</option>
+                                    <option value="jobseeker">Job Seeker</option>
+                                    <option value="recruiter">Recruiter</option>
+                                </select>
+                                </Row>
+                                </div>
+
                                 <div className="d-flex align-items-center justify-content-center">
                                     <button type="submit" className="btn btn-outline-primary">
                                         Submit
@@ -98,10 +115,11 @@ function Register({auth, setAuth}) {
                                     </button>
                                 </div>
                             </Form>
+                            <a href='http://localhost:8000/auth/linkedin/callback' > Login with LinkedIn</a>
                         </fieldset>
                     </div>
                 </div>
-                );
+
 
 
 

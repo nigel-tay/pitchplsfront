@@ -37,7 +37,9 @@ function App() {
     }, [])
 
 
-    // function logout() {
+
+
+    //  function logout() {
     //     setAuth(false)
     //     setUser(null)
     //     localStorage.removeItem("token")
@@ -47,7 +49,7 @@ function App() {
   return (
     <Container className="App">
         <BrowserRouter>
-            <Navigation setUser={setUser} user={user} auth={auth} setAuth={setAuth}/>
+            <Navigation setAuth={setAuth} setUser={setUser} user={user} />
             <Switch>
                 <Route path="/login">
                     <Login auth={auth} setAuth={setAuth}/>
@@ -55,9 +57,11 @@ function App() {
                 <Route path="/register">
                     <Register auth={auth} setAuth={setAuth}/>
                 </Route>
-                <Route path="/dashboard" exact>
-                    <Dashboard auth={auth} user={user}/>
-                </Route>
+                <PrivateRouter auth={auth} user={user} path="/dashboard" Component={Dashboard} />
+
+                {/*<Route path="/dashboard" exact>*/}
+                {/*    <Dashboard auth={auth} user={user} logout={logout}/>*/}
+                {/*</Route>*/}
 
                 <Route path="*">
                     <NotFound />
@@ -67,5 +71,15 @@ function App() {
     </Container>
   );
 }
-
+function PrivateRouter({auth, user, Component, path, ...rest}){
+    return(
+        <>
+            { (auth) ?
+                <Route path={path} >
+                    <Component />
+                </Route> : <Redirect to="/login" />
+            }
+        </>
+    )
+}
 export default App;
