@@ -1,0 +1,17 @@
+.sample {
+    background-color: red;
+}
+
+.container {
+    height: 100vh;
+}
+
+.registrationFormContainer {
+    width: 24rem;
+}
+
+.registrationFormLegend {
+    width: 100%;
+    background: #dee2e6;
+
+}
