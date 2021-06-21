@@ -52,7 +52,7 @@ function DashboardRec() {
 
             <div className={`${styles.split}`}>
                 <div className={`${styles.allPitches}`}>
-                    <input type="text" placeholder="Search Pitches" onChange={e => setSearch(e.target.value)}/>
+                    <input className={`${styles.searchBar}`} type="text" placeholder="Search Pitches" onChange={e => setSearch(e.target.value)}/>
                     <div style={{
                         display:"grid",
                         gridTemplateColumns: "repeat(3, auto)",
@@ -75,7 +75,7 @@ function DashboardRec() {
 
                 {/*to display favourite pitches*/}
                 <div className={`${styles.favPitches}`}>
-                    <h2>Favourite Pitches</h2>
+                    <h4>Favourite Pitches</h4>
                     <div style={{
                         display:"grid",
                         gridTemplateColumns: "repeat(3, auto)",
