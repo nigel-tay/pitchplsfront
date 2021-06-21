@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import PitchItem from "./PitchItem";
+import PitchItem from "../PitchItem";
 import {Col, Row} from "react-bootstrap";
+import PitchItemRec from "./PitchItemRec";
+import styles from "./DashboardRec.module.css"
 
 function DashboardRec() {
     const [user, setUser] = useState({})
@@ -39,7 +41,7 @@ function DashboardRec() {
         }
 
         getPitch()
-    }, [user, pitches])
+    }, [])
 
 
     return (
@@ -48,7 +50,6 @@ function DashboardRec() {
             Welcome back, <strong className="text-danger">{user.name}</strong>, search pitch here
 
             <Row>
-
                 <Col md={6}>
                     <input type="text" placeholder="Search Pitches" onChange={e => setSearch(e.target.value)}/>
                     <div style={{
@@ -65,10 +66,13 @@ function DashboardRec() {
                                 return item
                             }
                         }).map((item,i) => (
-                            <PitchItem item={item}
+                            <PitchItemRec item={item}
                                        key ={i}/>
                         )) }
                     </div>
+                </Col>
+                <Col className="fav-pitches" md={6}>
+
                 </Col>
             </Row>
 

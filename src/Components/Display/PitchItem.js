@@ -61,23 +61,13 @@ function PitchItem({item, user}) {
                         <span> usp: {item.usp}, </span>
                         <span>  {item.goals}, </span>
                         <span>  {item.selfintro}</span>
-                        {user ? (
-                                <Row className="justify-content-end">
-                                    <Col md={10}>
-                                        <button className="px-2 mx-1" onClick={handleShow}> show </button>
-                                        <button className="px-2 mx-1" onClick={handleShowEdit}> edit </button>
-                                        <button className="px-2" onClick={deletePost}> x </button>
-                                    </Col>
-                                </Row>
-                            )
-                            : (
-                                <Row className="justify-content-end">
-                                    <Col md={9}>
-                                        <button className="px-2 mx-1" onClick={handleShow}> Show </button>
-                                        <button className="pin" onClick={addToFav}> Favourite </button>
-                                    </Col>
-                                </Row>
-                            )}
+                        <Row className="justify-content-end">
+                            <Col md={10}>
+                                <button className="px-2 mx-1" onClick={handleShow}> show </button>
+                                <button className="px-2 mx-1" onClick={handleShowEdit}> edit </button>
+                                <button className="px-2" onClick={deletePost}> x </button>
+                            </Col>
+                        </Row>
                     </a>
 
                 </li>

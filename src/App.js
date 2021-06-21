@@ -6,7 +6,7 @@ import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom"
 import Register from "./Components/auth/Register";
 import Login from "./Components/auth/Login";
 import Dashboard from "./Components/Display/Dashboard"
-import DashboardRec from "./Components/Display/DashboardRec";
+import DashboardRec from "./Components/Display/recruiter/DashboardRec";
 import NotFound from "./Components/auth/NotFound";
 import Navigation from "./Components/Navigation";
 import {Container} from "react-bootstrap";
