@@ -11,7 +11,7 @@ import NotFound from "./Components/auth/NotFound";
 import Navigation from "./Components/Navigation";
 import {Container} from "react-bootstrap";
 import About from "./Components/Display/About";
-import Home from "./Components/Display/Home";
+import Home from "./Components/Display/home/Home";
 
 
 function App() {
