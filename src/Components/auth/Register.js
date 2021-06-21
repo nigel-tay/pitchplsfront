@@ -10,7 +10,6 @@ function Register({auth, setAuth}) {
     const form = useRef(null)
 
 
-
     async function submitForm(e) {
         e.preventDefault()
         try {
@@ -29,7 +28,7 @@ function Register({auth, setAuth}) {
         setData(prevState => ({...prevState, [e.target.name]: e.target.value}))
     }
 
-    if (auth ) {
+    if (auth) {
         return < Redirect to="/dashboard"/>
     }
 
@@ -115,7 +114,7 @@ function Register({auth, setAuth}) {
                                     </button>
                                 </div>
                             </Form>
-                            <a href='http://localhost:8000/auth/linkedin/callback' > Login with LinkedIn</a>
+                            {/*<a href='http://localhost:8000/auth/linkedin/callback' > Login with LinkedIn</a>*/}
                         </fieldset>
                     </div>
                 </div>
