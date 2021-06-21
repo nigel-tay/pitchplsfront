@@ -5,12 +5,12 @@ import styles from "./PitchItem.module.css"
 function PitchItem({item}) {
 
 
-    const handleClick=(e)=>{
-        console.log("this is working fine");
-        e.preventDefault();
-        e.target.style.background = 'FFFFCCFF' ? 'pink' : 'FFFFCCFF'
-        console.log(e.target);
-    }
+    // const handleClick=(e)=>{
+    //     console.log("this is working fine");
+    //     e.preventDefault();
+    //     e.target.style.background = 'FFFFCCFF' ? 'pink' : 'FFFFCCFF'
+    //     console.log(e.target);
+    // }
 
 
     return (
@@ -18,7 +18,7 @@ function PitchItem({item}) {
 
         <Row>
 
-            <ul onClick={handleClick}>
+            <ul>
                 <li>
                     <a href="#">
                         <h4 className="font-monospace">{item.title}</h4>
