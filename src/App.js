@@ -15,6 +15,8 @@ function App() {
     const [auth, setAuth] = useState({})
     const [user, setUser] = useState({})
 
+
+    console.log(user)
     useEffect(() => {
         async function setUserStats() {
             try {
@@ -25,16 +27,16 @@ function App() {
                 })
                 setAuth(true)
                 setUser(data.user)
-
+                console.log(data)
             } catch (e) {
                 setAuth(false)
-                setUser({})
+                setUser(null)
                 localStorage.removeItem("token")
             }
         }
 
         setUserStats()
-    }, [])
+    }, [auth])
 
 
 

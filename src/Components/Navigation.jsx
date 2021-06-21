@@ -13,7 +13,6 @@ function Navigation({setAuth, setUser, user}) {
         localStorage.removeItem("token")
     }
 
-
     return (
         <Navbar bg="light" expand="lg" className="p-0 pl-2">
             <Navbar.Brand href="/">Pitch Please!</Navbar.Brand>
@@ -32,7 +31,7 @@ function Navigation({setAuth, setUser, user}) {
                     <NavLink to="/" className="nav-link"> About</NavLink>
                 </Nav>
                 {user ? <>
-                    <NavLink to="/dashboard" className="nav-link">My Page</NavLink>
+                    <NavLink to="/dashboard" className="nav-link">{user.name}'s Page</NavLink>
                     <NavLink to="/login" onClick={logout} className="nav-link">Logout</NavLink>
                 </> :<>
                     <NavLink to="/login" className="nav-link">Login</NavLink>

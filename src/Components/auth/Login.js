@@ -55,6 +55,12 @@ function Login({auth, setAuth}) {
         return < Redirect to="/dashboard" />
     }
 
+    // function checkLoginState() {
+    //     FB.getLoginStatus(function(response) {
+    //         statusChangeCallback(response);
+    //     });
+    // }
+
 
 
     return (
@@ -115,6 +121,10 @@ function Login({auth, setAuth}) {
                     <button onClick={facebook} className="btn border-dark text-center mx-2">
                         Login with Facebook
                     </button>
+                    {/*<fb:login-button*/}
+                    {/*    scope="public_profile,email"*/}
+                    {/*    onlogin="checkLoginState();">*/}
+                    {/*</fb:login-button>*/}
                 </div>
             </div>
 
