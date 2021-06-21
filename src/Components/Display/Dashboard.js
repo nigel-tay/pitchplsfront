@@ -2,7 +2,7 @@ import React, {useRef, useEffect, useState } from "react";
 import {Redirect} from "react-router-dom";
 import axios from "axios";
 import {Container, Form, Row,Col} from "react-bootstrap";
-import PitchItem from "../Display/PitchItem";
+import PitchItem from "./PitchItem";
 import styles from "./Dashboard.module.css"
 
 
@@ -75,10 +75,12 @@ const Dashboard = () => {
 
 
 
-
+if(user.role === "recruiter"){
+   return < Redirect to="/recruiter" />
+}
 
 //////////this part is for jobseeker//////////
- if(user.role === "jobseeker"){
+
     return (
         <Container>
             <h3> HELLO THIS IS A SPACE FOR JOBSEEKERS </h3>
@@ -100,7 +102,8 @@ const Dashboard = () => {
                                    className="form-control"
                                    aria-describedby="Enter title"
                                    placeholder="Enter title"
-                                   required={true}/>
+                                   required={true}
+                             />
 
                             <label>Self intro *</label>
                             <textarea onChange={change}
@@ -169,17 +172,6 @@ const Dashboard = () => {
 
 ///////////////////////////////////////////////
 //////////this part is for recruiters//////////
- }else {
-     return (
-         <div>
-             <h3> HELLO THIS IS A SPACE FOR RECRUITERS</h3>
-             Welcome back, <strong className="text-danger">{user.name}</strong>, search pitch here
-
-{/*<JobSeeker />*/}
-
-         </div>
-     )
  }
-};
 ///////////////////////////////////////////////
 export default Dashboard;
