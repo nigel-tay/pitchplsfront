@@ -11,23 +11,38 @@ body {
     padding:0;
 }
 
-p {
-    overflow: scroll;
+span {
+    overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
 }
 
+h4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+h4:hover {
+    overflow: scroll;
+    background: pink;
+}
+
+span:hover {
+    overflow: scroll;
+    background: pink;
+}
+
+
 ul,li{
     list-style:none;
     font-family: "sans-serif";
     text-align: start;
-    /*overflow: hidden;*/
-    /*text-overflow: ellipsis;*/
-    /*display: -webkit-box;*/
-    /*-webkit-line-clamp: 2; !* number of lines to show *!*/
-    /*-webkit-box-orient: vertical;*/
+
 }
 ul{
     display: flex;
@@ -58,7 +73,6 @@ ul li a:hover,ul li a:focus{
     position:relative;
     z-index:5;
     cursor:pointer;
-    background: pink;
 }
 
 
@@ -71,4 +85,14 @@ ul li:nth-child(3n) a{
     position:relative;
     top:-5px;
     background:#ccf;
+}
+
+button {
+    background-color: floralwhite;
+}
+
+
+button:hover {
+    background-color: red;
+
 }
