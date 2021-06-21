@@ -1,8 +1,16 @@
 import React from 'react';
+import {Container} from "react-bootstrap";
 
 function NotFound(props) {
     return (
-        <div></div>
+        <Container style={{
+            textAlign:"centre",
+            textColor:"red",
+            fontFamily:"Arial",
+            fontSize:"40px"
+        }}>
+            hello, R U lost?
+        </Container>
     );
 }
 

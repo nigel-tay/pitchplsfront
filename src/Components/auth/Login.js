@@ -15,9 +15,9 @@ function Login({auth, setAuth}) {
 
     async function facebook(){
         try {
-            let data = await axios.get("/auth/facebook/callback")
+            let data = await axios.get("/auth/facebook/")
             console.log(data)
-            // return <Redirect to="/auth/linkedin/callback" />
+            return <Redirect to="/auth/linkedin/callback" />
             // localStorage.setItem("token", token)
             // setAuth(true)
 
@@ -108,8 +108,8 @@ function Login({auth, setAuth}) {
                                 </button>
                             </div>
                         </Form>
-                        <a href='http://localhost:8000/auth/linkedin/callback' > Login with LinkedIn</a>
-                        <a href='http://localhost:8000/auth/facebook/callback' > Login with Facebook</a>
+                        {/*<a href='http://localhost:8000/auth/linkedin/callback' > Login with LinkedIn</a>*/}
+                        {/*<a href='http://localhost:8000/auth/facebook/callback' > Login with Facebook</a>*/}
                     </fieldset>
 
                     <button onClick={facebook} className="btn border-dark text-center mx-2">

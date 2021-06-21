@@ -1,0 +1,26 @@
+h3 {
+    font-family: "Permanent Marker";
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    color: beige;
+}
+label {
+    font-family: monospace;
+    font-size: 20px;
+}
+
+.sidebar{
+    background: radial-gradient(beige, lightblue);
+    border: 1px black;
+    box-shadow:10px 10px 7px rgba(0,0,0,.7);
+}
+
+button:hover{
+    box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    transform: scale(1.1);
+    position:relative;
+    z-index:5;
+    cursor:pointer;
+}
+
+
