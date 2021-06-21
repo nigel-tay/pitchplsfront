@@ -3,7 +3,7 @@ import {Container, Card, Col, Row, Modal, Form} from "react-bootstrap";
 import axios from "axios"
 import styles from "./PitchItem.module.css"
 
-function PitchItem({item}, props) {
+function PitchItem({item, user}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -41,6 +41,10 @@ function PitchItem({item}, props) {
         setShowEdit(false)
     }
 
+    async function addToFav(){
+        await console.log("Fav")
+    }
+
 
 
 
@@ -57,13 +61,23 @@ function PitchItem({item}, props) {
                         <span> usp: {item.usp}, </span>
                         <span>  {item.goals}, </span>
                         <span>  {item.selfintro}</span>
-                        <Row className="justify-content-end">
-                            <Col md={10}>
-                                <button className="px-2 mx-1" onClick={handleShow}> show </button>
-                                <button className="px-2 mx-1" onClick={handleShowEdit}> edit </button>
-                        <button className="px-2" onClick={deletePost}> x </button>
-                            </Col>
-                        </Row>
+                        {user ? (
+                                <Row className="justify-content-end">
+                                    <Col md={10}>
+                                        <button className="px-2 mx-1" onClick={handleShow}> show </button>
+                                        <button className="px-2 mx-1" onClick={handleShowEdit}> edit </button>
+                                        <button className="px-2" onClick={deletePost}> x </button>
+                                    </Col>
+                                </Row>
+                            )
+                            : (
+                                <Row className="justify-content-end">
+                                    <Col md={9}>
+                                        <button className="px-2 mx-1" onClick={handleShow}> Show </button>
+                                        <button className="pin" onClick={addToFav}> Favourite </button>
+                                    </Col>
+                                </Row>
+                            )}
                     </a>
 
                 </li>

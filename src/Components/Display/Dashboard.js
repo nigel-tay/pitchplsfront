@@ -159,7 +159,7 @@ if(user.role === "recruiter"){
                     }} >
                     {pitch.map((item,i) => (
                         <PitchItem item={item}
-                                key ={i}/>
+                                key ={i} user={user} />
                     )) }
                     </div>
                 </Col>
@@ -169,9 +169,6 @@ if(user.role === "recruiter"){
 
         </Container>
     )
-
-///////////////////////////////////////////////
-//////////this part is for recruiters//////////
  }
 ///////////////////////////////////////////////
 export default Dashboard;
