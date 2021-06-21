@@ -10,6 +10,8 @@ import DashboardRec from "./Components/Display/recruiter/DashboardRec";
 import NotFound from "./Components/auth/NotFound";
 import Navigation from "./Components/Navigation";
 import {Container} from "react-bootstrap";
+import About from "./Components/Display/About";
+import Home from "./Components/Display/Home";
 
 
 function App() {
@@ -54,6 +56,12 @@ function App() {
         <BrowserRouter>
             <Navigation setAuth={setAuth} setUser={setUser} user={user} />
             <Switch>
+                <Route path="/" exact>
+                    <Home />
+                </Route>
+                <Route path="/about" exact>
+                    <About/>
+                </Route>
                 <Route path="/login">
                     <Login auth={auth} setAuth={setAuth}/>
                 </Route>

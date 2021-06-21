@@ -50,56 +50,12 @@ function DashboardRec() {
             Welcome back, <strong className="text-danger">{user.name}</strong>, search pitch here
 
 
-            {/*<div className="split">*/}
-            {/*    <div className="all-pitches">*/}
-            {/*        <input type="text" placeholder="Search Pitches" onChange={e => setSearch(e.target.value)}/>*/}
-            {/*        <div style={{*/}
-            {/*            display:"grid",*/}
-            {/*            gridTemplateColumns: "repeat(3, auto)",*/}
-            {/*            gridGap: "1px",*/}
-            {/*            margin: "1px"*/}
-            {/*        }} >*/}
-            {/*            {pitches.filter(item => {*/}
-            {/*                if (search === ""){*/}
-            {/*                    return item*/}
-            {/*                }*/}
-            {/*                else if (item.title.toLowerCase().includes(search.toLowerCase())){*/}
-            {/*                    return item*/}
-            {/*                }*/}
-            {/*            }).map((item,i) => (*/}
-            {/*                <PitchItemRec item={item}*/}
-            {/*                              key ={i}/>*/}
-            {/*            )) }*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-
-            {/*    /!*to display favourite pitches*!/*/}
-            {/*    <div className="fav-pitches">*/}
-            {/*        <h2>Favourite Pitches</h2>*/}
-            {/*        <div style={{*/}
-            {/*            display:"grid",*/}
-            {/*            gridTemplateColumns: "repeat(3, auto)",*/}
-            {/*            gridGap: "1px",*/}
-            {/*            margin: "1px"*/}
-            {/*        }} >*/}
-            {/*            {pitches.map((item,i) => (*/}
-            {/*                <PitchItemRec item={item}*/}
-            {/*                              key ={i}/>*/}
-            {/*            )) }*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-
-
-
-
-
-            <Row>
-                <Col md={4}>
+            <div className={`${styles.split}`}>
+                <div className={`${styles.allPitches}`}>
                     <input type="text" placeholder="Search Pitches" onChange={e => setSearch(e.target.value)}/>
                     <div style={{
                         display:"grid",
-                        gridTemplateColumns: "repeat(2, auto)",
+                        gridTemplateColumns: "repeat(3, auto)",
                         gridGap: "1px",
                         margin: "1px"
                     }} >
@@ -112,12 +68,13 @@ function DashboardRec() {
                             }
                         }).map((item,i) => (
                             <PitchItemRec item={item}
-                                       key ={i}/>
+                                          key ={i}/>
                         )) }
                     </div>
-                </Col>
+                </div>
 
-                <Col md={8}>
+                {/*to display favourite pitches*/}
+                <div className={`${styles.favPitches}`}>
                     <h2>Favourite Pitches</h2>
                     <div style={{
                         display:"grid",
@@ -130,8 +87,51 @@ function DashboardRec() {
                                           key ={i}/>
                         )) }
                     </div>
-                </Col>
-            </Row>
+                </div>
+            </div>
+
+
+
+
+
+            {/*<Row>*/}
+            {/*    <Col md={4}>*/}
+            {/*        <input type="text" placeholder="Search Pitches" onChange={e => setSearch(e.target.value)}/>*/}
+            {/*        <div style={{*/}
+            {/*            display:"grid",*/}
+            {/*            gridTemplateColumns: "repeat(2, auto)",*/}
+            {/*            gridGap: "1px",*/}
+            {/*            margin: "1px"*/}
+            {/*        }} >*/}
+            {/*            {pitches.filter(item => {*/}
+            {/*                if (search === ""){*/}
+            {/*                    return item*/}
+            {/*                }*/}
+            {/*                else if (item.title.toLowerCase().includes(search.toLowerCase())){*/}
+            {/*                    return item*/}
+            {/*                }*/}
+            {/*            }).map((item,i) => (*/}
+            {/*                <PitchItemRec item={item}*/}
+            {/*                           key ={i}/>*/}
+            {/*            )) }*/}
+            {/*        </div>*/}
+            {/*    </Col>*/}
+
+            {/*    <Col md={8}>*/}
+            {/*        <h2>Favourite Pitches</h2>*/}
+            {/*        <div style={{*/}
+            {/*            display:"grid",*/}
+            {/*            gridTemplateColumns: "repeat(3, auto)",*/}
+            {/*            gridGap: "1px",*/}
+            {/*            margin: "1px"*/}
+            {/*        }} >*/}
+            {/*            {pitches.map((item,i) => (*/}
+            {/*                <PitchItemRec item={item}*/}
+            {/*                              key ={i}/>*/}
+            {/*            )) }*/}
+            {/*        </div>*/}
+            {/*    </Col>*/}
+            {/*</Row>*/}
 
 
         </div>

@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {Container, Card, Col, Row, Modal, Form} from "react-bootstrap";
 import axios from "axios"
-import styles from "../PitchItem.module.css"
+import styles from "./PitchItemRec.module.css"
 
 function PitchItem({item, user}) {
     const [show, setShow] = useState(false);

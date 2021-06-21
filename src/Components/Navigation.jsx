@@ -27,8 +27,8 @@ function Navigation({setAuth, setUser, user}) {
                 </Nav>
 
                 <Nav className="ml-auto">
-                    <NavLink to="/" className="nav-link">Home</NavLink>
-                    <NavLink to="/" className="nav-link"> About</NavLink>
+                    {/*<NavLink to="/" className="nav-link">Home</NavLink>*/}
+                    <NavLink to="/about" className="nav-link"> About</NavLink>
                 </Nav>
                 {user ? <>
                     <NavLink to="/dashboard" className="nav-link">{user.name}'s Page</NavLink>

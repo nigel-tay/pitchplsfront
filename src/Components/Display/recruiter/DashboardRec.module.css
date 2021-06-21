@@ -1,7 +1,13 @@
 .split{
-    background-color: black;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 0 auto;
 }
 
+.allPitches{
+    width: 50%;
+}
+
+.favPitches{
+    width: 50%;
+}
