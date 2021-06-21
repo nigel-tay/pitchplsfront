@@ -5,7 +5,8 @@ import axios from "axios";
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom"
 import Register from "./Components/auth/Register";
 import Login from "./Components/auth/Login";
-import Dashboard from "./Components/auth/Dashboard"
+import Dashboard from "./Components/Display/Dashboard"
+import DashboardRec from "./Components/Display/DashboardRec";
 import NotFound from "./Components/auth/NotFound";
 import Navigation from "./Components/Navigation";
 import {Container} from "react-bootstrap";
@@ -60,6 +61,7 @@ function App() {
                     <Register auth={auth} setAuth={setAuth}/>
                 </Route>
                 <PrivateRouter auth={auth} user={user} path="/dashboard" Component={Dashboard} />
+                <PrivateRouter auth={auth} user={user} path="/recruiter" Component={DashboardRec} />
 
                 {/*<Route path="/dashboard" exact>*/}
                 {/*    <Dashboard auth={auth} user={user} logout={logout}/>*/}
