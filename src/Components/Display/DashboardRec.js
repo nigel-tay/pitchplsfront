@@ -8,6 +8,7 @@ function DashboardRec() {
     const [user, setUser] = useState({})
     const [pitch, setPitch] = useState([])
     const [showFav, setShowFav] = useState([])
+    const [search, setSearch] = useState("")
 
 
     useEffect(() => {
@@ -67,6 +68,7 @@ function DashboardRec() {
         <Container fluid>
             <h3> HELLO THIS IS A SPACE FOR RECRUITERS !!!!!!!!!</h3>
             Welcome back, <strong className="text-danger">{user.name}</strong>, search pitch here
+            <input type="text" placeholder="Search Pitches" onChange={e => setSearch(e.target.value)}/>
             <Row>
                 <Col md={8}>
                     <div style={{
@@ -75,13 +77,17 @@ function DashboardRec() {
                         gridGap: "1px",
                         margin: "1px",
                     }}>
-                        {pitch.map((item, i) => (
+                        {pitch.filter(item => {
+                            if (search === ""){
+                            return item
+                        }
+                            else if (item.title.toLowerCase().includes(search.toLowerCase())){
+                            return item
+                        }
+                        }).map((item,i) => (
                             <PitchItemRec item={item}
-                                          key={i}
-                            />
-
-
-                        ))}
+                            key ={i}/>
+                            )) }
 
                     </div>
                 </Col>
