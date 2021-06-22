@@ -44,7 +44,7 @@ const Dashboard = () => {
         async function getPitch() {
             let {data} = await axios.get(`/user/${user._id}`)
             if(data.user.pitches){
-            setPitch(data.user.pitches)
+            setPitch(data.user.pitches.reverse())
             }else {
                 setPitch(null)
             }
@@ -90,9 +90,9 @@ if(user.role === "recruiter"){
             Welcome back <strong className="text-danger">{user.name}</strong>, insert pitch here
 
             <Row>
-                <Col md={4} className="">
-                        <Col md={3} className={`${styles.sidebar} `}>
-                    <h3 className="text-center"> Create New Pitch:</h3>
+                {/*<Col md={4} className="">*/}
+                        <Col md={3} className={`${styles.sidebar} border border-dark border-2`}>
+                    <h3 className="text-center mt-4"> Create New Pitch:</h3>
                     <Form ref={form} id="form" onSubmit={submitPost} method="post">
                         <Row className="justify-content-center mx-2">
                             <label>Title * </label>
@@ -168,9 +168,9 @@ if(user.role === "recruiter"){
                     </Form>
                         </Col>
                     {/*</div>*/}
-                </Col>
+                {/*</Col>*/}
 
-                <Col md={8} className={`${styles.makeThisScroll} border border-2 border-dark`} >
+                <Col md={9} className={`${styles.makeThisScroll} border border-2 border-dark`} >
                     <div style={{
                         display:"grid",
                         gridTemplateColumns: "repeat(3, auto)",

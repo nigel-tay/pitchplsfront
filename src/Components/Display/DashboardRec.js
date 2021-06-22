@@ -9,6 +9,9 @@ function DashboardRec() {
     const [user, setUser] = useState({})
     const [pitch, setPitch] = useState([])
     const [showFav, setShowFav] = useState([])
+    const [unFavPitch, setUnFavPitch] =useState([])
+    const [search, setSearch] = useState("")
+
 
 
 
@@ -33,9 +36,11 @@ function DashboardRec() {
     }, [])
 
     useEffect(() => {
+
         async function getPitch() {
             let {data} = await axios.get(`/pitch`)
             setPitch(data.pitches)
+
         }
 
         getPitch()
@@ -44,6 +49,7 @@ function DashboardRec() {
 
     useEffect(() => {
         async function getPitch() {
+
             let {data} = await axios.get(`/user/${user._id}`)
             // console.log("fav", data.user.favourites)
             if (data.user.favourites) {
@@ -56,21 +62,61 @@ function DashboardRec() {
         getPitch()
     }, [user, showFav])
 
+    // useEffect(() => {
+    //     setUnFavPitch([])
+    //     showFav.forEach(j => {
+    //     pitch.forEach(item => {
+    //
+    //             if(!item._id.includes(j._id)){
+    //                 setUnFavPitch(prevState => ([...prevState, item]))
+    //
+    //                 // unFavPitch.push(item)
+    //             }
+    //         })
+    //     })
+    //
+    //
+    //     // console.log("q" , q)
+    //
+    // }, [unFavPitch])
+    // console.log(unFavPitch)
+    // let q = [new Set(unFavPitch)]
 
+// console.log(unFavPitch)
+    // showFav.forEach(i => {
+    //
+    //     console.log("showFav id",i._id)
+    // })
     return (
         <Container fluid>
             <h3> HELLO THIS IS A SPACE FOR RECRUITERS !!!!!!!!!</h3>
             Welcome back, <strong className="text-danger">{user.name}</strong>, search pitch here
             <Row>
-                <Col md={9} className={`${styles.makeThisScroll} border border-2 border-dark`}>
-                    <h4 className="mt-0 mb-3"> Search Pitches Here </h4>
-                    <div style={{
+                <Col md={9} sm={9} className={`${styles.makeThisScroll} border border-2 border-dark`}>
+                    <div style={{width: "100%",
+                                marginBottom: "20px",
+                        position: 'fixed',
+                        zIndex: "100",
+                        right: "10%"}}>
+                    <img style={{width: "35px", position: "absolute", margin: "5px"}} src="https://i.pinimg.com/originals/05/9b/ad/059bad28392cfadc21541a367b145e29.png" />
+                    <input type="text" placeholder="Search Pitches"
+                           className={`${styles.inputStyle} pl-3 text-center`} onChange={e => setSearch(e.target.value)}/>
+                    </div>
+                        <div style={{
                         display: "grid",
                         gridTemplateColumns: "repeat(3, auto)",
                         gridGap: "1px",
+                        marginTop: "60px",
 
                     }}>
-                        {pitch.map((item, i) => (
+                        {pitch.filter(item => {
+                            if (search === ""){
+                                return item
+                            }
+                            else if (item.title.toLowerCase().includes(search.toLowerCase())){
+                                return item
+                            }
+                        }).map((item,i) => (
                             <PitchItemRec item={item}
                                           key={i}
                             />
@@ -80,8 +126,8 @@ function DashboardRec() {
 
                     </div>
                 </Col>
-                <Col md={3} className={`${styles.backgroundCork} border border-dark border-2 py-3`}>
-                    <h4 className="bg-light"> My Favourite Pitches</h4>
+                <Col md={3} sm={3} className={`${styles.backgroundCork} border border-dark border-2 py-3`}>
+                    <h4> My Favourite Pitches</h4>
 
                     <div style={{
                         display: "grid",

@@ -75,9 +75,9 @@ function PitchItemRec({item}) {
 
 
                             <h4>{item.title}</h4>
-                            <span> usp: {item.usp}, </span>
-                            <span>  {item.goals}, </span>
-                            <span>  {item.selfintro}</span>
+                        <span>  {item.selfintro}</span>
+                        <span> {item.usp}, </span>
+                        <span>  {item.goals}, </span>
                             <Row className="justify-content-end"
                                  style={{
                                      position: "fixed",

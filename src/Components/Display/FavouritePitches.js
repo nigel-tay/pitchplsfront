@@ -40,6 +40,7 @@ function FavouritePitches({item}) {
                     <button className="px-2" onClick={handleClose}> x </button>
                 </Modal.Header>
                 <Modal.Body>
+                    <span> {item.selfintro}</span>
                     <p>{item.usp}</p>
                     <p>{item.goals} </p>
                     <p>{item.selfintro}</p>
@@ -51,9 +52,10 @@ function FavouritePitches({item}) {
                     {/*<a href="#">*/}
 
                     <h4 className="font-monospace"> {item.title}</h4>
-                    <span> usp: {item.usp}, </span>
-                    <span>  {item.goals}, </span>
                     <span>  {item.selfintro}</span>
+                    <span> {item.usp}, </span>
+                    <span>  {item.goals}, </span>
+
                     <Row className="justify-content-end"
                          style={{
                              position: "fixed",
