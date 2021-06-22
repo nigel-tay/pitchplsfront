@@ -3,7 +3,6 @@ import {Container, Card, Col, Row, Modal, Form, InputGroup, FormControl} from "r
 import axios from "axios"
 import styles from "./PitchItem.module.css"
 
-
 function PitchItemRec({item}) {
     const [user, setUser] = useState({})
     const [post, setPost] = useState({})
@@ -33,6 +32,7 @@ function PitchItemRec({item}) {
 
     async function submitFav(e) {
         e.preventDefault(e)
+        console.log(item)
         setFav(item)
         console.log(fav)
         if (item) {
@@ -47,6 +47,31 @@ function PitchItemRec({item}) {
             } catch (e) {
                 console.log(e)
             }
+        }
+    }
+
+    async function chatStart(e) {
+        e.preventDefault()
+
+        const chatName = item.title
+        const firstMsg = prompt('Please enter a welcome message')
+
+        window.open(`http://localhost:3001/`, '_blank')
+
+        if (chatName && firstMsg) {
+            let chatId = ''
+
+            axios.post('http://localhost:9000/new/conversation', {
+                chatName: chatName
+            }).then((res) => {
+                chatId = res.data._id
+            }).then(() => {
+                axios.post(`http://localhost:9000/new/message?id=${chatId}`, {
+                    message: firstMsg,
+                    timestamp: Date.now(),
+                    user: user
+                })
+            })
         }
     }
 
@@ -73,8 +98,8 @@ function PitchItemRec({item}) {
                                      paddingBottom: 10
                                  }}>
                                 <Col md={12}>
-
                                     <button type="submit"> Set Fav</button>
+                                    <button onClick={chatStart} > Chat here!</button>
                                 </Col>
                             </Row>
                         </Form>
