@@ -83,16 +83,6 @@ ul :hover{
 }
 
 
-ul li:nth-child(even) a{
-    position:relative;
-    top:5px;
-    background:#cfc;
-}
-ul li:nth-child(3n) a{
-    position:relative;
-    top:-5px;
-    background:#ccf;
-}
 
 button {
     background-color: floralwhite;
@@ -100,6 +90,6 @@ button {
 
 
 button:hover {
-    background-color: red;
+    background-color: pink;
 
 }

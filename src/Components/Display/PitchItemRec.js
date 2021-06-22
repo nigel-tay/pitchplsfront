@@ -6,8 +6,7 @@ import styles from "./PitchItem.module.css"
 
 function PitchItemRec({item}) {
     const [user, setUser] = useState({})
-    const [post, setPost] = useState({})
-    const [fav, setFav] = useState({})
+    // const [show, setShow] = useState(true)
 
     const form = useRef(null)
 
@@ -33,8 +32,9 @@ function PitchItemRec({item}) {
 
     async function submitFav(e) {
         e.preventDefault(e)
-        setFav(item)
-        console.log(fav)
+        // setShow(false)
+        console.log("item id", item._id)
+
         if (item) {
             try {
                 let res = await axios.put(`/user/edit/`, item, {
@@ -42,7 +42,7 @@ function PitchItemRec({item}) {
                         authorization: `Bearer ${localStorage.token}`
                     }
                 })
-                console.log(res)
+                console.log(res.data)
 
             } catch (e) {
                 console.log(e)
@@ -73,8 +73,10 @@ function PitchItemRec({item}) {
                                      paddingBottom: 10
                                  }}>
                                 <Col md={12}>
-
+                                    {/*{show ?*/}
                                     <button type="submit"> Set Fav</button>
+                                    {/*: null*/}
+                                    {/*}*/}
                                 </Col>
                             </Row>
                         </Form>
