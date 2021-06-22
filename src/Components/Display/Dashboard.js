@@ -55,7 +55,7 @@ const Dashboard = () => {
 
 
     async function submitPost(e) {
-        e.preventDefault()
+        e.preventDefault(e)
         try {
             let res = await axios.post(`/pitch/create`, post, {
             })
@@ -75,6 +75,9 @@ const Dashboard = () => {
 
 
 
+
+
+
 if(user.role === "recruiter"){
    return < Redirect to="/recruiter" />
 }
@@ -82,13 +85,14 @@ if(user.role === "recruiter"){
 //////////this part is for jobseeker//////////
 
     return (
-        <Container>
+        <Container fluid>
             <h3> HELLO THIS IS A SPACE FOR JOBSEEKERS </h3>
             Welcome back <strong className="text-danger">{user.name}</strong>, insert pitch here
 
             <Row>
-                <Col md={3} className={`${styles.sidebar} mx-2`}>
-
+                <Col md={4} className="">
+                    {/*<div className={`${styles.sidebar} mx-2`}>*/}
+                        <Col md={3} className={`${styles.sidebar}`}>
                     <h3 className="text-center"> Create New Pitch:</h3>
                     <Form ref={form} id="form" onSubmit={submitPost} method="post">
                         <Row className="justify-content-center mx-2">
@@ -141,6 +145,21 @@ if(user.role === "recruiter"){
                                    placeholder="Enter goals"
                                    required={true}
                             maxLength={200}/>
+                            <label>Select Colour *</label>
+                            <select onChange={change}
+                                    required={true}
+                                    placeholder="select colour!"
+                                    name="color"
+                                    type="text"
+                                    className="py-2"
+                                    >
+                                <option value={""}>Please Choose A Colour</option>
+                                <option value={"beige"}>Beige</option>
+                                <option value={"lightpink"}>Light Pink</option>
+                                <option value={"lightblue"}>Light blue</option>
+                                <option value={"violet"}>Violet</option>
+                                <option value={"lightgreen"}>Light Green</option>
+                            </select>
 
                             <button type="submit" className="btn border-dark text-center m-2">
                                 <h3>CREATE PITCH</h3>
@@ -148,14 +167,16 @@ if(user.role === "recruiter"){
 
                         </Row>
                     </Form>
+                        </Col>
+                    {/*</div>*/}
                 </Col>
 
-                <Col md={8}>
+                <Col md={8} className="ml-5 px-4">
                     <div style={{
                         display:"grid",
                         gridTemplateColumns: "repeat(3, auto)",
                         gridGap: "1px",
-                        margin: "2px"
+                        margin: "2px",
                     }} >
                     {pitch.map((item,i) => (
                         <PitchItem item={item}

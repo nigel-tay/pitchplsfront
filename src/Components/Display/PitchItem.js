@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import {Container, Card, Col, Row, Modal, Form} from "react-bootstrap";
 import axios from "axios"
 import styles from "./PitchItem.module.css"
+import FavouritePitches from "./FavouritePitches";
 
 function PitchItem({item}, props) {
     const [show, setShow] = useState(false);
@@ -15,12 +16,7 @@ function PitchItem({item}, props) {
 
 
 
-    // const handleClick=(e)=>{
-    //     console.log("this is working fine");
-    //     e.preventDefault();
-    //     e.target.style.background = 'FFFFCCFF' ? 'pink' : 'FFFFCCFF'
-    //     console.log(e.target);
-    // }
+
 
     async function deletePost() {
         await axios.delete(`/pitch/delete/${item._id}`);
@@ -30,7 +26,7 @@ function PitchItem({item}, props) {
 
     function change(e) {
         setPost(prevState => ({...prevState, [e.target.name]: e.target.value}))
-        // setPost(e.target.value)
+
         console.log(post)
     }
 
@@ -43,31 +39,38 @@ function PitchItem({item}, props) {
 
 
 
-
     return (
-<div>
 
+<div>
         <Row>
 
+
             <ul>
-                <li>
-                    <a href="#">
+                <li style={{background:`${item.color}`}}>
+
 
                         <h4 className="font-monospace">{item.title}</h4>
                         <span> usp: {item.usp}, </span>
                         <span>  {item.goals}, </span>
                         <span>  {item.selfintro}</span>
-                        <Row className="justify-content-end">
-                            <Col md={10}>
+                        <Row className="justify-content-end"
+                        style={{position: "fixed",
+                                width: "100%",
+                                bottom: 0,
+                                paddingBottom: 10}}>
+                            <Col md={12}>
                                 <button className="px-2 mx-1" onClick={handleShow}> show </button>
                                 <button className="px-2 mx-1" onClick={handleShowEdit}> edit </button>
-                        <button className="px-2" onClick={deletePost}> x </button>
+                                <button className="px-2" onClick={deletePost}> x </button>
+
                             </Col>
                         </Row>
-                    </a>
 
                 </li>
             </ul>
+
+
+
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>

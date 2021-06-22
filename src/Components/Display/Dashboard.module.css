@@ -1,11 +1,11 @@
 h3 {
-    font-family: "Permanent Marker";
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-    color: beige;
+    font-family: "Arial";
+    /*-webkit-text-stroke-width: 2px;*/
+    /*-webkit-text-stroke-color: black;*/
+    color: black;
 }
 label {
-    font-family: monospace;
+    font-family: "American Typewriter";
     font-size: 20px;
 }
 
@@ -13,6 +13,7 @@ label {
     background: radial-gradient(beige, lightblue);
     border: 1px black;
     box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    position: absolute;
 }
 
 button:hover{
