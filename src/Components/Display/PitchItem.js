@@ -92,15 +92,16 @@ function PitchItem({item}, props) {
             <label>Title * </label>
 
             <input onChange={change}
-                      type="text"
-                      name="title"
-                      rows = "3"
-                      cols = "60"
-                      className="form-control"
-                      aria-describedby="Enter title"
-                      placeholder="Enter title"
+                   type="text"
+                   name="title"
+                   rows = "3"
+                   cols = "60"
+                   className="form-control"
+                   aria-describedby="Enter title"
+                   placeholder="Enter title"
                    defaultValue={item.title}
-                      required={true}/>
+                   maxLength={200}
+                   required={true}/>
 
             <label>Self intro *</label>
             <textarea onChange={change}
@@ -112,7 +113,6 @@ function PitchItem({item}, props) {
                       placeholder="Enter self Intro"
                       defaultValue={item.selfintro}
                       maxLength={200} />
-
 
 
             <label>USP *</label>

@@ -107,6 +107,7 @@ if(user.role === "recruiter"){
                                    aria-describedby="Enter title"
                                    placeholder="Enter title"
                                    required={true}
+                                      maxLength={200}
                              />
 
                             <label>Self intro *</label>

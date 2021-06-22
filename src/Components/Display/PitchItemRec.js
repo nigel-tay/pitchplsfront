@@ -54,18 +54,17 @@ function PitchItemRec({item}) {
         e.preventDefault()
 
         const chatName = item.title
-        const firstMsg = prompt('Please enter a welcome message')
 
-        window.open(`http://localhost:3001/`, '_blank')
-
-        if (chatName && firstMsg) {
+        if (chatName) {
             let chatId = ''
-
             axios.post('http://localhost:9000/new/conversation', {
                 chatName: chatName
             }).then((res) => {
                 chatId = res.data._id
+
             }).then(() => {
+                const firstMsg = prompt('Please enter a welcome message')
+                window.open(`http://localhost:3001/`, '_blank')
                 axios.post(`http://localhost:9000/new/message?id=${chatId}`, {
                     message: firstMsg,
                     timestamp: Date.now(),
