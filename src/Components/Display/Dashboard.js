@@ -44,7 +44,7 @@ const Dashboard = () => {
         async function getPitch() {
             let {data} = await axios.get(`/user/${user._id}`)
             if(data.user.pitches){
-            setPitch(data.user.pitches)
+            setPitch(data.user.pitches.reverse())
             }else {
                 setPitch(null)
             }
@@ -90,10 +90,9 @@ if(user.role === "recruiter"){
             Welcome back <strong className="text-danger">{user.name}</strong>, insert pitch here
 
             <Row>
-                <Col md={4} className="">
-                    {/*<div className={`${styles.sidebar} mx-2`}>*/}
-                        <Col md={3} className={`${styles.sidebar}`}>
-                    <h3 className="text-center"> Create New Pitch:</h3>
+                {/*<Col md={4} className="">*/}
+                        <Col md={3} className={`${styles.sidebar} border border-dark border-2`}>
+                    <h3 className="text-center mt-4"> Create New Pitch:</h3>
                     <Form ref={form} id="form" onSubmit={submitPost} method="post">
                         <Row className="justify-content-center mx-2">
                             <label>Title * </label>
@@ -101,8 +100,8 @@ if(user.role === "recruiter"){
                             <textarea onChange={change}
                                    type="text"
                                    name="title"
-                                   rows = "3"
-                                   cols = "60"
+                                   rows = "2"
+                                   cols = "30"
                                    className="form-control"
                                    aria-describedby="Enter title"
                                    placeholder="Enter title"
@@ -111,8 +110,8 @@ if(user.role === "recruiter"){
 
                             <label>Self intro *</label>
                             <textarea onChange={change}
-                                      rows = "5"
-                                      cols = "60"
+                                      rows = "3"
+                                      cols = "30"
                                       type="text"
                                       name="selfintro"
                                       className="form-control"
@@ -126,8 +125,8 @@ if(user.role === "recruiter"){
                             <textarea onChange={change}
                                    type="text"
                                    name="usp"
-                                      rows = "5"
-                                      cols = "60"
+                                      rows = "3"
+                                      cols = "30"
                                    className="form-control"
                                    aria-describedby="Enter usp "
                                    placeholder="Enter usp "
@@ -138,8 +137,8 @@ if(user.role === "recruiter"){
                             <textarea onChange={change}
                                    type="text"
                                    name="goals"
-                                      rows = "5"
-                                      cols = "60"
+                                      rows = "3"
+                                      cols = "30"
                                    className="form-control"
                                    aria-describedby="Enter goals"
                                    placeholder="Enter goals"
@@ -169,9 +168,9 @@ if(user.role === "recruiter"){
                     </Form>
                         </Col>
                     {/*</div>*/}
-                </Col>
+                {/*</Col>*/}
 
-                <Col md={8} className="ml-5 px-4">
+                <Col md={9} className={`${styles.makeThisScroll} border border-2 border-dark`} >
                     <div style={{
                         display:"grid",
                         gridTemplateColumns: "repeat(3, auto)",

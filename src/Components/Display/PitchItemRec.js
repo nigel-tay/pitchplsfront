@@ -4,9 +4,12 @@ import axios from "axios"
 import styles from "./PitchItem.module.css"
 
 
+
 function PitchItemRec({item}) {
     const [user, setUser] = useState({})
-    // const [show, setShow] = useState(true)
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const form = useRef(null)
 
@@ -54,17 +57,27 @@ function PitchItemRec({item}) {
     return (
 
         <div>
-
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header>
+                    <Modal.Title>{item.title}</Modal.Title>
+                    <button className="px-2" onClick={handleClose}> x </button>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>{item.usp}</p>
+                    <p>{item.goals} </p>
+                    <p>{item.selfintro}</p>
+                </Modal.Body>
+            </Modal>
 
             <div className={`${styles.makethishover}`}>
                 <ul>
                     <li style={{background: `${item.color}`}}>
 
-                        <Form ref={form} id="form" onSubmit={submitFav} method="post">
+
                             <h4>{item.title}</h4>
-                            <span> usp: {item.usp}, </span>
-                            <span>  {item.goals}, </span>
-                            <span>  {item.selfintro}</span>
+                        <span>  {item.selfintro}</span>
+                        <span> {item.usp}, </span>
+                        <span>  {item.goals}, </span>
                             <Row className="justify-content-end"
                                  style={{
                                      position: "fixed",
@@ -72,14 +85,19 @@ function PitchItemRec({item}) {
                                      bottom: 0,
                                      paddingBottom: 10
                                  }}>
-                                <Col md={12}>
+                                <Col md={6}>
                                     {/*{show ?*/}
-                                    <button type="submit"> Set Fav</button>
+                                    <Form ref={form} id="form" onSubmit={submitFav} method="post">
+                                    <button type="submit" className="btn bg-transparent"><img src="https://img.icons8.com/offices/30/000000/filled-like.png"/> </button>
+                                    </Form>
+                                </Col>
+                                <Col md={6}>
+                                    <button className="btn bg-light text-dark" onClick={handleShow}> See More </button>
                                     {/*: null*/}
                                     {/*}*/}
                                 </Col>
                             </Row>
-                        </Form>
+
 
                     </li>
                 </ul>
