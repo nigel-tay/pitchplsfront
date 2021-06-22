@@ -43,9 +43,17 @@ function DashboardRec() {
     useEffect(() => {
         async function getPitch() {
             let {data} = await axios.get(`/user/${user._id}`)
-            console.log("fav", data.user.favourites)
+            // console.log("fav", data.user.favourites)
             if (data.user.favourites) {
-                setShowFav(data.user.favourites)
+                console.log(data.user.favourites)
+                let unique = []
+                data.user.favourites.forEach(item => {
+                    if (!unique.includes(item)) {
+                        unique.push(item)
+                    }
+                })
+                console.log(unique)
+                setShowFav(unique)
             } else {
                 setShowFav(null)
             }
