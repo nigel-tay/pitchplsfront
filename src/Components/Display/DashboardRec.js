@@ -3,11 +3,13 @@ import axios from "axios";
 import PitchItemRec from "./PitchItemRec";
 import {Col, Row, Container} from "react-bootstrap";
 import FavouritePitches from "./FavouritePitches";
+import styles from "./Dashboard.module.css"
 
 function DashboardRec() {
     const [user, setUser] = useState({})
     const [pitch, setPitch] = useState([])
     const [showFav, setShowFav] = useState([])
+
 
 
     useEffect(() => {
@@ -45,15 +47,7 @@ function DashboardRec() {
             let {data} = await axios.get(`/user/${user._id}`)
             // console.log("fav", data.user.favourites)
             if (data.user.favourites) {
-                console.log(data.user.favourites)
-                let unique = []
-                data.user.favourites.forEach(item => {
-                    if (!unique.includes(item)) {
-                        unique.push(item)
-                    }
-                })
-                console.log(unique)
-                setShowFav(unique)
+                setShowFav(data.user.favourites.reverse())
             } else {
                 setShowFav(null)
             }
@@ -68,12 +62,13 @@ function DashboardRec() {
             <h3> HELLO THIS IS A SPACE FOR RECRUITERS !!!!!!!!!</h3>
             Welcome back, <strong className="text-danger">{user.name}</strong>, search pitch here
             <Row>
-                <Col md={8}>
+                <Col md={9} className={`${styles.makeThisScroll} border border-2 border-dark`}>
+                    <h4 className="mt-0 mb-3"> Search Pitches Here </h4>
                     <div style={{
                         display: "grid",
                         gridTemplateColumns: "repeat(3, auto)",
                         gridGap: "1px",
-                        margin: "1px",
+
                     }}>
                         {pitch.map((item, i) => (
                             <PitchItemRec item={item}
@@ -85,12 +80,14 @@ function DashboardRec() {
 
                     </div>
                 </Col>
-                <Col md={4} className="bg-secondary">
+                <Col md={3} className={`${styles.backgroundCork} border border-dark border-2 py-3`}>
+                    <h4 className="bg-light"> My Favourite Pitches</h4>
+
                     <div style={{
                         display: "grid",
                         gridTemplateColumns: "repeat(1, auto)",
                         gridGap: "1px",
-                        margin: "1px",
+
                     }}>
                         {showFav.map((item, i) => (
                             <FavouritePitches item={item}

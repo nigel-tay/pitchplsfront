@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import React, {useRef, useEffect,useState} from "react";
 import './App.css';
 import axios from "axios";
@@ -41,12 +41,6 @@ function App() {
 
 
 
-
-    //  function logout() {
-    //     setAuth(false)
-    //     setUser(null)
-    //     localStorage.removeItem("token")
-    // }
 
 
   return (
