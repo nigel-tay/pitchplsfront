@@ -1,0 +1,24 @@
+.homeBody{
+    box-sizing: border-box;
+    font-family: var(--ff-serif);
+    font-weight: bold;
+    color: var(--clr-text);
+    font-size: 1.125rem;
+    background-color: var(--clr-primary);
+}
+
+
+.mainTitle{
+    font-family: var(--ff-title);
+    font-weight: bold;
+}
+
+.sectionTitle{
+    font-family: var(--ff-title);
+    font-weight: bold;
+}
+
+.testimonialTitle{
+    font-family: var(--ff-title);
+    font-weight: bold;
+}
