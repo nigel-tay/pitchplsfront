@@ -6,7 +6,7 @@ import axios from "axios";
 function Navigation({setAuth, setUser, user}) {
 
 
-     function logout(e) {
+    function logout(e) {
         e.preventDefault()
         setAuth(false)
         setUser(null)
@@ -14,35 +14,30 @@ function Navigation({setAuth, setUser, user}) {
     }
 
     return (
-        <Navbar bg="light" expand="lg" className="p-0 pl-2">
-            <Navbar.Brand href="/">Pitch Please!</Navbar.Brand>
+        <Navbar expand="lg" className="nav-container">
+            <Navbar.Brand href="/" className="d-flex">Pitch Please!</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                    {/*<Form className="d-flex" action="/">*/}
-                    {/*    <Form.Control name="search" />*/}
-                    {/*    <button type="submit">find</button>*/}
-                    {/*</Form>*/}
 
+                <Nav>
+                    <NavLink to="/" className="nav-link navbar-text">Home</NavLink>
+                </Nav>
+                <Nav>
+                    <NavLink to="/about" className="nav-link navbar-text">About</NavLink>
+                </Nav>
+                <Nav>
+                    {user ? <>
+                        <NavLink to="/dashboard" className="nav-link navbar-text">{user.name}'s Page</NavLink>
+                        <NavLink to="/login" onClick={logout} className="nav-link navbar-text">Logout</NavLink>
+                    </> :<>
+                        <NavLink to="/login" className="nav-link navbar-text">Login</NavLink>
+                        <NavLink to="/register" className="nav-link navbar-text">Register</NavLink>
+                    </> }
                 </Nav>
 
-                <Nav className="ml-auto">
-                    <NavLink to="/" className="nav-link">Home</NavLink>
-                    <NavLink to="/" className="nav-link"> About</NavLink>
-                </Nav>
-                {user ? <>
-                    <NavLink to="/dashboard" className="nav-link">{user.name}'s Page</NavLink>
-                    <NavLink to="/login" onClick={logout} className="nav-link">Logout</NavLink>
-                </> :<>
-                    <NavLink to="/login" className="nav-link">Login</NavLink>
-                    <NavLink to="/register" className="nav-link">Register</NavLink>
-                </> }
 
 
             </Navbar.Collapse>
-            <Nav className="bg-danger align-self-end">
-                <Nav.Link href="#" className="text-white">pitchmebabyonemoretime</Nav.Link>
-            </Nav>
         </Navbar>
     );
 }

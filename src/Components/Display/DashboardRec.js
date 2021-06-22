@@ -13,8 +13,6 @@ function DashboardRec() {
     const [search, setSearch] = useState("")
 
 
-
-
     useEffect(() => {
         async function setUserStats() {
             try {
@@ -91,6 +89,7 @@ function DashboardRec() {
         <Container fluid>
             <h3> HELLO THIS IS A SPACE FOR RECRUITERS !!!!!!!!!</h3>
             Welcome back, <strong className="text-danger">{user.name}</strong>, search pitch here
+            <input type="text" placeholder="Search Pitches" onChange={e => setSearch(e.target.value)}/>
             <Row>
                 <Col md={9} sm={9} className={`${styles.makeThisScroll} border border-2 border-dark`}>
                     <div style={{width: "100%",
@@ -118,11 +117,8 @@ function DashboardRec() {
                             }
                         }).map((item,i) => (
                             <PitchItemRec item={item}
-                                          key={i}
-                            />
-
-
-                        ))}
+                            key ={i}/>
+                            )) }
 
                     </div>
                 </Col>
