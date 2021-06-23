@@ -43,12 +43,6 @@ function App() {
 
 
 
-    //  function logout() {
-    //     setAuth(false)
-    //     setUser(null)
-    //     localStorage.removeItem("token")
-    // }
-
 
     return (
         <div>
