@@ -1,6 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Container, Card, Col, Row, Modal, Form} from "react-bootstrap";
 import axios from "axios"
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 import styles from "./PitchItem.module.css"
 
 
@@ -85,7 +90,7 @@ function PitchItem({item, setPitch}) {
             <Modal show={showEdit} onHide={handleCloseEdit}>
                 <Form ref={form} id="form" onSubmit={editPost} method="post">
                     <Row className="justify-content-center mx-2">
-                        <label>Title * </label>
+                        <label>Title</label>
 
                         <input onChange={change}
                                type="text"
@@ -98,7 +103,7 @@ function PitchItem({item, setPitch}) {
                                defaultValue={item.title}
                                required={true}/>
 
-                        <label>Self intro *</label>
+                        <label>Self introduction</label>
                         <textarea onChange={change}
                                   rows="5"
                                   cols="60"
@@ -110,7 +115,7 @@ function PitchItem({item, setPitch}) {
                                   maxLength={200}/>
 
 
-                        <label>USP *</label>
+                        <label>USP</label>
                         <textarea onChange={change}
                                   type="text"
                                   name="usp"
@@ -122,7 +127,7 @@ function PitchItem({item, setPitch}) {
                                   defaultValue={item.usp}
                                   maxLength={200}/>
 
-                        <label>Goals *</label>
+                        <label>Goals</label>
                         <textarea onChange={change}
                                   type="text"
                                   name="goals"
@@ -162,10 +167,31 @@ function PitchItem({item, setPitch}) {
                                  paddingBottom: 10
                              }}>
                             <Col md={12}>
-                                <button className="btn btn-transparent px-2 mx-1 border border-dark" onClick={handleShow}> show</button>
-                                <button className="btn btn-transparent px-2 mx-1  border border-dark" onClick={handleShowEdit}> edit</button>
-                                <button className="btn btn-transparent px-2  border border-dark" onClick={deletePost}> x</button>
+                                <button className="btn btn-transparent px-2 mx-1 border border-dark" onClick={handleShow}><VisibilityIcon /></button>
+                                <button className="btn btn-transparent px-2 mx-1  border border-dark" onClick={handleShowEdit}><EditIcon /></button>
+                                <button className="btn btn-transparent px-2  border border-dark" onClick={deletePost}><DeleteIcon /></button>
 
+                                {/*For tooltips*/}
+                                {/*<Tippy*/}
+                                {/*    content="View"*/}
+                                {/*    placement="bottom"*/}
+                                {/*>*/}
+
+                                {/*</Tippy>*/}
+
+                                {/*<Tippy*/}
+                                {/*    content="Edit"*/}
+                                {/*    placement="bottom"*/}
+                                {/*>*/}
+
+                                {/*</Tippy>*/}
+
+                                {/*<Tippy*/}
+                                {/*    content="Delete"*/}
+                                {/*    placement="bottom"*/}
+                                {/*>*/}
+
+                                {/*</Tippy>*/}
                             </Col>
                         </Row>
 

@@ -2,6 +2,8 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Container, Card, Col, Row, Modal, Form, InputGroup, FormControl} from "react-bootstrap";
 import axios from "axios"
 import styles from "./PitchItem.module.css"
+import ForumIcon from '@material-ui/icons/Forum';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 
 
@@ -103,12 +105,12 @@ function PitchItemRec({item, setShowFav, user}) {
                                     </Form>
                                 </Col>
                                         <Col md={4}>
-                                        <button className="btn bg-transparent border border-dark text-dark" onClick={chatStart} > Chat!</button>
+                                        <button className="btn bg-transparent border border-dark text-dark" onClick={chatStart} ><ForumIcon /></button>
                                         </Col>
 
 
                                 <Col md={4}>
-                                    <button className="btn bg-transparent border border-dark text-dark" onClick={handleShow}> More </button>
+                                    <button className="btn bg-transparent border border-dark text-dark" onClick={handleShow}><VisibilityIcon /></button>
 
                                 </Col>
                             </Row>
