@@ -1,0 +1,190 @@
+.homeBody{
+    box-sizing: border-box;
+    font-family: var(--ff-serif);
+    font-weight: bold;
+    color: var(--clr-text);
+    font-size: 1.125rem;
+    background-color: var(--clr-primary);
+}
+
+.section{
+    padding: 3em 1em;
+}
+
+.mainTitle{
+    font-family: var(--ff-title);
+    font-weight: bold;
+}
+
+.sectionTitle{
+    font-family: var(--ff-title);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.testimonialTitle{
+    margin-top: 2em;
+    font-family: var(--ff-title);
+    font-weight: bold;
+    text-align: center;
+    color: var(--clr-text);
+}
+
+.testimonial{
+    text-align: center;
+    color: var(--clr-text);
+}
+
+/* hero */
+
+.hero{
+    background-color: var(--clr-primary);
+    background-image: url("http://placehold.it/300x300");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    text-align: center;
+    padding: 15vh 1em;
+}
+
+.aboutUs{
+    background-color: var(--clr-primary);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    color: var(--clr-text);
+}
+
+.aboutUsIntro{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url("http://placehold.it/300x300");
+    background-size: cover;
+    height: 20em;
+    width: 100%;
+}
+
+.aboutUsBody{
+    padding: 1.5em 1em 1em;
+    margin-bottom: 5em;
+}
+
+/* team section */
+
+.teamContainer{
+    background-color: var(--clr-secondary);
+}
+
+.teamPerson{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2em;
+}
+
+.memberPhoto{
+    margin-top: 3em;
+    border-radius: 100px;
+}
+
+.teamName{
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.btn{
+    padding: .75em 2em;
+    color: var(--clr-secondary);
+    text-decoration: none;
+    text-align: center;
+}
+.btn:hover{
+    color: var(--clr-accent)
+}
+
+.btnPrimary{
+    padding: .75em .5em;
+    background: var(--clr-text);
+    border-radius: 5px;
+    width: 40%
+}
+
+@media only screen and (min-width: 750px){
+    .section{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* hero */
+    .hero{
+        height: 95vh;
+    }
+    .mainTitle{
+        display: flex;
+        align-items: center;
+    }
+
+    /* about us */
+    .aboutUs{
+        flex-direction: row;
+    }
+
+    .aboutUsIntro{
+        height: 100%;
+    }
+
+    /* testimonials */
+    .testimonialTitle{
+        margin-top: 0;
+    }
+
+    /* team section */
+    .btnPrimary{
+        width: 100%;
+    }
+
+
+    /*Scroll arrow animation*/
+    .scrollArrows {
+        transform: translate(-50%, -50%);
+        display: block;
+        margin-top: 100px;
+    }
+    .scrollArrows span{
+        position: absolute;
+        display: block;
+        width: 20px;
+        height: 20px;
+        border-bottom: 3px solid var(--clr-secondary);
+        border-right: 3px solid var(--clr-secondary);
+        transform: rotate(45deg);
+        margin: -10px;
+        animation: arrowAnimation 2s infinite;
+    }
+    .scrollArrows span:nth-child(2){
+        animation-delay: -0.2s;
+    }
+    .scrollArrows span:nth-child(3){
+        animation-delay: -0.4s;
+    }
+    @keyframes arrowAnimation {
+        0%{
+            opacity: 0;
+            transform: rotate(45deg) translate(-20px, -20px);
+        }
+        50%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
+            transform: rotate(45deg) translate(20px, 20px);
+        }
+    }
+}
