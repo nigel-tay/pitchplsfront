@@ -107,7 +107,7 @@ function DashboardRec() {
                                 return item
                             }
                         }).map((item,i) => (
-                            <PitchItemRec item={item} setShowFav={setShowFav}
+                            <PitchItemRec item={item} setShowFav={setShowFav} user={user}
                             key ={i}/>
                             )) }
 
@@ -138,7 +138,8 @@ function DashboardRec() {
                                 return item
                             }
                         }).map((item, i) => (
-                            <FavouritePitches item={item} setShowFav={setShowFav}
+
+                            <FavouritePitches item={item} user={user} setShowFav={setShowFav}
                             key={i}/>
                             ))}
 
