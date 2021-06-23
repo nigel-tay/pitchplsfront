@@ -15,33 +15,6 @@ function Navigation({setAuth, setUser, user}) {
 
     return (
 
-<!--         <Navbar bg="transparent" expand="lg" className="text-center w-100">
-            <h3 className="px-4">Pitch Please!</h3>
-            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-            <Navbar.Collapse id="basic-navbar-nav">
-
-                <Nav className="ml-auto">
-                    <NavLink to="/" className="navButton font-monospace nav-link">Home</NavLink>
-                    <NavLink to="/" className="navButton font-monospace nav-link"> About</NavLink>
-                </Nav>
-<!--                 {user ? <>
-
-                    <NavLink to="/dashboard" className="navButton font-monospace text-dark nav-link">{user.name}'s Page</NavLink>
-                    <NavLink to="/login" onClick={logout} className="navButton font-monospace text-dark nav-link">Logout</NavLink>
-                </> :<>
-                    <NavLink to="/login" className="navButton font-monospace text-dark nav-link">Login</NavLink>
-                    <NavLink to="/register" className="navButton font-monospace text-dark nav-link">Register</NavLink>
-                </> }
-
-
-            </Navbar.Collapse>
-<!--             {user ?
-            <Nav className=" align-self-end">
-                <h4>Welcome Back, {user.name}!</h4>
-            </Nav> : null -->
-
-<!--             } --> 
-
         <Navbar expand="lg" className="nav-container">
             <Navbar.Brand href="/" className="d-flex">Pitch Please!</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
