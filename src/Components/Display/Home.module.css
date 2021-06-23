@@ -136,6 +136,10 @@
         flex-direction: row;
     }
 
+    .aboutUsText{
+        text-align: left;
+    }
+
     .aboutUsIntro{
         height: 100%;
     }

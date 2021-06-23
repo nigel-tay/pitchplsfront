@@ -9,10 +9,7 @@ function Home(props) {
         <div className={`${styles.homeBody}`}>
             <section className={`${styles.section} ${styles.hero}`}>
                 <h1 className={`${styles.mainTitle}`}>Pitch Please</h1>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Aut blanditiis debitis dignissimos dolor dolores ea et, expedita
-                in laudantium magni minus nemo nesciunt placeat possimus quae quasi
-                sit soluta voluptas.
+                <p>Job searching without the fluff</p>
 
                 <div className={`${styles.scrollArrows}`}>
                     <span></span>
@@ -25,14 +22,15 @@ function Home(props) {
             <section className={`${styles.aboutUs} ${styles.section}`}>
                 <header className={`${styles.aboutUsIntro}`}>
                     <h2 className={`${styles.sectionTitle}`}>Recognising Talent</h2>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Blanditiis, quas!
+                    <p>
+                        Searching for a job is tough<br/>
+                        Trust us, we know
+                    </p>
                 </header>
                 <div className={`${styles.aboutUsBody}`}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aut blanditiis debitis dignissimos dolor dolores ea et, expedita
-                    in laudantium magni minus nemo nesciunt placeat possimus quae quasi
-                    sit soluta voluptas.
+                    <p className={`${styles.aboutUsText}`}>
+                        Rejection is part and parcel of a job search. Ever got rejected but was completely qualified for the job? By eliminating the need for names, photos and resumes, we hope to introduce a new job search culture only with pitches.
+                    </p>
                 </div>
             </section>
 
