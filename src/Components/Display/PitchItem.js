@@ -1,11 +1,12 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Container, Card, Col, Row, Modal, Form} from "react-bootstrap";
 import axios from "axios"
 import styles from "./PitchItem.module.css"
 
 
-function PitchItem({item}) {
+function PitchItem({item, setPitch}) {
     const [show, setShow] = useState(false);
+    const [user, setUser] = useState({})
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [showEdit, setShowEdit] = useState(false);
@@ -14,10 +15,40 @@ function PitchItem({item}) {
     const [post, setPost] = useState({})
     const form = useRef(null)
 
+    useEffect(() => {
+        async function setUserStats() {
+            try {
+                let {data} = await axios.get("/auth/user", {
+                    headers: {
+                        authorization: `Bearer ${localStorage.token}`
+                    }
+                })
+                setUser(data.user)
+                // console.log(user._id)
+
+            } catch (e) {
+                setUser({})
+                localStorage.removeItem("token")
+            }
+        }
+
+        setUserStats()
+    }, [])
+
+    async function getPitch() {
+        let {data} = await axios.get(`/user/${user._id}`)
+        console.log("testing")
+        if(data.user.pitches){
+            setPitch(data.user.pitches.reverse())
+        }else {
+            setPitch(null)
+        }
+    }
 
     async function deletePost() {
         await axios.delete(`/pitch/delete/${item._id}`);
         console.log('Delete successful');
+        getPitch()
     }
 
 
@@ -33,7 +64,6 @@ function PitchItem({item}) {
         alert('Pitch Edited!');
         setShowEdit(false)
     }
-
 
     return (
 

@@ -33,32 +33,45 @@ function DashboardRec() {
         setUserStats()
     }, [])
 
+    async function getPitch() {
+        let {data} = await axios.get(`/pitch`)
+        setPitch(data.pitches)
+
+    }
+
+    async function getFave() {
+
+        let {data} = await axios.get(`/user/${user._id}`)
+        // console.log("fav", data.user.favourites)
+        if (data.user.favourites) {
+            setShowFav(data.user.favourites.reverse())
+        } else {
+            setShowFav(null)
+        }
+    }
+
     useEffect(() => {
 
-        async function getPitch() {
-            let {data} = await axios.get(`/pitch`)
-            setPitch(data.pitches)
-
-        }
-
         getPitch()
-    }, [user, pitch])
+        getFave()
+    }, [user])
 
 
-    useEffect(() => {
-        async function getPitch() {
 
-            let {data} = await axios.get(`/user/${user._id}`)
-            // console.log("fav", data.user.favourites)
-            if (data.user.favourites) {
-                setShowFav(data.user.favourites.reverse())
-            } else {
-                setShowFav(null)
-            }
-        }
 
-        getPitch()
-    }, [user, showFav])
+    // useEffect(() => {
+    //     async function getFave() {
+    //
+    //         let {data} = await axios.get(`/user/${user._id}`)
+    //         // console.log("fav", data.user.favourites)
+    //         if (data.user.favourites) {
+    //             setShowFav(data.user.favourites.reverse())
+    //         } else {
+    //             setShowFav(null)
+    //         }
+    //     }
+    //     getFave()
+    // }, [user])
 
     return (
         <Container fluid>
@@ -94,7 +107,7 @@ function DashboardRec() {
                                 return item
                             }
                         }).map((item,i) => (
-                            <PitchItemRec item={item}
+                            <PitchItemRec item={item} setShowFav={setShowFav}
                             key ={i}/>
                             )) }
 
@@ -117,7 +130,6 @@ function DashboardRec() {
                         marginTop: "20px",
 
                     }}>
-
                         {showFav.filter(item => {
                             if (searchFav === ""){
                                 return item
@@ -129,6 +141,7 @@ function DashboardRec() {
                             <FavouritePitches item={item}
                             key={i}/>
                             ))}
+
                     </div>
                 </Col>
             </Row>

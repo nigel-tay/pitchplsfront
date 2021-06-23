@@ -5,7 +5,7 @@ import styles from "./PitchItem.module.css"
 
 
 
-function PitchItemRec({item}) {
+function PitchItemRec({item, setShowFav}) {
     const [user, setUser] = useState({})
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -32,6 +32,16 @@ function PitchItemRec({item}) {
         setUserStats()
     }, [])
 
+    async function getFave() {
+
+        let {data} = await axios.get(`/user/${user._id}`)
+        // console.log("fav", data.user.favourites)
+        if (data.user.favourites) {
+            setShowFav(data.user.favourites.reverse())
+        } else {
+            setShowFav(null)
+        }
+    }
 
     async function submitFav(e) {
         e.preventDefault(e)
@@ -45,6 +55,7 @@ function PitchItemRec({item}) {
                         authorization: `Bearer ${localStorage.token}`
                     }
                 })
+                getFave()
                 console.log(res.data)
 
             } catch (e) {
@@ -56,14 +67,14 @@ function PitchItemRec({item}) {
     async function chatStart(e) {
         e.preventDefault()
         const chatName = item.title
-        if (chatName) {
+        const firstMsg = prompt('Please enter a welcome message')
+        if (chatName && firstMsg) {
             let chatId = ''
             axios.post('http://localhost:9000/new/conversation', {
                 chatName: chatName
             }).then((res) => {
                 chatId = res.data._id
             }).then(() => {
-                const firstMsg = prompt('Please enter a welcome message')
                 window.open(`http://localhost:3001/`, '_blank')
                 axios.post(`http://localhost:9000/new/message?id=${chatId}`, {
                     message: firstMsg,
