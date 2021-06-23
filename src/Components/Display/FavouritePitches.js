@@ -1,14 +1,44 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Col, Row, Form, Modal} from "react-bootstrap";
 import styles from "./PitchItem.module.css"
 import axios from "axios";
 
-function FavouritePitches({item}) {
+function FavouritePitches({item, setShowFav}) {
+    const [user, setUser] = useState({})
     const form = useRef(null)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    useEffect(() => {
+        async function setUserStats() {
+            try {
+                let {data} = await axios.get("/auth/user", {
+                    headers: {
+                        authorization: `Bearer ${localStorage.token}`
+                    }
+                })
+                setUser(data.user)
+
+            } catch (e) {
+                setUser({})
+                localStorage.removeItem("token")
+            }
+        }
+
+        setUserStats()
+    }, [])
+
+    async function getFave() {
+
+        let {data} = await axios.get(`/user/${user._id}`)
+        // console.log("fav", data.user.favourites)
+        if (data.user.favourites) {
+            setShowFav(data.user.favourites.reverse())
+        } else {
+            setShowFav(null)
+        }
+    }
 
     async function removeFav(e) {
         e.preventDefault(e)
@@ -22,6 +52,7 @@ function FavouritePitches({item}) {
                         authorization: `Bearer ${localStorage.token}`
                     }
                 })
+                getFave()
                 console.log(res.data)
 
             } catch (e) {

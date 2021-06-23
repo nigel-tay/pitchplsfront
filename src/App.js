@@ -61,13 +61,14 @@ function App() {
                         <About/>
                     </Route>
 
-                <Route path="/login">
-                    <Login auth={auth} setAuth={setAuth}/>
-                </Route>
-                <Route path="/register">
-                    <Register auth={auth} setAuth={setAuth}/>
-                </Route>
-                <PrivateRouter auth={auth} user={user} path="/dashboard" Component={Dashboard} />
+                    <Route path="/login">
+                        <Login auth={auth} setAuth={setAuth}/>
+                    </Route>
+                    <Route path="/register">
+                        <Register auth={auth} setAuth={setAuth}/>
+                    </Route>
+                    <PrivateRouter auth={auth} user={user} path="/dashboard" Component={Dashboard} />
+
                 <PrivateRouter auth={auth} user={user} path="/recruiter" Component={DashboardRec} />
 
                 {/*<Route path="/dashboard" exact>*/}
