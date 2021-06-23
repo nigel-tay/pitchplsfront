@@ -50,13 +50,22 @@ function PitchItemRec({item, setShowFav, user}) {
         const firstMsg = prompt('Please enter a welcome message')
         if (chatName && firstMsg) {
             let chatId = ''
-            axios.post('http://localhost:9000/new/conversation', {
+            let recId = ''
+            let jsId = ''
+            await axios.get(`/user/${user._id}`)
+                .then((res)=>{
+                    recId = res.data.user._id
+                    jsId = item.creator
+                    console.log(recId)
+                    console.log(jsId)
+                })
+            await axios.post('http://localhost:9000/new/conversation', {
                 chatName: chatName
             }).then((res) => {
                 chatId = res.data._id
             }).then(() => {
                 window.open(`http://localhost:3001/`, '_blank')
-                axios.post(`http://localhost:9000/new/message?id=${chatId}`, {
+                axios.post(`http://localhost:9000/new/message?id=${chatId}&recId=${recId}&jsId=${jsId}`, {
                     message: firstMsg,
                     timestamp: Date.now(),
                     user: user
