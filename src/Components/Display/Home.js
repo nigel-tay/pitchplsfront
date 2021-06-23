@@ -8,8 +8,8 @@ function Home(props) {
     return (
         <div className={`${styles.homeBody}`}>
             <section className={`${styles.section} ${styles.hero}`}>
-                <h1 className={`${styles.mainTitle}`}>Pitch Please</h1>
-                <p>Job searching without the fluff</p>
+                <h1 className={`${styles.mainTitle} ${styles.heroText}`}>Pitch Please</h1>
+                <p className={`${styles.heroText}`}>Job searching without the fluff</p>
 
                 <div className={`${styles.scrollArrows}`}>
                     <span></span>
@@ -23,12 +23,11 @@ function Home(props) {
                 <header className={`${styles.aboutUsIntro}`}>
                     <h2 className={`${styles.sectionTitle}`}>Recognising Talent</h2>
                     <p>
-                        Searching for a job is tough<br/>
-                        Trust us, we know
+                        Searching for a job is tough
                     </p>
                 </header>
                 <div className={`${styles.aboutUsBody}`}>
-                    <p className={`${styles.aboutUsText}`}>
+                    <p>
                         Rejection is part and parcel of a job search. Ever got rejected but was completely qualified for the job? By eliminating the need for names, photos and resumes, we hope to introduce a new job search culture only with pitches.
                     </p>
                 </div>
@@ -73,24 +72,24 @@ function Home(props) {
                 <h2 className={`${styles.sectionTitle}`}>Meet the Team</h2>
                 <Row>
                     <Col className={`${styles.teamPerson} gx-5`} md={3}>
-                        <img className={`${styles.memberPhoto}`} src="http://placehold.it/150x150" alt="Photo of Benedict"/>
+                        <img className={`${styles.memberPhoto}`} src="https://ca.slack-edge.com/T0351JZQ0-U01PR1SCDF0-4a272807b931-512" alt="Photo of Benedict"/>
                         <div className={`${styles.teamName}`}>Benedict</div>
-                        <a href="" className={`${styles.btn} ${styles.btnPrimary} ${styles.btnPrimary}`}>Connect</a>
+                        <a href="https://www.linkedin.com/in/benedict-lim/" className={`${styles.btn} ${styles.btnPrimary} ${styles.btnPrimary}`} target="_blank">Connect</a>
                     </Col>
                     <Col className={`${styles.teamPerson} gx-5`} md={3}>
-                        <img className={`${styles.memberPhoto}`} src="http://placehold.it/150x150" alt="Photo of Jerald"/>
+                        <img className={`${styles.memberPhoto}`} src="https://ca.slack-edge.com/T0351JZQ0-U01UD4HLAD8-e57828b81ab5-512" alt="Photo of Jerald"/>
                         <div className={`${styles.teamName}`}>Jerald</div>
-                        <a href="" className={`${styles.btn} ${styles.btnPrimary}`}>Connect</a>
+                        <a href="https://www.linkedin.com/in/limejjerald/" className={`${styles.btn} ${styles.btnPrimary}`} target="_blank">Connect</a>
                     </Col>
                     <Col className={`${styles.teamPerson} gx-5`} md={3}>
-                        <img className={`${styles.memberPhoto}`} src="http://placehold.it/150x150" alt="Photo of Kimberly"/>
+                        <img className={`${styles.memberPhoto}`} src="https://ca.slack-edge.com/T0351JZQ0-U01K35GHLGG-e1f00267f44e-512" alt="Photo of Kimberly"/>
                         <div className={`${styles.teamName}`}>Kimberly</div>
-                        <a href="" className={`${styles.btn} ${styles.btnPrimary}`}>Connect</a>
+                        <a href="https://www.linkedin.com/in/kimberlyphua/" className={`${styles.btn} ${styles.btnPrimary}`} target="_blank">Connect</a>
                     </Col>
                     <Col className={`${styles.teamPerson} gx-5`} md={3}>
-                        <img className={`${styles.memberPhoto}`} src="http://placehold.it/150x150" alt="Photo of Nigel"/>
+                        <img className={`${styles.memberPhoto}`} src="https://ca.slack-edge.com/T0351JZQ0-U01PPR8A10X-8f3cc18736a8-512" alt="Photo of Nigel"/>
                         <div className={`${styles.teamName}`}>Nigel</div>
-                        <a href="" className={`${styles.btn} ${styles.btnPrimary}`}>Connect</a>
+                        <a href="https://www.linkedin.com/in/ninenigel9/" className={`${styles.btn} ${styles.btnPrimary}`} target="_blank">Connect</a>
                     </Col>
 
                 </Row>

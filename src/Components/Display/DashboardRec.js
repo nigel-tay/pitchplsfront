@@ -102,10 +102,13 @@ function DashboardRec() {
                 </Col>
                 <Col md={3} className={`${styles.backgroundCork} border border-dark border-2`}>
 
-                    <h4 className="mt-3"> My Favourite Pitches</h4>
-                    <input type="text" placeholder="Search Pitches"
-                           className={`${styles.inputStyle} pl-3 text-center`}
-                           onChange={e => setSearchFav(e.target.value)}/>
+                    <h4 className="mt-3 text-center"> My Favourite Pitches</h4>
+                    <div className="d-flex justify-content-center">
+                        <input type="text" placeholder="Search Pitches"
+                               className={`${styles.inputStyle} pl-3 text-center`}
+                               onChange={e => setSearchFav(e.target.value)}/>
+                    </div>
+
 
                     <div style={{
                         display: "grid",

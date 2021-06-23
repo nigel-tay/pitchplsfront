@@ -92,7 +92,7 @@ if(user.role === "recruiter"){
                     <h4 className="text-center mt-2"> Create New Pitch:</h4>
                     <Form ref={form} id="form" onSubmit={submitPost} method="post">
                         <Row className="justify-content-center mx-2 text-center">
-                            <label>Title * </label>
+                            <label className={`${styles.pitchCreationTitle}`}>Title * </label>
 
                             <textarea onChange={change}
                                    type="text"
@@ -105,7 +105,7 @@ if(user.role === "recruiter"){
                                    required={true}
                              />
 
-                            <label>Self intro *</label>
+                            <label className={`${styles.pitchCreationIntro}`}>Self intro *</label>
                             <textarea onChange={change}
                                       rows = "3"
                                       cols = "30"
@@ -118,7 +118,7 @@ if(user.role === "recruiter"){
 
 
 
-                            <label>USP *</label>
+                            <label className={`${styles.pitchCreationUSP}`}>USP *</label>
                             <textarea onChange={change}
                                    type="text"
                                    name="usp"
@@ -130,7 +130,7 @@ if(user.role === "recruiter"){
                                    required={true}
                                       maxLength={200}/>
 
-                            <label>Goals *</label>
+                            <label className={`${styles.pitchCreationGoals}`}>Goals *</label>
                             <textarea onChange={change}
                                    type="text"
                                    name="goals"

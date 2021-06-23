@@ -39,30 +39,37 @@
 /* hero */
 
 .hero{
-    background-color: var(--clr-primary);
-    background-image: url("http://placehold.it/300x300");
+    background-color: #888;
+    background-image: url("https://media.istockphoto.com/vectors/happy-people-seamless-pattern-vector-id533728478?k=6&m=533728478&s=612x612&w=0&h=nHKedC_ImhrgEvNpsYXWRFgI-uGRfaSAcftdD-UDWmU=");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
     background-blend-mode: multiply;
     text-align: center;
-    padding: 15vh 1em;
+    color: var(--clr-secondary);
+    /*padding: 20vh 1em;*/
 }
+
+
+/* about  */
 
 .aboutUs{
     background-color: var(--clr-primary);
     text-align: center;
     display: flex;
     flex-direction: column;
-    color: var(--clr-text);
+    color: var(--clr-secondary);
 }
 
 .aboutUsIntro{
+    background-color: #888;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background-image: url("http://placehold.it/300x300");
+    background-image: url("https://www.glassdoor.com/employers/app/uploads/sites/2/2021/02/GoogleDrive_640X469_Oddball-Interview-Questions-Recruiters-Should-Ask-02.png");
     background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
     height: 20em;
     width: 100%;
 }
@@ -70,6 +77,8 @@
 .aboutUsBody{
     padding: 1.5em 1em 1em;
     margin-bottom: 5em;
+    color: var(--clr-text);
+    text-align: left;
 }
 
 /* team section */
@@ -87,6 +96,8 @@
 }
 
 .memberPhoto{
+    height: 150px;
+    width: 150px;
     margin-top: 3em;
     border-radius: 100px;
 }
