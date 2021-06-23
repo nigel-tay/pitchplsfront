@@ -12,6 +12,17 @@
   justify-content: center;
 }
 
+
+:root{
+  --clr-text: #183a1d;
+  --clr-primary: #fefbe9;
+  --clr-secondary: #e1eedd;
+  --clr-accent: #f6c453;
+
+  --ff-title: 'Italiana', serif;
+  --ff-serif: 'Roboto', sans-serif;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

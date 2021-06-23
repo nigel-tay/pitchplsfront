@@ -10,7 +10,8 @@ import DashboardRec from "./Components/Display/DashboardRec";
 import NotFound from "./Components/auth/NotFound";
 import Navigation from "./Components/Navigation";
 import {Container} from "react-bootstrap";
-
+import Home from "./Components/Display/Home";
+import About from "./Components/Display/About";
 
 function App() {
     const [auth, setAuth] = useState({})
@@ -52,6 +53,12 @@ function App() {
             <Navigation setAuth={setAuth} setUser={setUser} user={user} />
             </div>
                 <Switch>
+                    <Route path="/" exact>
+                        <Home />
+                    </Route>
+                    <Route path="/about" exact>
+                        <About/>
+                    </Route>
                 <Route path="/login">
                     <Login auth={auth} setAuth={setAuth}/>
                 </Route>
