@@ -5,32 +5,12 @@ import styles from "./PitchItem.module.css"
 
 
 
-function PitchItemRec({item, setShowFav}) {
-    const [user, setUser] = useState({})
+function PitchItemRec({item, setShowFav, user}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const form = useRef(null)
-
-    useEffect(() => {
-        async function setUserStats() {
-            try {
-                let {data} = await axios.get("/auth/user", {
-                    headers: {
-                        authorization: `Bearer ${localStorage.token}`
-                    }
-                })
-                setUser(data.user)
-
-            } catch (e) {
-                setUser({})
-                localStorage.removeItem("token")
-            }
-        }
-
-        setUserStats()
-    }, [])
 
     async function getFave() {
 

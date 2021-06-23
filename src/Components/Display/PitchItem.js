@@ -63,6 +63,7 @@ function PitchItem({item, setPitch}) {
         await axios.put(`/pitch/edit/${item._id}`, post);
         alert('Pitch Edited!');
         setShowEdit(false)
+        getPitch()
     }
 
     return (
@@ -75,9 +76,9 @@ function PitchItem({item, setPitch}) {
                     <button className="px-2" onClick={handleClose}> x</button>
                 </Modal.Header>
                 <Modal.Body>
+                    <p>{item.selfintro}</p>
                     <p>{item.usp}</p>
                     <p>{item.goals} </p>
-                    <p>{item.selfintro}</p>
                 </Modal.Body>
             </Modal>
 
