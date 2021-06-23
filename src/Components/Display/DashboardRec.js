@@ -138,7 +138,7 @@ function DashboardRec() {
                                 return item
                             }
                         }).map((item, i) => (
-                            <FavouritePitches item={item}
+                            <FavouritePitches item={item} setShowFav={setShowFav}
                             key={i}/>
                             ))}
 
