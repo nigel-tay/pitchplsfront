@@ -2,6 +2,8 @@ import React, {useRef, useState} from 'react';
 import {Col, Row, Form, Modal} from "react-bootstrap";
 import styles from "./PitchItem.module.css"
 import axios from "axios";
+import {BrowserRouter, Redirect, Route, Switch, NavLink} from "react-router-dom";
+import Message from "./Message";
 
 function FavouritePitches({item, user,setShowFav}) {
     const form = useRef(null)
@@ -12,6 +14,11 @@ function FavouritePitches({item, user,setShowFav}) {
     const handleCloseEdit = () => setShowEdit(false);
     const handleShowEdit = () => setShowEdit(true);
     const [post, setPost] = useState({name: user.name, text: ""})
+    // const [showMessage, setShowMessage] = useState(false);
+    // const handleCloseMessage = () => setShowMessage(false);
+    // const handleShowMessage = () => setShowMessage(true);
+    // const [message, setMessage] = useState({name: user.name, text: ""})
+
 
 
 
@@ -51,7 +58,7 @@ function FavouritePitches({item, user,setShowFav}) {
         e.preventDefault()
         try{
         await axios.put(`/pitch/editcomment/${item._id}`, post);
-        alert('Pitch Edited!');
+        alert('Commented!');
         setShowEdit(false)
         }catch (e) {
             console.log(e.response)
@@ -65,9 +72,54 @@ function FavouritePitches({item, user,setShowFav}) {
         console.log("item", item)
     }
 
+    // async function postMessage(e) {
+    //     e.preventDefault()
+    //     try{
+    //         await axios.put(`/pitch/editcomment/${item._id}`, post);
+    //         alert('Pitch Edited!');
+    //         // setShowEdit(false)
+    //     }catch (e) {
+    //         console.log(e.response)
+    //     }
+    // }
+
+    // function changMessage(e) {
+    //     setMessage(prevState => ({...prevState, [e.target.name]: e.target.value}))
+    //     console.log(message)
+    //     // console.log("item", item)
+    // }
+
+    // function redirectToMessage(){
+    //     return <Redirect to="/message" />
+    // }
 
     return (
         <div>
+
+            <Message user={user} item={item}/>
+
+
+            {/*<Modal show={showMessage} onHide={handleCloseMessage}>*/}
+            {/*    <Modal.Header>*/}
+            {/*        <Modal.Title>Messages</Modal.Title>*/}
+            {/*        <button className="px-2" onClick={handleCloseMessage}> x </button>*/}
+            {/*    </Modal.Header>*/}
+            {/*    <Modal.Body>*/}
+            {/*        <span> {item.selfintro}</span>*/}
+            {/*        <p>{item.usp}</p>*/}
+            {/*        <p>{item.goals} </p>*/}
+            {/*        <p>{item.selfintro}</p>*/}
+            {/*        <p>Comments:*/}
+            {/*            {*/}
+            {/*                item?.comments?.map(comment => (*/}
+            {/*                    <div>{comment.name} said: {comment.text}</div>*/}
+            {/*                ))}*/}
+            {/*        </p>*/}
+            {/*        <button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>*/}
+            {/*    </Modal.Body>*/}
+            {/*</Modal>*/}
+
+
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>{item.title}</Modal.Title>
@@ -84,7 +136,7 @@ function FavouritePitches({item, user,setShowFav}) {
                                 <div>{comment.name} said: {comment.text}</div>
                             ))}
                     </p>
-
+                    <button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>
                 </Modal.Body>
             </Modal>
 
@@ -136,7 +188,7 @@ function FavouritePitches({item, user,setShowFav}) {
                             </Form>
                         </Col>
                         <Col md={4}>
-                            <button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>
+                            <NavLink to="/message"> Message </NavLink>
                         </Col>
                         <Col md={4}>
                         <button className="btn bg-transparent text-dark" onClick={handleShow}> More </button>

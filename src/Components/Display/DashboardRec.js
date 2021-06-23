@@ -1,15 +1,34 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import PitchItemRec from "./PitchItemRec";
-import {Col, Row, Container} from "react-bootstrap";
+import {Col, Row, Container, Modal} from "react-bootstrap";
 import FavouritePitches from "./FavouritePitches";
 import styles from "./Dashboard.module.css"
+import Message from "./Message";
+import Reply from "./Reply";
 
 function DashboardRec() {
     const [user, setUser] = useState({})
     const [pitch, setPitch] = useState([])
     const [showFav, setShowFav] = useState([])
     const [search, setSearch] = useState("")
+    const [myMsg, setMyMsg] = useState([])
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    async function getMessage() {
+        try{
+            let {data} = await axios.get(`/user/${user._id}`);
+            console.log(data.user.messages)
+            setMyMsg(data.user.messages)
+            // alert('Pitch Edited!');
+            // console.log(message)
+        }catch (e) {
+            console.log(e.response)
+        }
+        handleShow()
+    }
 
 
 
@@ -72,6 +91,27 @@ function DashboardRec() {
     return (
         <Container fluid>
 
+            <button onClick={getMessage}> Get Messages</button>
+
+
+
+            {/*<button onClick={handleShow}> Message </button>*/}
+            <Modal show={show} onHide={handleClose}>
+                <div className={`border border-dark border-2 px-2`}>
+                    <h3 className="text-danger text-center">My messages:</h3>
+                    {myMsg.map(msg => (
+                        <Reply
+                            msg={msg}
+                            user={user}/>
+
+                    ))}
+
+                </div>
+                {/*<button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>*/}
+
+            </Modal>
+
+
             <Row>
                 <Col md={9} className={`${styles.makeThisScroll} border border-2 border-dark`}>
                     <div style={{width: "100%",
@@ -106,6 +146,7 @@ function DashboardRec() {
                                           key={i}
                                           user={user}
                                           setShowFav={setShowFav}
+                                          setPitch={setPitch}
 
                             />
 
@@ -115,6 +156,7 @@ function DashboardRec() {
                     </div>
                 </Col>
                 <Col md={3} className={`${styles.backgroundCork} border border-dark border-2`}>
+                    {/*<Message user={user} showFav={showFav}/>*/}
 
                     <h4 className="mt-3"> My Favourite Pitches</h4>
 

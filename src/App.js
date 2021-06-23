@@ -12,6 +12,7 @@ import Navigation from "./Components/Navigation";
 import {Container} from "react-bootstrap";
 import Home from "./Components/Display/Home";
 import About from "./Components/Display/About";
+import Message from "./Components/Display/Message";
 
 function App() {
     const [auth, setAuth] = useState({})
@@ -59,14 +60,17 @@ function App() {
                     <Route path="/about" exact>
                         <About/>
                     </Route>
-                <Route path="/login">
+                <Route path="/login" exact>
                     <Login auth={auth} setAuth={setAuth}/>
                 </Route>
-                <Route path="/register">
+                <Route path="/register" exact>
                     <Register auth={auth} setAuth={setAuth}/>
                 </Route>
-                <PrivateRouter auth={auth} user={user} path="/dashboard" Component={Dashboard} />
-                <PrivateRouter auth={auth} user={user} path="/recruiter" Component={DashboardRec} />
+                    <Route path="/message">
+                        <Message user={user} />
+                    </Route>
+                <PrivateRouter auth={auth} user={user} path="/dashboard" exact Component={Dashboard} />
+                <PrivateRouter auth={auth} user={user} path="/recruiter" exact Component={DashboardRec} />
 
                 {/*<Route path="/dashboard" exact>*/}
                 {/*    <Dashboard auth={auth} user={user} logout={logout}/>*/}

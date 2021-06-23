@@ -2,10 +2,12 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Container, Card, Col, Row, Modal, Form, InputGroup, FormControl} from "react-bootstrap";
 import axios from "axios"
 import styles from "./PitchItem.module.css"
+import Message from "./Message";
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom"
 
 
 
-function PitchItemRec({item, user, setShowFav}) {
+function PitchItemRec({item, setPitch, user, setShowFav}) {
     // const [user, setUser] = useState({})
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -89,6 +91,12 @@ function PitchItemRec({item, user, setShowFav}) {
     //     }
     // }
 
+    async function getPitch() {
+        console.log('YOUR FATHAR')
+        let {data} = await axios.get(`/pitch`)
+        setPitch(data.pitches)
+        // console.log("data", data)
+    }
 
     function changeComment(e) {
         setComment(prevState => ({...prevState, [e.target.name]: e.target.value}))
@@ -101,7 +109,7 @@ function PitchItemRec({item, user, setShowFav}) {
         try{
             await axios.put(`/pitch/editcomment/${item._id}`, comment);
             setShowComment(false)
-
+            getPitch()
         }catch (e) {
             console.log(e.response)
         }
@@ -111,6 +119,9 @@ function PitchItemRec({item, user, setShowFav}) {
     return (
 
         <div>
+
+
+
             <Modal show={showComment} onHide={handleCloseComment}>
                 <Form ref={form} id="form" onSubmit={postComment} method="post">
                     <Row className="justify-content-center mx-2">
@@ -161,11 +172,11 @@ function PitchItemRec({item, user, setShowFav}) {
                             <h4>{item.title}</h4>
                         <span>  {item.selfintro}</span>
                         <span> {item.usp}, </span>
-                        <span>  {item.goals}, </span>
+
                             <Row className="justify-content-center"
                                  style={{
                                      position: "fixed",
-                                     width: "90%",
+                                     width: "100%",
                                      bottom: 0,
                                      paddingBottom: 0
                                  }}>

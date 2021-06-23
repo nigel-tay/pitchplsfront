@@ -4,6 +4,7 @@ import axios from "axios";
 import {Container, Form, Row, Col, Modal} from "react-bootstrap";
 import PitchItem from "./PitchItem";
 import styles from "./Dashboard.module.css"
+import Reply from "./Reply";
 
 
 const Dashboard = () => {
@@ -11,6 +12,10 @@ const Dashboard = () => {
     const [pitch, setPitch] = useState([])
     const [post, setPost] = useState({})
     const form = useRef(null)
+    const [myMsg, setMyMsg] = useState([])
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         async function setUserStats() {
@@ -33,13 +38,14 @@ const Dashboard = () => {
     }, [])
 
 
+
     useEffect(() =>{
         setPost({creator : user._id})
         // console.log(post)
     },[user])
 
 
-//this is to get pitch from a user
+//PLS REMIND ME TO REFACTOR THIS TO STOP THE INFINITE LOOP RERENDERS
     useEffect(() => {
         async function getPitch() {
             // console.log("YOUR MATHER")
@@ -74,7 +80,18 @@ const Dashboard = () => {
     }
 
 
-
+    async function getMessage() {
+        try{
+            let {data} = await axios.get(`/user/${user._id}`);
+            console.log(data.user.messages)
+            setMyMsg(data.user.messages)
+            // alert('Pitch Edited!');
+            // console.log(message)
+        }catch (e) {
+            console.log(e.response)
+        }
+        handleShow()
+    }
 
 
 
@@ -86,16 +103,27 @@ if(user.role === "recruiter"){
 
     return (
         <Container fluid>
+        <button onClick={getMessage}> Get Messages</button>
 
 
 
+            {/*<button onClick={handleShow}> Message </button>*/}
+            <Modal show={show} onHide={handleClose}>
+                <div className={`border border-dark border-2`}>
+                    My messages:
+                    {myMsg.map(msg => (
+                        <Reply
+                        msg={msg}
+                        user={user}/>
+
+                    ))}
+
+                </div>
+                {/*<button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>*/}
+
+            </Modal>
 
             <Row>
-                {/*<Col md={4} className="">*/}
-
-
-
-
                         <Col md={3} className={`${styles.sidebar} border border-dark border-2`}>
                     <h3 className="text-center mt-4"> Create New Pitch:</h3>
                     <Form ref={form} id="form" onSubmit={submitPost} method="post">
