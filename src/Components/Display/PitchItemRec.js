@@ -74,9 +74,9 @@ function PitchItemRec({item, setShowFav, user}) {
                     <button className="px-2" onClick={handleClose}> x </button>
                 </Modal.Header>
                 <Modal.Body>
+                    <p>{item.selfintro}</p>
                     <p>{item.usp}</p>
                     <p>{item.goals} </p>
-                    <p>{item.selfintro}</p>
                 </Modal.Body>
             </Modal>
 
@@ -95,7 +95,6 @@ function PitchItemRec({item, setShowFav, user}) {
                                      width: "100%",
                                      bottom: 0,
                                      paddingBottom: 10,
-
                                  }}>
                                 <Col md={4}>
 
