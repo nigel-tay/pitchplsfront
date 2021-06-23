@@ -53,6 +53,26 @@ function PitchItemRec({item}) {
         }
     }
 
+    async function chatStart(e) {
+        e.preventDefault()
+        const chatName = item.title
+        if (chatName) {
+            let chatId = ''
+            axios.post('http://localhost:9000/new/conversation', {
+                chatName: chatName
+            }).then((res) => {
+                chatId = res.data._id
+            }).then(() => {
+                const firstMsg = prompt('Please enter a welcome message')
+                window.open(`http://localhost:3001/`, '_blank')
+                axios.post(`http://localhost:9000/new/message?id=${chatId}`, {
+                    message: firstMsg,
+                    timestamp: Date.now(),
+                    user: user
+                })
+            })
+        }
+    }
 
     return (
 
@@ -89,6 +109,7 @@ function PitchItemRec({item}) {
                                     {/*{show ?*/}
                                     <Form ref={form} id="form" onSubmit={submitFav} method="post">
                                     <button type="submit" className="btn bg-transparent"><img src="https://img.icons8.com/offices/30/000000/filled-like.png"/> </button>
+                                        <button onClick={chatStart} > Chat here!</button>
                                     </Form>
                                 </Col>
                                 <Col md={6}>
