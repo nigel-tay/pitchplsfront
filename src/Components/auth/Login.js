@@ -76,12 +76,12 @@ function Login({auth, setAuth}) {
                         </legend>
                         <Form ref={form} onSubmit={submitForm} method="post">
                             <div className="form-group">
-                                <label htmlFor="inputForEmail">Email address</label>
-                                <span className="mandatory">*</span>
+                                <label htmlFor="inputForEmail">Email address *</label>
+
                                 <input onChange={change}
                                        type="email"
                                        name="email"
-                                       className="form-control"
+                                       className={`${styles.inputStyle} form-control`}
                                        aria-describedby="Enter email address"
                                        placeholder="Enter email address"
                                        required="true"
@@ -90,13 +90,11 @@ function Login({auth, setAuth}) {
 
                             </div>
                             <div className="form-group">
-                                <label htmlFor="inputForPassword">Password</label>
-                                <span className="mandatory">*</span>
-
+                                <label htmlFor="inputForPassword">Password *</label>
                                 <input onChange={change}
                                        type="password"
                                        name="password"
-                                       className="form-control"
+                                       className={`${styles.inputStyle} form-control`}
                                        id="inputForPassword"
                                        placeholder="Enter password"
                                        required="true"

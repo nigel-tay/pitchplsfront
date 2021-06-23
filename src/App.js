@@ -45,9 +45,13 @@ function App() {
 
   return (
     <Container className="App">
+
         <BrowserRouter>
+            <div className="banner">
+
             <Navigation setAuth={setAuth} setUser={setUser} user={user} />
-            <Switch>
+            </div>
+                <Switch>
                 <Route path="/login">
                     <Login auth={auth} setAuth={setAuth}/>
                 </Route>
@@ -66,6 +70,7 @@ function App() {
                 </Route>
             </Switch>
         </BrowserRouter>
+
     </Container>
   );
 }

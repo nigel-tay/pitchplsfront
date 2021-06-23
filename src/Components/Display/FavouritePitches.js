@@ -49,7 +49,7 @@ function FavouritePitches({item}) {
 
             <ul>
                 <li style={{background: `${item.color}`}}>
-                    {/*<a href="#">*/}
+
 
                     <h4 className="font-monospace"> {item.title}</h4>
                     <span>  {item.selfintro}</span>
@@ -73,7 +73,7 @@ function FavouritePitches({item}) {
                         </Col>
                     </Row>
 
-                    {/*</a>*/}
+
                 </li>
             </ul>
         </div>
