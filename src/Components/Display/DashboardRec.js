@@ -33,32 +33,33 @@ function DashboardRec() {
         setUserStats()
     }, [])
 
-    useEffect(() => {
+    async function getPitch() {
+        let {data} = await axios.get(`/pitch`)
+        setPitch(data.pitches)
 
-        async function getPitch() {
-            let {data} = await axios.get(`/pitch`)
-            setPitch(data.pitches)
-
-        }
-
-        getPitch()
-    }, [user, pitch])
-
+    }
 
     useEffect(() => {
-        async function getPitch() {
-
-            let {data} = await axios.get(`/user/${user._id}`)
-            // console.log("fav", data.user.favourites)
-            if (data.user.favourites) {
-                setShowFav(data.user.favourites.reverse())
-            } else {
-                setShowFav(null)
-            }
-        }
 
         getPitch()
-    }, [user, showFav])
+    }, [user])
+
+
+
+
+    // useEffect(() => {
+    //     async function getFave() {
+    //
+    //         let {data} = await axios.get(`/user/${user._id}`)
+    //         // console.log("fav", data.user.favourites)
+    //         if (data.user.favourites) {
+    //             setShowFav(data.user.favourites.reverse())
+    //         } else {
+    //             setShowFav(null)
+    //         }
+    //     }
+    //     getFave()
+    // }, [user])
 
     // useEffect(() => {
     //     setUnFavPitch([])
@@ -119,7 +120,7 @@ function DashboardRec() {
                                 return item
                             }
                         }).map((item,i) => (
-                            <PitchItemRec item={item}
+                            <PitchItemRec item={item} setShowFav={setShowFav}
                             key ={i}/>
                             )) }
 
@@ -137,7 +138,7 @@ function DashboardRec() {
 
                     }}>
                         {showFav.map((item, i) => (
-                            <FavouritePitches item={item}
+                            <FavouritePitches item={item} setShowFav={setShowFav}
                                               key={i}/>
                         ))}
                     </div>
