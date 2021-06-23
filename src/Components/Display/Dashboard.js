@@ -40,18 +40,21 @@ const Dashboard = () => {
 
 
 //this is to get pitch from a user
-    useEffect(() => {
-        async function getPitch() {
-            let {data} = await axios.get(`/user/${user._id}`)
-            if(data.user.pitches){
+
+    async function getPitch() {
+        let {data} = await axios.get(`/user/${user._id}`)
+        console.log("testing")
+        if(data.user.pitches){
             setPitch(data.user.pitches.reverse())
-            }else {
-                setPitch(null)
-            }
+        }else {
+            setPitch(null)
         }
+    }
+
+    useEffect(() => {
 
         getPitch()
-    }, [user, pitch])
+    }, [user])
 
 
     async function submitPost(e) {
@@ -60,7 +63,7 @@ const Dashboard = () => {
             let res = await axios.post(`/pitch/create`, post, {
             })
             console.log(res)
-            //get response
+            getPitch()
         } catch (e) {
             console.log(e)
         }
@@ -175,7 +178,7 @@ if(user.role === "recruiter"){
                         margin: "2px",
                     }} >
                     {pitch.map((item,i) => (
-                        <PitchItem item={item}
+                        <PitchItem item={item} setPitch={setPitch}
                                 key ={i}/>
                     )) }
                     </div>
