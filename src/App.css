@@ -31,10 +31,6 @@
 }
 
 
-  --ff-title: 'Italiana', serif;
-  --ff-serif: 'Roboto', sans-serif;
-}
-
 html{
   box-sizing: border-box;
   font-family: var(--ff-serif);
