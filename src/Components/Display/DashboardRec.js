@@ -95,7 +95,7 @@ function DashboardRec() {
                                 marginBottom: "20px",
                         position: 'fixed',
                         zIndex: "100",
-                        right: "10%"}}>
+                        left: "31.5%"}}>
                     <img style={{width: "35px",
                                 position: "absolute",
                                 margin: "5px"}}

@@ -140,6 +140,10 @@
         height: 100%;
     }
 
+    .aboutUsText{
+        text-align: left;
+    }
+
     /* testimonials */
     .testimonialTitle{
         margin-top: 0;

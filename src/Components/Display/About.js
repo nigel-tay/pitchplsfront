@@ -1,14 +1,15 @@
 import React from 'react';
+import styles from './About.module.css'
 
 function About(props) {
     return (
 
 
-        <div>
-            <h1>Throw your Pitch.<br/>Get discovered.</h1>
+        <div className={`${styles.aboutContainer}`}>
+            <h1 className={`${styles.aboutTitle}`}>Throw your Pitch.<br/>Get discovered.</h1>
             <hr />
-            <h3>No judgments.</h3>
-            <p>
+
+            <p className={`${styles.aboutBodyContent}`}>
                 Unlike other job portals, we provide a platform for Job Seekers to sell themselves,
                 without the need for photos or names.<br/>
                 <br/>

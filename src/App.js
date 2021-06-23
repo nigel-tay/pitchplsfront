@@ -77,9 +77,10 @@ function App() {
                 </Route>
             </Switch>
         </BrowserRouter>
-
-
+        </div>
+    )
 }
+
 function PrivateRouter({auth, user, Component, path, ...rest}){
     return(
         <>
