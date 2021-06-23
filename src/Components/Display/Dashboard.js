@@ -178,7 +178,7 @@ if(user.role === "recruiter"){
                         margin: "2px",
                     }} >
                     {pitch.map((item,i) => (
-                        <PitchItem item={item}
+                        <PitchItem item={item} setPitch={setPitch}
                                 key ={i}/>
                     )) }
                     </div>
