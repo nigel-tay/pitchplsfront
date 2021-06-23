@@ -16,13 +16,13 @@ function Navigation({setAuth, setUser, user}) {
     return (
 
         <Navbar bg="transparent" expand="lg" className="text-center w-100">
-            <h3 className="px-4">Pitch Please!</h3>
+            <NavLink to="/" className="navButton font-monospace nav-link"><h3 className="px-4">Pitch Please!</h3></NavLink>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav">
 
                 <Nav className="ml-auto">
                     <NavLink to="/" className="navButton font-monospace nav-link">Home</NavLink>
-                    <NavLink to="/" className="navButton font-monospace nav-link"> About</NavLink>
+                    <NavLink to="/about" className="navButton font-monospace nav-link"> About</NavLink>
                 </Nav>
                           {user ? <>
 
@@ -34,11 +34,10 @@ function Navigation({setAuth, setUser, user}) {
             </> }
             </Navbar.Collapse>
              {user ?
-                        <Nav className=" align-self-end px-3">
-                            <h4>Welcome Back, {user.name}!</h4>
-                        </Nav> : null
-
-                       }
+                <Nav className=" align-self-end px-3">
+                    <h4>Welcome Back, {user.name}!</h4>
+                </Nav> : null
+             }
 
 </Navbar>
     );
