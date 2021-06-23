@@ -1,5 +1,6 @@
 import React from 'react';
 import {Col, Row} from "react-bootstrap";
+
 // import ScrollSnap from "scroll-snap";
 import styles from "./Home.module.css";
 
@@ -104,4 +105,6 @@ function Home(props) {
     );
 }
 
+
 export default Home;
+

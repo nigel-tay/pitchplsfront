@@ -13,8 +13,6 @@ function DashboardRec() {
     const [search, setSearch] = useState("")
 
 
-
-
     useEffect(() => {
         async function setUserStats() {
             try {
@@ -90,6 +88,7 @@ function DashboardRec() {
     return (
         <Container fluid>
 
+
             <Row>
                 <Col md={9} className={`${styles.makeThisScroll} border border-2 border-dark`}>
                     <div style={{width: "100%",
@@ -121,11 +120,8 @@ function DashboardRec() {
                             }
                         }).map((item,i) => (
                             <PitchItemRec item={item}
-                                          key={i}
-                            />
-
-
-                        ))}
+                            key ={i}/>
+                            )) }
 
                     </div>
                 </Col>

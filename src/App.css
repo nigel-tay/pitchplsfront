@@ -1,6 +1,8 @@
+
 .App {
   text-align: center;
 }
+
 .banner {
   background-image: url("https://image.shutterstock.com/image-vector/cats-banner-260nw-441292912.jpg");
   height: 15vh;
@@ -28,36 +30,45 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+  --ff-title: 'Italiana', serif;
+  --ff-serif: 'Roboto', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+html{
+  box-sizing: border-box;
+  font-family: var(--ff-serif);
+  color: var(--clr-accent);
+  font-size: 1.125rem;
 }
 
-.navButton:hover {
+
+/* .navButton:hover {
   background-color: lightblue;
   border-style: solid;
   border-width: 1px;
   color: black;
-  font-size: 20px;
+  font-size: 20px; */
+
+/*Nav bar*/
+.nav-container{
+  padding: 0 0 0 1em;
+  display: flex !important;
+  justify-content: space-between !important;
+  background-color: var(--clr-secondary);
+  color: var(--clr-text);
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-text{
+  padding: 0 0 0 1em;
+  text-decoration: none;
+  color: var(--clr-text) !important;
+  margin-right: 0;
+}
+.navbar-text:hover,
+.navbar-text:focus{
+  text-decoration: none;
+  color: var(--clr-accent) !important;
+  margin-right: 0;
 }

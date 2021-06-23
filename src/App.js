@@ -1,4 +1,3 @@
-
 import React, {useRef, useEffect,useState} from "react";
 import './App.css';
 import axios from "axios";
@@ -10,8 +9,11 @@ import DashboardRec from "./Components/Display/DashboardRec";
 import NotFound from "./Components/auth/NotFound";
 import Navigation from "./Components/Navigation";
 import {Container} from "react-bootstrap";
-import Home from "./Components/Display/Home";
+
 import About from "./Components/Display/About";
+import Home from "./Components/Display/Home";
+
+
 
 function App() {
     const [auth, setAuth] = useState({})
@@ -44,14 +46,11 @@ function App() {
 
 
 
-  return (
-    <Container className="App">
 
-        <BrowserRouter>
-            <div className="banner">
-
-            <Navigation setAuth={setAuth} setUser={setUser} user={user} />
-            </div>
+    return (
+        <div>
+            <BrowserRouter>
+                <Navigation setAuth={setAuth} setUser={setUser} user={user} />
                 <Switch>
                     <Route path="/" exact>
                         <Home />
@@ -59,6 +58,7 @@ function App() {
                     <Route path="/about" exact>
                         <About/>
                     </Route>
+
                 <Route path="/login">
                     <Login auth={auth} setAuth={setAuth}/>
                 </Route>
@@ -78,8 +78,7 @@ function App() {
             </Switch>
         </BrowserRouter>
 
-    </Container>
-  );
+
 }
 function PrivateRouter({auth, user, Component, path, ...rest}){
     return(

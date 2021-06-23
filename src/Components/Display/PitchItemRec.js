@@ -109,6 +109,7 @@ function PitchItemRec({item}) {
 
                                     <Form ref={form} id="form" onSubmit={submitFav} method="post">
                                     <button type="submit" className="btn bg-transparent"><img src="https://img.icons8.com/offices/30/000000/filled-like.png"/> </button>
+                                        <button onClick={chatStart} > Chat here!</button>
                                     </Form>
                                 </Col>
                                         <Col md={4}>
