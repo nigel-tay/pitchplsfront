@@ -112,12 +112,12 @@ function PitchItemRec({item}) {
                                     </Form>
                                 </Col>
                                         <Col md={4}>
-                                        <button className="btn bg-light text-dark" onClick={chatStart} > Chat!</button>
+                                        <button className="btn bg-transparent border border-dark text-dark" onClick={chatStart} > Chat!</button>
                                         </Col>
 
 
                                 <Col md={4}>
-                                    <button className="btn bg-light text-dark" onClick={handleShow}> More </button>
+                                    <button className="btn bg-transparent border border-dark text-dark" onClick={handleShow}> More </button>
 
                                 </Col>
                             </Row>

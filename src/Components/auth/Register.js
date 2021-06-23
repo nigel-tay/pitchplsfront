@@ -19,13 +19,14 @@ function Register({auth, setAuth}) {
             setAuth(true)
 
         } catch (e) {
-            console.log(e)
+            console.log(e.response)
             alert(e)
         }
     }
 
     function change(e) {
         setData(prevState => ({...prevState, [e.target.name]: e.target.value}))
+        console.log(data)
     }
 
     if (auth) {
