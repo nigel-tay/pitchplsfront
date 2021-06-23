@@ -3,31 +3,11 @@ import {Col, Row, Form, Modal} from "react-bootstrap";
 import styles from "./PitchItem.module.css"
 import axios from "axios";
 
-function FavouritePitches({item, setShowFav}) {
-    const [user, setUser] = useState({})
+function FavouritePitches({item, setShowFav, user}) {
     const form = useRef(null)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    useEffect(() => {
-        async function setUserStats() {
-            try {
-                let {data} = await axios.get("/auth/user", {
-                    headers: {
-                        authorization: `Bearer ${localStorage.token}`
-                    }
-                })
-                setUser(data.user)
-
-            } catch (e) {
-                setUser({})
-                localStorage.removeItem("token")
-            }
-        }
-
-        setUserStats()
-    }, [])
 
     async function getFave() {
 
