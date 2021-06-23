@@ -16,7 +16,7 @@ function Home(props) {
                     <span></span>
                     <span></span>
                 </div>
-                
+
             </section>
 
             <section className={`${styles.aboutUs} ${styles.section}`}>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Nav, Navbar, Form} from "react-bootstrap";
 import {NavLink, Redirect} from 'react-router-dom';
-import axios from "axios";
+
 
 function Navigation({setAuth, setUser, user}) {
 
@@ -14,6 +14,7 @@ function Navigation({setAuth, setUser, user}) {
     }
 
     return (
+
         <Navbar expand="lg" className="nav-container">
             <Navbar.Brand href="/" className="d-flex">Pitch Please!</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
@@ -38,6 +39,7 @@ function Navigation({setAuth, setUser, user}) {
 
 
             </Navbar.Collapse>
+
         </Navbar>
     );
 }

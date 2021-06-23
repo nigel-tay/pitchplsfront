@@ -9,8 +9,10 @@ import DashboardRec from "./Components/Display/DashboardRec";
 import NotFound from "./Components/auth/NotFound";
 import Navigation from "./Components/Navigation";
 import {Container} from "react-bootstrap";
+
 import About from "./Components/Display/About";
 import Home from "./Components/Display/Home";
+
 
 
 function App() {
@@ -44,6 +46,7 @@ function App() {
 
 
 
+
     return (
         <div>
             <BrowserRouter>
@@ -55,27 +58,29 @@ function App() {
                     <Route path="/about" exact>
                         <About/>
                     </Route>
-                    <Route path="/login">
-                        <Login auth={auth} setAuth={setAuth}/>
-                    </Route>
-                    <Route path="/register">
-                        <Register auth={auth} setAuth={setAuth}/>
-                    </Route>
-                    <PrivateRouter auth={auth} user={user} path="/dashboard" Component={Dashboard} />
-                    <PrivateRouter auth={auth} user={user} path="/recruiter" Component={DashboardRec} />
 
-                    {/*<Route path="/dashboard" exact>*/}
-                    {/*    <Dashboard auth={auth} user={user} logout={logout}/>*/}
-                    {/*</Route>*/}
+                <Route path="/login">
+                    <Login auth={auth} setAuth={setAuth}/>
+                </Route>
+                <Route path="/register">
+                    <Register auth={auth} setAuth={setAuth}/>
+                </Route>
+                <PrivateRouter auth={auth} user={user} path="/dashboard" Component={Dashboard} />
+                <PrivateRouter auth={auth} user={user} path="/recruiter" Component={DashboardRec} />
 
-                    <Route path="*">
-                        <NotFound />
-                    </Route>
-                </Switch>
-            </BrowserRouter>
+                {/*<Route path="/dashboard" exact>*/}
+                {/*    <Dashboard auth={auth} user={user} logout={logout}/>*/}
+                {/*</Route>*/}
+
+                <Route path="*">
+                    <NotFound />
+                </Route>
+            </Switch>
+        </BrowserRouter>
         </div>
-    );
+    )
 }
+
 function PrivateRouter({auth, user, Component, path, ...rest}){
     return(
         <>

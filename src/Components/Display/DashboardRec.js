@@ -87,19 +87,22 @@ function DashboardRec() {
     // })
     return (
         <Container fluid>
-            <h3> HELLO THIS IS A SPACE FOR RECRUITERS !!!!!!!!!</h3>
-            Welcome back, <strong className="text-danger">{user.name}</strong>, search pitch here
-            <input type="text" placeholder="Search Pitches" onChange={e => setSearch(e.target.value)}/>
+
+
             <Row>
-                <Col md={9} sm={9} className={`${styles.makeThisScroll} border border-2 border-dark`}>
+                <Col md={9} className={`${styles.makeThisScroll} border border-2 border-dark`}>
                     <div style={{width: "100%",
                                 marginBottom: "20px",
                         position: 'fixed',
                         zIndex: "100",
-                        right: "10%"}}>
-                    <img style={{width: "35px", position: "absolute", margin: "5px"}} src="https://i.pinimg.com/originals/05/9b/ad/059bad28392cfadc21541a367b145e29.png" />
+                        left: "31.5%"}}>
+                    <img style={{width: "35px",
+                                position: "absolute",
+                                margin: "5px"}}
+                                src="https://i.pinimg.com/originals/05/9b/ad/059bad28392cfadc21541a367b145e29.png" />
                     <input type="text" placeholder="Search Pitches"
-                           className={`${styles.inputStyle} pl-3 text-center`} onChange={e => setSearch(e.target.value)}/>
+                           className={`${styles.inputStyle} pl-3 text-center`}
+                           onChange={e => setSearch(e.target.value)}/>
                     </div>
                         <div style={{
                         display: "grid",
@@ -122,13 +125,15 @@ function DashboardRec() {
 
                     </div>
                 </Col>
-                <Col md={3} sm={3} className={`${styles.backgroundCork} border border-dark border-2 py-3`}>
-                    <h4> My Favourite Pitches</h4>
+                <Col md={3} className={`${styles.backgroundCork} border border-dark border-2`}>
+
+                    <h4 className="mt-3"> My Favourite Pitches</h4>
 
                     <div style={{
                         display: "grid",
                         gridTemplateColumns: "repeat(1, auto)",
                         gridGap: "1px",
+                        marginTop: "20px",
 
                     }}>
                         {showFav.map((item, i) => (
