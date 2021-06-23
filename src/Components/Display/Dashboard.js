@@ -89,9 +89,9 @@ if(user.role === "recruiter"){
             <Row>
                 {/*<Col md={4} className="">*/}
                         <Col md={3} className={`${styles.sidebar} border border-dark border-2`}>
-                    <h3 className="text-center mt-4"> Create New Pitch:</h3>
+                    <h4 className="text-center mt-2"> Create New Pitch:</h4>
                     <Form ref={form} id="form" onSubmit={submitPost} method="post">
-                        <Row className="justify-content-center mx-2">
+                        <Row className="justify-content-center mx-2 text-center">
                             <label>Title * </label>
 
                             <textarea onChange={change}
@@ -158,7 +158,7 @@ if(user.role === "recruiter"){
                             </select>
 
                             <button type="submit" className="btn border-dark text-center m-2">
-                                <h3>CREATE PITCH</h3>
+                                <h4>CREATE PITCH</h4>
                             </button>
 
                         </Row>

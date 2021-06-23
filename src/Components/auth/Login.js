@@ -65,12 +65,12 @@ function Login({auth, setAuth}) {
 
     return (
         <div>
-            <div className={`${styles.container} container-fluid d-flex align-items-center justify-content-center`}>
+            <div className={`${styles.container} text-center container-fluid d-flex align-items-center justify-content-center`}>
                 <div className={styles.loginFormContainer}>
 
                     <fieldset className="border p-3 rounded">
                         <legend
-                            className={`${styles.loginFormLegend} border rounded p-1 text-center`}
+                            className={`${styles.loginFormLegend} border rounded p-1 `}
                         >
                             Login Form
                         </legend>

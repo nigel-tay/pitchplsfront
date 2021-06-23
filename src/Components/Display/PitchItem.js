@@ -131,9 +131,9 @@ function PitchItem({item}) {
                                  paddingBottom: 10
                              }}>
                             <Col md={12}>
-                                <button className="px-2 mx-1" onClick={handleShow}> show</button>
-                                <button className="px-2 mx-1" onClick={handleShowEdit}> edit</button>
-                                <button className="px-2" onClick={deletePost}> x</button>
+                                <button className="btn btn-transparent px-2 mx-1 border border-dark" onClick={handleShow}> show</button>
+                                <button className="btn btn-transparent px-2 mx-1  border border-dark" onClick={handleShowEdit}> edit</button>
+                                <button className="btn btn-transparent px-2  border border-dark" onClick={deletePost}> x</button>
 
                             </Col>
                         </Row>

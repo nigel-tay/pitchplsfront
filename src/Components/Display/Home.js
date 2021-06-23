@@ -41,29 +41,29 @@ function Home(props) {
                     <Col md={4} className={`${styles.testimonial}`}>
                         <h3 className={`${styles.testimonialTitle}`}>"Approaching the one year mark in my dream job!"</h3>
                         <img src="" alt="" className="product__img"/>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Alias architecto cupiditate, dicta explicabo molestiae mollitia
-                            optio porro quo recusandae sint.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Alias, placeat!</p>
+                        <p>Was searching aimlessly for a job and was lost among all the different job sites
+                        available on the internet. I was about to lose hope when I found Pitch Please!
+                        It's unique concept really attracted me and I gave it a try. Fast forward a year later
+                        and I am living my best life with the connection I made with my current employer. Thanks Pitch Please!!</p>
+                        <p>Emily Lee <br/>- A real life user</p>
                     </Col>
                     <Col md={4} className={`${styles.testimonial}`}>
                         <h3 className={`${styles.testimonialTitle}`}>"Shocking first meets"</h3>
                         <img src="" alt="" className="product__img"/>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Doloribus facilis iste laboriosam libero sunt totam!</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Blanditiis, debitis.</p>
+                        <p>I really aligned with what Pitch Please is trying to achieve with their platform.
+                        So when I needed a new Data Scientist for my company, I decided to give them a try.
+                        I found a pitch i really connected with and decided to meet up with them over a coffee.
+                        Turns out, the writer of the pitch was a 63 year old lady. I believe everyone deserves the same
+                        opportunities especially if you have the right skills, regardless of age!</p>
+                        <p>Max Ong <br/>- A real life recruiter for Goggle</p>
                     </Col>
                     <Col md={4} className={`${styles.testimonial}`}>
                         <h3 className={`${styles.testimonialTitle}`}>"Diverse Workspace"</h3>
                         <img src="" alt="" className="product__img"/>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Cumque deleniti ea explicabo perspiciatis.
-                            Accusantium doloribus eos est non odio officia perferendis
-                            quasi rerum!</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Dolorem, ullam.</p>
+                        <p>Ever since using Pitch Please for my recruitment, our company is livelier than ever!
+                        We are a ragtag crew of people from all walks of life and this unique mix really helped us
+                        look at new projects from all angles.</p>
+                        <p>Dorothy Lam <br/>- Part of a real life Ragtag Crew</p>
                     </Col>
                 </Row>
 

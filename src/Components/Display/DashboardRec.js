@@ -9,8 +9,8 @@ function DashboardRec() {
     const [user, setUser] = useState({})
     const [pitch, setPitch] = useState([])
     const [showFav, setShowFav] = useState([])
-    const [unFavPitch, setUnFavPitch] =useState([])
     const [search, setSearch] = useState("")
+    const [searchFav, setSearchFav] = useState("")
 
 
     useEffect(() => {
@@ -60,31 +60,6 @@ function DashboardRec() {
         getPitch()
     }, [user, showFav])
 
-    // useEffect(() => {
-    //     setUnFavPitch([])
-    //     showFav.forEach(j => {
-    //     pitch.forEach(item => {
-    //
-    //             if(!item._id.includes(j._id)){
-    //                 setUnFavPitch(prevState => ([...prevState, item]))
-    //
-    //                 // unFavPitch.push(item)
-    //             }
-    //         })
-    //     })
-    //
-    //
-    //     // console.log("q" , q)
-    //
-    // }, [unFavPitch])
-    // console.log(unFavPitch)
-    // let q = [new Set(unFavPitch)]
-
-// console.log(unFavPitch)
-    // showFav.forEach(i => {
-    //
-    //     console.log("showFav id",i._id)
-    // })
     return (
         <Container fluid>
 
@@ -128,6 +103,9 @@ function DashboardRec() {
                 <Col md={3} className={`${styles.backgroundCork} border border-dark border-2`}>
 
                     <h4 className="mt-3"> My Favourite Pitches</h4>
+                    <input type="text" placeholder="Search Pitches"
+                           className={`${styles.inputStyle} pl-3 text-center`}
+                           onChange={e => setSearchFav(e.target.value)}/>
 
                     <div style={{
                         display: "grid",
@@ -136,10 +114,18 @@ function DashboardRec() {
                         marginTop: "20px",
 
                     }}>
-                        {showFav.map((item, i) => (
+
+                        {showFav.filter(item => {
+                            if (searchFav === ""){
+                                return item
+                            }
+                            else if (item.title.toLowerCase().includes(searchFav.toLowerCase())){
+                                return item
+                            }
+                        }).map((item, i) => (
                             <FavouritePitches item={item}
-                                              key={i}/>
-                        ))}
+                            key={i}/>
+                            ))}
                     </div>
                 </Col>
             </Row>

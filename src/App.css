@@ -25,11 +25,6 @@
   --ff-serif: 'Roboto', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 html{
   box-sizing: border-box;
   font-family: var(--ff-serif);
@@ -44,26 +39,3 @@ html{
   border-width: 1px;
   color: black;
   font-size: 20px; */
-
-/*Nav bar*/
-.nav-container{
-  padding: 0 0 0 1em;
-  display: flex !important;
-  justify-content: space-between !important;
-  background-color: var(--clr-secondary);
-  color: var(--clr-text);
-
-}
-
-.navbar-text{
-  padding: 0 0 0 1em;
-  text-decoration: none;
-  color: var(--clr-text) !important;
-  margin-right: 0;
-}
-.navbar-text:hover,
-.navbar-text:focus{
-  text-decoration: none;
-  color: var(--clr-accent) !important;
-  margin-right: 0;
-}
