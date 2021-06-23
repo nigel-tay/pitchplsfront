@@ -2,6 +2,8 @@ import React from 'react';
 
 function About(props) {
     return (
+
+
         <div>
             <h1>Throw your Pitch.<br/>Get discovered.</h1>
             <hr />
@@ -20,3 +22,4 @@ function About(props) {
 }
 
 export default About;
+

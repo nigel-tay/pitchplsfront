@@ -1,7 +1,9 @@
 import React from 'react';
 import {Col, Row} from "react-bootstrap";
-import ScrollSnap from "scroll-snap";
+
+// import ScrollSnap from "scroll-snap";
 import styles from "./Home.module.css";
+
 
 function Home(props) {
 
@@ -19,7 +21,7 @@ function Home(props) {
                     <span></span>
                     <span></span>
                 </div>
-                
+
             </section>
 
             <section className={`${styles.aboutUs} ${styles.section}`}>
@@ -103,4 +105,6 @@ function Home(props) {
     );
 }
 
+
 export default Home;
+

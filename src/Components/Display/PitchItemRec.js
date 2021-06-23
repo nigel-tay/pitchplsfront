@@ -98,24 +98,28 @@ function PitchItemRec({item}) {
                         <span>  {item.selfintro}</span>
                         <span> {item.usp}, </span>
                         <span>  {item.goals}, </span>
-                            <Row className="justify-content-end"
+                            <Row className="justify-content-center"
                                  style={{
                                      position: "fixed",
                                      width: "100%",
                                      bottom: 0,
                                      paddingBottom: 10
                                  }}>
-                                <Col md={6}>
-                                    {/*{show ?*/}
+                                <Col md={4}>
+
                                     <Form ref={form} id="form" onSubmit={submitFav} method="post">
                                     <button type="submit" className="btn bg-transparent"><img src="https://img.icons8.com/offices/30/000000/filled-like.png"/> </button>
                                         <button onClick={chatStart} > Chat here!</button>
                                     </Form>
                                 </Col>
-                                <Col md={6}>
-                                    <button className="btn bg-light text-dark" onClick={handleShow}> See More </button>
-                                    {/*: null*/}
-                                    {/*}*/}
+                                        <Col md={4}>
+                                        <button className="btn bg-light text-dark" onClick={chatStart} > Chat!</button>
+                                        </Col>
+
+
+                                <Col md={4}>
+                                    <button className="btn bg-light text-dark" onClick={handleShow}> More </button>
+
                                 </Col>
                             </Row>
 
