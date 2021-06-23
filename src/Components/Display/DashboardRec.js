@@ -9,7 +9,6 @@ function DashboardRec() {
     const [user, setUser] = useState({})
     const [pitch, setPitch] = useState([])
     const [showFav, setShowFav] = useState([])
-    const [unFavPitch, setUnFavPitch] =useState([])
     const [search, setSearch] = useState("")
 
 
@@ -35,22 +34,22 @@ function DashboardRec() {
         setUserStats()
     }, [])
 
-    useEffect(() => {
-
+    useEffect( () => {
         async function getPitch() {
+            console.log('YOUR FATHAR')
             let {data} = await axios.get(`/pitch`)
             setPitch(data.pitches)
-
+            // console.log("data", data)
         }
-
         getPitch()
-    }, [user, pitch])
+    }, [user])
 
 
-    useEffect(() => {
-        async function getPitch() {
-
+    useEffect( () => {
+        async function getFavourites() {
+            console.log('YOUR MATHER')
             let {data} = await axios.get(`/user/${user._id}`)
+            // console.log("data",data)
             // console.log("fav", data.user.favourites)
             if (data.user.favourites) {
                 setShowFav(data.user.favourites.reverse())
@@ -58,35 +57,18 @@ function DashboardRec() {
                 setShowFav(null)
             }
         }
+        getFavourites()
+    }, [user])
+  //
+  // useEffect( () => {
+  //     getFavourites()
+  //
+  // }, [user])
 
-        getPitch()
-    }, [user, showFav])
-
-    // useEffect(() => {
-    //     setUnFavPitch([])
-    //     showFav.forEach(j => {
-    //     pitch.forEach(item => {
+// useEffect( () => {
     //
-    //             if(!item._id.includes(j._id)){
-    //                 setUnFavPitch(prevState => ([...prevState, item]))
-    //
-    //                 // unFavPitch.push(item)
-    //             }
-    //         })
-    //     })
-    //
-    //
-    //     // console.log("q" , q)
-    //
-    // }, [unFavPitch])
-    // console.log(unFavPitch)
-    // let q = [new Set(unFavPitch)]
-
-// console.log(unFavPitch)
-    // showFav.forEach(i => {
-    //
-    //     console.log("showFav id",i._id)
-    // })
+    //     getPitch()
+    // }, [user])
     return (
         <Container fluid>
 
@@ -96,7 +78,7 @@ function DashboardRec() {
                                 marginBottom: "20px",
                         position: 'fixed',
                         zIndex: "100",
-                        right: "10%"}}>
+                        left: "31.5%"}}>
                     <img style={{width: "35px",
                                 position: "absolute",
                                 margin: "5px"}}
@@ -122,6 +104,9 @@ function DashboardRec() {
                         }).map((item,i) => (
                             <PitchItemRec item={item}
                                           key={i}
+                                          user={user}
+                                          setShowFav={setShowFav}
+
                             />
 
 
@@ -141,8 +126,13 @@ function DashboardRec() {
 
                     }}>
                         {showFav.map((item, i) => (
-                            <FavouritePitches item={item}
-                                              key={i}/>
+                            <FavouritePitches
+                                item={item}
+                                key={i}
+                                user={user}
+                                setShowFav={setShowFav}
+
+                            />
                         ))}
                     </div>
                 </Col>

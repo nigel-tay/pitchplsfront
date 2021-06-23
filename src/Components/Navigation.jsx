@@ -21,7 +21,7 @@ function Navigation({setAuth, setUser, user}) {
 
                 <Nav className="ml-auto">
                     <NavLink to="/" className="navButton font-monospace nav-link">Home</NavLink>
-                    <NavLink to="/" className="navButton font-monospace nav-link"> About</NavLink>
+                    <NavLink to="/about" className="navButton font-monospace nav-link"> About</NavLink>
                 </Nav>
                 {user ? <>
 
@@ -35,7 +35,7 @@ function Navigation({setAuth, setUser, user}) {
 
             </Navbar.Collapse>
             {user ?
-            <Nav className=" align-self-end">
+            <Nav className=" align-self-end px-3">
                 <h4>Welcome Back, {user.name}!</h4>
             </Nav> : null
 

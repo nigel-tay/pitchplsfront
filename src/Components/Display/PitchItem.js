@@ -4,14 +4,18 @@ import axios from "axios"
 import styles from "./PitchItem.module.css"
 
 
-function PitchItem({item}) {
+function PitchItem({item, user}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [showEdit, setShowEdit] = useState(false);
     const handleCloseEdit = () => setShowEdit(false);
     const handleShowEdit = () => setShowEdit(true);
+    const [showComment, setShowComment] = useState(false);
+    const handleCloseComment = () => setShowComment(false);
+    const handleShowComment = () => setShowComment(true);
     const [post, setPost] = useState({})
+    const [comment, setComment] = useState({name: user.name, text: ""})
     const form = useRef(null)
 
 
@@ -27,6 +31,12 @@ function PitchItem({item}) {
         console.log(post)
     }
 
+    function changeComment(e) {
+        setComment(prevState => ({...prevState, [e.target.name]: e.target.value}))
+
+        console.log("item", item)
+    }
+
     async function editPost(e) {
         e.preventDefault()
         await axios.put(`/pitch/edit/${item._id}`, post);
@@ -34,7 +44,18 @@ function PitchItem({item}) {
         setShowEdit(false)
     }
 
+    async function postComment(e) {
+        e.preventDefault()
+        try{
+            await axios.put(`/pitch/editcomment/${item._id}`, comment);
+            setShowComment(false)
 
+        }catch (e) {
+            console.log(e.response)
+        }
+    }
+
+    // console.log(item.comments)
     return (
 
         <div>
@@ -48,8 +69,41 @@ function PitchItem({item}) {
                     <p>{item.usp}</p>
                     <p>{item.goals} </p>
                     <p>{item.selfintro}</p>
+                    <p>Comments:
+                        { item.comments?.map(comment => (
+
+                                <div>{comment.name} said: {comment.text}</div>
+                            ))}
+                    </p>
+                    <button className="btn border border-dark bg-transparent px-2" onClick={handleShowComment}> comment</button>
+
                 </Modal.Body>
             </Modal>
+
+            <Modal show={showComment} onHide={handleCloseComment}>
+                <Form ref={form} id="form" onSubmit={postComment} method="post">
+                    <Row className="justify-content-center mx-2">
+                        <label>Title * </label>
+
+                        <input onChange={changeComment}
+                               type="text"
+                               name="text"
+                               rows="3"
+                               cols="60"
+                               className="form-control"
+                               aria-describedby="Enter title"
+                               placeholder="Enter comment"
+                        />
+
+                        <button onClick={postComment} className="btn border-dark text-center m-2">
+                            <h3>Comment</h3>
+                        </button>
+
+                    </Row>
+                </Form>
+            </Modal>
+
+
 
             <Modal show={showEdit} onHide={handleCloseEdit}>
                 <Form ref={form} id="form" onSubmit={editPost} method="post">
@@ -131,9 +185,9 @@ function PitchItem({item}) {
                                  paddingBottom: 10
                              }}>
                             <Col md={12}>
-                                <button className="px-2 mx-1" onClick={handleShow}> show</button>
-                                <button className="px-2 mx-1" onClick={handleShowEdit}> edit</button>
-                                <button className="px-2" onClick={deletePost}> x</button>
+                                <button className="btn border border-dark bg-transparent px-2 mx-1" onClick={handleShow}> show</button>
+                                <button className="btn border border-dark bg-transparent px-2 mx-1" onClick={handleShowEdit}> edit</button>
+                                <button className="btn border border-dark bg-transparent px-2" onClick={deletePost}> x</button>
 
                             </Col>
                         </Row>

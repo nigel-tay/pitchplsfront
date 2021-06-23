@@ -45,7 +45,7 @@ function App() {
 
 
   return (
-    <Container className="App">
+    <div>
 
         <BrowserRouter>
             <div className="banner">
@@ -78,7 +78,7 @@ function App() {
             </Switch>
         </BrowserRouter>
 
-    </Container>
+    </div>
   );
 }
 function PrivateRouter({auth, user, Component, path, ...rest}){

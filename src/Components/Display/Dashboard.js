@@ -1,7 +1,7 @@
 import React, {useRef, useEffect, useState } from "react";
 import {Redirect} from "react-router-dom";
 import axios from "axios";
-import {Container, Form, Row,Col} from "react-bootstrap";
+import {Container, Form, Row, Col, Modal} from "react-bootstrap";
 import PitchItem from "./PitchItem";
 import styles from "./Dashboard.module.css"
 
@@ -42,6 +42,7 @@ const Dashboard = () => {
 //this is to get pitch from a user
     useEffect(() => {
         async function getPitch() {
+            // console.log("YOUR MATHER")
             let {data} = await axios.get(`/user/${user._id}`)
             if(data.user.pitches){
             setPitch(data.user.pitches.reverse())
@@ -51,7 +52,7 @@ const Dashboard = () => {
         }
 
         getPitch()
-    }, [user, pitch])
+    }, [user,pitch])
 
 
     async function submitPost(e) {
@@ -77,7 +78,6 @@ const Dashboard = () => {
 
 
 
-
 if(user.role === "recruiter"){
    return < Redirect to="/recruiter" />
 }
@@ -86,8 +86,16 @@ if(user.role === "recruiter"){
 
     return (
         <Container fluid>
+
+
+
+
             <Row>
                 {/*<Col md={4} className="">*/}
+
+
+
+
                         <Col md={3} className={`${styles.sidebar} border border-dark border-2`}>
                     <h3 className="text-center mt-4"> Create New Pitch:</h3>
                     <Form ref={form} id="form" onSubmit={submitPost} method="post">
@@ -176,7 +184,8 @@ if(user.role === "recruiter"){
                     }} >
                     {pitch.map((item,i) => (
                         <PitchItem item={item}
-                                key ={i}/>
+                                key ={i}
+                                user={user}/>
                     )) }
                     </div>
                 </Col>
