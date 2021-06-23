@@ -50,7 +50,9 @@ function App() {
     return (
         <div>
             <BrowserRouter>
+                <div className="banner">
                 <Navigation setAuth={setAuth} setUser={setUser} user={user} />
+                </div>
                 <Switch>
                     <Route path="/" exact>
                         <Home />
@@ -80,6 +82,7 @@ function App() {
         </div>
     )
 }
+
 
 function PrivateRouter({auth, user, Component, path, ...rest}){
     return(

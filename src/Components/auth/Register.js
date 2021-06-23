@@ -19,13 +19,14 @@ function Register({auth, setAuth}) {
             setAuth(true)
 
         } catch (e) {
-            console.log(e)
+            console.log(e.response)
             alert(e)
         }
     }
 
     function change(e) {
         setData(prevState => ({...prevState, [e.target.name]: e.target.value}))
+        console.log(data)
     }
 
     if (auth) {
@@ -37,11 +38,11 @@ function Register({auth, setAuth}) {
         <div>
             <Container>
 
-                <div className={`${styles.container} container-fluid d-flex align-items-center justify-content-center`}>
+                <div className={`${styles.container} text-center container-fluid d-flex align-items-center justify-content-center`}>
                     <div className={styles.registrationFormContainer}>
                         <fieldset className="border p-3 rounded">
                             <legend
-                                className={`${styles.registrationFormLegend} border rounded p-1 text-center`}
+                                className={`${styles.registrationFormLegend} border rounded p-1`}
                             >
                                 Registration Form
                             </legend>

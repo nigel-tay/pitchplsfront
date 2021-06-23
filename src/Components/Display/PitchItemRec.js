@@ -97,13 +97,14 @@ function PitchItemRec({item}) {
                             <h4>{item.title}</h4>
                         <span>  {item.selfintro}</span>
                         <span> {item.usp}, </span>
-                        <span>  {item.goals}, </span>
+                        <span >  {item.goals}, </span>
                             <Row className="justify-content-center"
                                  style={{
                                      position: "fixed",
                                      width: "100%",
                                      bottom: 0,
-                                     paddingBottom: 10
+                                     paddingBottom: 10,
+
                                  }}>
                                 <Col md={4}>
 
@@ -112,12 +113,12 @@ function PitchItemRec({item}) {
                                     </Form>
                                 </Col>
                                         <Col md={4}>
-                                        <button className="btn bg-light text-dark" onClick={chatStart} > Chat!</button>
+                                        <button className="btn bg-transparent border border-dark text-dark" onClick={chatStart} > Chat!</button>
                                         </Col>
 
 
                                 <Col md={4}>
-                                    <button className="btn bg-light text-dark" onClick={handleShow}> More </button>
+                                    <button className="btn bg-transparent border border-dark text-dark" onClick={handleShow}> More </button>
 
                                 </Col>
                             </Row>
