@@ -44,6 +44,7 @@ function App() {
 
 
 
+
     return (
         <div>
             <BrowserRouter>
@@ -64,6 +65,7 @@ function App() {
                     <PrivateRouter auth={auth} user={user} path="/dashboard" Component={Dashboard} />
                     <PrivateRouter auth={auth} user={user} path="/recruiter" Component={DashboardRec} />
 
+
                     {/*<Route path="/dashboard" exact>*/}
                     {/*    <Dashboard auth={auth} user={user} logout={logout}/>*/}
                     {/*</Route>*/}
@@ -75,6 +77,7 @@ function App() {
             </BrowserRouter>
         </div>
     );
+
 }
 function PrivateRouter({auth, user, Component, path, ...rest}){
     return(

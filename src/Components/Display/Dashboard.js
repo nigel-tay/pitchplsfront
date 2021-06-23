@@ -86,9 +86,6 @@ if(user.role === "recruiter"){
 
     return (
         <Container fluid>
-            <h3> HELLO THIS IS A SPACE FOR JOBSEEKERS </h3>
-            Welcome back <strong className="text-danger">{user.name}</strong>, insert pitch here
-
             <Row>
                 {/*<Col md={4} className="">*/}
                         <Col md={3} className={`${styles.sidebar} border border-dark border-2`}>

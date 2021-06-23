@@ -47,13 +47,12 @@ function Register({auth, setAuth}) {
                             </legend>
                             <Form ref={form} onSubmit={submitForm} method="post">
                                 <div className="form-group">
-                                    <label htmlFor="inputForEmail">Email address</label>
-                                    <span className="mandatory">*</span>
+                                    <label htmlFor="inputForEmail">Email address *</label>
                                     <input onChange={change}
                                            id="inputForEmail"
                                            type="email"
                                            name="email"
-                                           className="form-control"
+                                           className={`${styles.inputStyle} form-control`}
                                            aria-describedby="Enter email address"
                                            placeholder="Enter email address"
                                            required={true}/>
@@ -62,12 +61,11 @@ function Register({auth, setAuth}) {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="inputForName">Your Name</label>
-                                    <span className="mandatory">*</span>
                                     <input onChange={change}
                                            id="inputForName"
                                            type="text"
                                            name="name"
-                                           className="form-control"
+                                           className={`${styles.inputStyle} form-control`}
                                            aria-describedby="Enter your name"
                                            placeholder="Enter your name"
                                            required={true}
@@ -76,12 +74,11 @@ function Register({auth, setAuth}) {
 
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="inputForPassword">Password</label>
-                                    <span className="mandatory">*</span>
+                                    <label htmlFor="inputForPassword">Password *</label>
                                     <input onChange={change}
                                            type="password"
                                            name="password"
-                                           className="form-control"
+                                           className={`${styles.inputStyle} form-control`}
                                            id="inputForPassword"
                                            placeholder="Enter password"
                                            required={true}
@@ -89,8 +86,8 @@ function Register({auth, setAuth}) {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="inputForRole">Role</label>
-                                    <span className="mandatory">*</span>
+                                    <label htmlFor="inputForRole">Role *</label>
+
                                 <Row className="w-auto mx-2 my-1">
                                     <select
                                         name="role"
