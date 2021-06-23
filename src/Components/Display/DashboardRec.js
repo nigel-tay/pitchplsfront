@@ -39,9 +39,21 @@ function DashboardRec() {
 
     }
 
+    async function getFave() {
+
+        let {data} = await axios.get(`/user/${user._id}`)
+        // console.log("fav", data.user.favourites)
+        if (data.user.favourites) {
+            setShowFav(data.user.favourites.reverse())
+        } else {
+            setShowFav(null)
+        }
+    }
+
     useEffect(() => {
 
         getPitch()
+        getFave()
     }, [user])
 
 
