@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import PitchItemRec from "./PitchItemRec";
-import {Col, Row, Container} from "react-bootstrap";
+import {Col, Row, Container, Modal} from "react-bootstrap";
 import FavouritePitches from "./FavouritePitches";
 import styles from "./Dashboard.module.css"
+import Message from "./Message";
+import Reply from "./Reply";
 
 function DashboardRec() {
     const [user, setUser] = useState({})
@@ -11,7 +13,6 @@ function DashboardRec() {
     const [showFav, setShowFav] = useState([])
     const [search, setSearch] = useState("")
     const [searchFav, setSearchFav] = useState("")
-
 
     useEffect(() => {
         async function setUserStats() {
@@ -33,46 +34,32 @@ function DashboardRec() {
         setUserStats()
     }, [])
 
-    async function getPitch() {
-        let {data} = await axios.get(`/pitch`)
-        setPitch(data.pitches)
-
-    }
-
-    async function getFave() {
-
-        let {data} = await axios.get(`/user/${user._id}`)
-        // console.log("fav", data.user.favourites)
-        if (data.user.favourites) {
-            setShowFav(data.user.favourites.reverse())
-        } else {
-            setShowFav(null)
+    useEffect( () => {
+        async function getPitch() {
+            console.log('YOUR FATHAR')
+            let {data} = await axios.get(`/pitch`)
+            setPitch(data.pitches)
+            // console.log("data", data)
         }
-    }
-
-    useEffect(() => {
-
         getPitch()
-        getFave()
     }, [user])
 
 
-
-
-    // useEffect(() => {
-    //     async function getFave() {
-    //
-    //         let {data} = await axios.get(`/user/${user._id}`)
-    //         // console.log("fav", data.user.favourites)
-    //         if (data.user.favourites) {
-    //             setShowFav(data.user.favourites.reverse())
-    //         } else {
-    //             setShowFav(null)
-    //         }
-    //     }
-    //     getFave()
-    // }, [user])
-
+    useEffect( () => {
+        async function getFavourites() {
+            console.log('YOUR MATHER')
+            let {data} = await axios.get(`/user/${user._id}`)
+            // console.log("data",data)
+            // console.log("fav", data.user.favourites)
+            if (data.user.favourites) {
+                setShowFav(data.user.favourites.reverse())
+            } else {
+                setShowFav(null)
+            }
+        }
+        getFavourites()
+    }, [user])
+  
     return (
         <Container fluid>
 
@@ -83,7 +70,8 @@ function DashboardRec() {
                                 marginBottom: "20px",
                         position: 'relative',
                         zIndex: "100",
-                        left: "40.5%"}}>
+                        left: "31.5%"}}>
+
                     <img style={{width: "35px",
                                 position: "absolute",
                                 margin: "5px"}}
@@ -107,27 +95,37 @@ function DashboardRec() {
                                 return item
                             }
                         }).map((item,i) => (
-                            <PitchItemRec item={item} setShowFav={setShowFav} user={user}
-                            key ={i}/>
-                            )) }
+                            <PitchItemRec item={item}
+                                          key={i}
+                                          user={user}
+                                          setShowFav={setShowFav}
+                                          setPitch={setPitch}
 
+                            />
+
+
+                        ))}
                     </div>
                 </Col>
                 <Col md={3} className={`${styles.backgroundCork} border border-dark border-2`}>
-
-                    <h4 className="mt-3 text-center"> My Favourite Pitches</h4>
-                    <div className="d-flex justify-content-center">
-                        <input type="text" placeholder="Search Pitches"
+                    <div style={{width: "100%",
+                        marginTop: "10px",
+                        position: 'fixed',
+                        zIndex: "100",
+                        left: "78%"}}>
+                        <img style={{width: "35px",
+                            position: "absolute",
+                            margin: "5px"}}
+                             src="https://i.pinimg.com/originals/05/9b/ad/059bad28392cfadc21541a367b145e29.png" />
+                        <input type="text" placeholder="Search Favourite Pitches"
                                className={`${styles.inputStyle} pl-3 text-center`}
                                onChange={e => setSearchFav(e.target.value)}/>
                     </div>
-
-
                     <div style={{
                         display: "grid",
                         gridTemplateColumns: "repeat(1, auto)",
                         gridGap: "1px",
-                        marginTop: "20px",
+                        marginTop: "70px",
 
                     }}>
                         {showFav.filter(item => {
@@ -140,9 +138,8 @@ function DashboardRec() {
                         }).map((item, i) => (
 
                             <FavouritePitches item={item} user={user} setShowFav={setShowFav}
-                            key={i}/>
-                            ))}
-
+                                              key={i}/>
+                        ))}
                     </div>
                 </Col>
             </Row>
