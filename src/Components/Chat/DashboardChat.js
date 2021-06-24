@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Container} from "react-bootstrap";
+import "./DashboardChat.css";
 import Pusher from "pusher-js";
+import Sidebar from "./Sidebar"
+import Chat from "./Chat"
 
 const pusher = new Pusher('aaca110194e03e7b0484', {
     cluster: 'ap1'
@@ -16,92 +19,44 @@ function DashboardChat(auth) {
     const [messages, setMessages] = useState([])
 
     useEffect(() => {
-        pusher.unsubscribe('messages')
+            async function setUserStats() {
+                try {
+                    let {data} = await axios.get("/auth/user", {
+                        headers: {
+                            authorization: `Bearer ${localStorage.token}`
+                        }
+                    })
+                    setUser(data.user)
+                    // console.log(user._id)
 
-        getConversation()
-        const channel = pusher.subscribe('messages');
-        channel.bind('newMessage', function (data) {
-            getConversation()
-        });
-    }, []);
-
-
-    useEffect(() => {
-        async function setUserStats() {
-            try {
-                let {data} = await axios.get("/auth/user", {
-                    headers: {
-                        authorization: `Bearer ${localStorage.token}`
-                    }
-                })
-                setUser(data.user)
-                // console.log(user._id)
-
-            } catch (e) {
-                setUser({})
-                localStorage.removeItem("token")
+                } catch (e) {
+                    setUser({})
+                    localStorage.removeItem("token")
+                }
             }
-        }
 
-        setUserStats()
-    }, [])
-
-
-    async function getChat() {
-        let {data} = await axios.get(`/chat/get/conversationFromRC?id=${userID}`)
-        console.log(data)
-        console.log("message:",data[0]?.conversation[0]?.message)
-        if (data[0]){
-            setChat(data[0].conversation[0])
-        }
-    }
-
-
-    async function getConversation() {
-           await axios.get(`/chat/get/conversation?id=60d401e927522d0988147a8b`)
-                .then((res) => {
-                    setMessages(res.data[0])
-
-                })
-        console.log(messages?.conversation?.[0].message)
-    }
-
-    function addMessage() {
-        axios.post(`/chat/new/message?id=60d401e927522d0988147a8b`, {
-            message: "This is a test!",
-            timestamp: Date.now(),
-            user: user
-        })
-    }
-
-
-
-    // useEffect( () => {
-    //     getChat()
-    // }, [])
-
-    console.log(chat?.message)
+            setUserStats()
+        }, [])
 
     return (
-        <Container fluid>
-            <div>
-                <button onClick={getChat} disabled>
-                    Get all Conversation
-                </button>
-                <button onClick={getConversation}>
-                    Get Conversation
-                </button>
-                <button onClick={addMessage}>
-                    Add Message
-                </button>
-                {
-                    messages?.conversation?.map((item) => (
-                        <div>{item.message}</div>
-                    ))
-                }
-
+            <div className="DashboardChat">
+                {/*<button onClick={getChat} disabled>*/}
+                {/*    Get all Conversation*/}
+                {/*</button>*/}
+                {/*<button onClick={getConversation}>*/}
+                {/*    Get Conversation*/}
+                {/*</button>*/}
+                {/*<button onClick={addMessage}>*/}
+                {/*    Add Message*/}
+                {/*</button>*/}
+                {/*{*/}
+                {/*    messages?.conversation?.map((item) => (*/}
+                {/*        <div>{item.message}</div>*/}
+                {/*    ))*/}
+                {/*}*/}
+                <Sidebar auth={auth} user={user}/>
+                <Chat auth={auth} user={user}/>
             </div>
-        </Container>
     );
 }
 
