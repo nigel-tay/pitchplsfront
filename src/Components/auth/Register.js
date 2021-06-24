@@ -13,7 +13,7 @@ function Register({auth, setAuth}) {
     async function submitForm(e) {
         e.preventDefault()
         try {
-            let {data: {token}} = await axios.post("/auth/register", data)
+            let {data: {token}} = await axios.post("/api/auth/register", data)
             console.log(token)
             localStorage.setItem("token", token)
             setAuth(true)
@@ -42,7 +42,9 @@ function Register({auth, setAuth}) {
                     <div className={styles.registrationFormContainer}>
                         <fieldset className="border p-3 rounded">
                             <legend
-                                className={`${styles.registrationFormLegend} border rounded p-1`}
+
+                                className={`${styles.registrationFormLegend} border rounded p-1 text-center text-dark`}
+
                             >
                                 Registration Form
                             </legend>
@@ -112,7 +114,7 @@ function Register({auth, setAuth}) {
                                     </button>
                                 </div>
                             </Form>
-                            {/*<a href='http://localhost:8000/auth/linkedin/callback' > Login with LinkedIn</a>*/}
+                            
                         </fieldset>
                     </div>
                 </div>

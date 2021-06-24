@@ -23,7 +23,7 @@ const Dashboard = () => {
     useEffect(() => {
         async function setUserStats() {
             try {
-                let {data} = await axios.get("/auth/user", {
+                let {data} = await axios.get("/api/auth/user", {
                     headers: {
                         authorization: `Bearer ${localStorage.token}`
                     }
@@ -49,7 +49,7 @@ const Dashboard = () => {
 
         async function getPitch() {
             console.log("YOUR MATHER")
-            let {data} = await axios.get(`/user/${user._id}`)
+            let {data} = await axios.get(`/api/user/${user._id}`)
             if(data.user.pitches){
 
             setPitch(data.user.pitches.reverse())
@@ -66,7 +66,7 @@ const Dashboard = () => {
     async function submitPost(e) {
         e.preventDefault(e)
         try {
-            let res = await axios.post(`/pitch/create`, post, {
+            let res = await axios.post(`/api/pitch/create`, post, {
             })
             console.log(res)
             getPitch()
@@ -82,16 +82,19 @@ const Dashboard = () => {
         console.log(post)
     }
 
+
 if(user.role === "recruiter"){
    return < Redirect to="/recruiter" />
 }
 
     return (
         <Container fluid>
-       
+
+
             <Row>
-                        <Col md={3} className={`${styles.sidebar} border border-dark border-2`}>
-                    <h4 className="text-center mt-2"> Create New Pitch:</h4>
+                        <Col md={3} className={`${styles.sidebar} border border-dark border-2 text-dark`}>
+                    <h3 className="text-center mt-4"> Create New Pitch:</h3>
+
                     <Form ref={form} id="form" onSubmit={submitPost} method="post">
                         <Row className="justify-content-center mx-2 text-center">
 
@@ -236,8 +239,10 @@ if(user.role === "recruiter"){
                                 <option value={"lightgreen"}>Light Green</option>
                             </select>
 
-                            <button type="submit" className="btn border-dark text-center m-2">
-                                <h4>CREATE PITCH</h4>
+
+                            <button type="submit" className="btn border-dark text-dark text-center m-2">
+                                <h3>CREATE PITCH</h3>
+
                             </button>
 
                         </Row>
@@ -247,12 +252,7 @@ if(user.role === "recruiter"){
                 {/*</Col>*/}
 
                 <Col md={9} className={`${styles.makeThisScroll} border border-2 border-dark`} >
-                    <div style={{
-                        display:"grid",
-                        gridTemplateColumns: "repeat(3, auto)",
-                        gridGap: "1px",
-                        margin: "2px",
-                    }} >
+                    <div className="dashboardcontainer">
                     {pitch.map((item,i) => (
                         <PitchItem
                             item={item}

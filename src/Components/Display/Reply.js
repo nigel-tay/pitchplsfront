@@ -12,7 +12,7 @@ function Reply({msg, user}) {
         e.preventDefault()
         console.log(message)
         try{
-            await axios.put(`/user/messages/${msg.sender}`, message);
+            await axios.put(`/api/user/messages/${msg.sender}`, message);
             alert('Message Sent!');
 
         }catch (e) {
@@ -38,7 +38,7 @@ function Reply({msg, user}) {
         <div>
 
 
-            <h5 className="px-3">{msg.name} replied to
+            <h5 className="px-3 text-dark">{msg.name} replied to
                 <text className={"text-danger"}>"{msg.title}"
                     at {new Date(parseInt(msg.time,10)).toLocaleDateString()}, {new Date(parseInt(msg.time,10)).toLocaleTimeString()}</text>:
                 <p className="text-success">{msg.text}</p>  </h5>
@@ -55,7 +55,7 @@ function Reply({msg, user}) {
                               cols = "30"
                               className="form-control"
                               aria-describedby="Enter title"
-                              placeholder="Enter title"
+                              placeholder="Type Your Message Here"
                     />
                     <Row className="justify-content-end">
                     <button type="submit" className=" w-25 btn border text-center mt-2">

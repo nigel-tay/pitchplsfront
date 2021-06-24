@@ -54,14 +54,14 @@ function PitchItem({item, setPitch}) {
     }
 
     async function deletePost() {
-        await axios.delete(`/pitch/delete/${item._id}`);
+        await axios.delete(`/api/pitch/delete/${item._id}`);
         console.log('Delete successful');
         getPitch()
     }
 
     async function getPitch() {
         // console.log("YOUR MATHER")
-        let {data} = await axios.get(`/user/${user._id}`)
+        let {data} = await axios.get(`/api/user/${user._id}`)
         if(data.user.pitches){
             setPitch(data.user.pitches.reverse())
         }else {
@@ -85,7 +85,7 @@ function PitchItem({item, setPitch}) {
 
     async function editPost(e) {
         e.preventDefault()
-        await axios.put(`/pitch/edit/${item._id}`, post);
+        await axios.put(`/api/pitch/edit/${item._id}`, post);
         alert('Pitch Edited!');
         setShowEdit(false)
         getPitch()
@@ -94,7 +94,7 @@ function PitchItem({item, setPitch}) {
     async function postComment(e) {
         e.preventDefault()
         try{
-            await axios.put(`/pitch/editcomment/${item._id}`, comment);
+            await axios.put(`/api/pitch/editcomment/${item._id}`, comment);
             setShowComment(false)
 
         }catch (e) {
@@ -109,10 +109,10 @@ function PitchItem({item, setPitch}) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
-                    <Modal.Title>{item.title}</Modal.Title>
+                    <Modal.Title className="text-dark">{item.title}</Modal.Title>
                     <button className="px-2" onClick={handleClose}> x</button>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body className="text-dark">
                     <p>Self Intro: {item.selfintro}</p>
                     <p>USP: {item.usp}</p>
                     <p>Goals: {item.goals} </p>
@@ -131,7 +131,7 @@ function PitchItem({item, setPitch}) {
 
             <Modal show={showComment} onHide={handleCloseComment}>
                 <Form ref={form} id="form" onSubmit={postComment} method="post">
-                    <Row className="justify-content-center mx-2">
+                    <Row className="justify-content-center mx-2 text-dark">
                         <label>Comment * </label>
 
                         <input onChange={changeComment}
@@ -156,8 +156,10 @@ function PitchItem({item, setPitch}) {
 
             <Modal show={showEdit} onHide={handleCloseEdit}>
                 <Form ref={form} id="form" onSubmit={editPost} method="post">
-                    <Row className="justify-content-center mx-2">
-                        <label>Title</label>
+
+                    <Row className="justify-content-center mx-2 text-dark" >
+                        <label>Title * </label>
+
 
                         <input onChange={change}
                                type="text"

@@ -14,7 +14,7 @@ function Navigation({setAuth, setUser, user}) {
 
     async function getMessage() {
         try{
-            let {data} = await axios.get(`/user/${user._id}`);
+            let {data} = await axios.get(`/api/user/${user._id}`);
             console.log(data.user.messages)
             setMyMsg(data.user.messages.reverse())
             // alert('Pitch Edited!');

@@ -5,7 +5,7 @@ function About(props) {
     return (
 
 
-        <div className={`${styles.aboutContainer}`}>
+        <div className={`${styles.aboutContainer} text-dark`}>
             <h1 className={`${styles.aboutTitle}`}>Throw your Pitch.<br/>Get discovered.</h1>
             <hr />
 

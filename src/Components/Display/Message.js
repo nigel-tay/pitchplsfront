@@ -23,7 +23,10 @@ function Message({user, item}) {
         e.preventDefault()
         console.log(message)
         try{
-            await axios.put(`/user/messages/${item.creator}`, message);
+            await axios.put(`/api/user/messages/${item.creator}`, message);
+            console.log(item.creator)
+            console.log(item.title)
+            console.log("msg", message)
             alert('Message Sent! :D');
             handleClose()
         }catch (e) {
@@ -40,7 +43,7 @@ function Message({user, item}) {
     async function getMessage() {
 
         try{
-            let {data} = await axios.get(`/user/${user._id}`);
+            let {data} = await axios.get(`/api/user/${user._id}`);
             console.log(data.user.messages)
             setMyMsg(data.user.messages.reverse())
             // setMyMsg(data.messages)
@@ -93,29 +96,17 @@ function Message({user, item}) {
                     </Form>
 
 
-                            <h3 className="text-center font-monospace border-top border-2 border-dark">messages:</h3>
-                            <div className={`border border-dark border-2`}>
+                            {/*<h3 className="text-center font-monospace border-top border-2 border-dark">messages:</h3>*/}
+                            {/*<div className={`border border-dark border-2`}>*/}
+                            {/*    */}
+                            {/*    {myMsg.map(msg => (*/}
+                            {/*        <div className="border-bottom py-5 border-dark">*/}
+                            {/*            <Reply msg={msg} user={user} />*/}
+                            {/*        </div>*/}
+                            {/*    ))}*/}
+                            {/*  */}
 
-                                {/*{myMsg.map(msg => (*/}
-                                {/*   <div className="border-bottom py-5 border-dark">*/}
-                                {/*       Replying to: {msg.title}*/}
-                                {/*       <Single msg={msg} />*/}
-                                {/*      /!*<span className="text-success">{msg.name} wrote:</span>  {msg.text} at {msg.time} *!/*/}
-                                {/*       </div>*/}
-
-                                {/*))}*/}
-                                {myMsg.map(msg => (
-                                    <div className="border-bottom py-5 border-dark">
-                                        <Reply msg={msg} user={user} />
-                                    </div>
-                                ))}
-                                {/*{myMsg.map(msg => (*/}
-                                {/*    <div className="border-bottom py-5 border-dark">*/}
-                                {/*        <Reply msg={msg} user={user} />*/}
-                                {/*    </div>*/}
-                                {/*        ))}*/}
-
-                            </div>
+                            {/*</div>*/}
 
                         </Row>
 

@@ -18,7 +18,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
 
     async function getFavourites() {
         console.log('YOUR MATHER')
-        let {data} = await axios.get(`/user/${user._id}`)
+        let {data} = await axios.get(`/api/user/${user._id}`)
         // console.log("data",data)
         // console.log("fav", data.user.favourites)
         if (data.user.favourites) {
@@ -32,7 +32,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
         console.log("item id", item._id)
         if (item) {
             try {
-                let res = await axios.put(`/user/edit/`, item, {
+                let res = await axios.put(`/api/user/edit/`, item, {
                     headers: {
                         authorization: `Bearer ${localStorage.token}`
                     }
@@ -46,10 +46,11 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
         getFavourites()
     }
 
+
     async function getPitch() {
-        console.log('YOUR FATHAR')
-        let {data} = await axios.get(`/pitch`)
-        setPitch(data.pitches)
+      
+        let {data} = await axios.get(`/api/pitch`)
+        setPitch(data.pitches.reverse())
 
     }
 
@@ -90,7 +91,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
 //             })
 
         try{
-            await axios.put(`/pitch/editcomment/${item._id}`, comment);
+            await axios.put(`/api/pitch/editcomment/${item._id}`, comment);
             setShowComment(false)
             getPitch()
         }catch (e) {
@@ -107,7 +108,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
 
             <Modal show={showComment} onHide={handleCloseComment}>
                 <Form ref={form} id="form" onSubmit={postComment} method="post">
-                    <Row className="justify-content-center mx-2">
+                    <Row className="justify-content-center mx-2 text-dark">
                         <label>Title * </label>
 
                         <input onChange={changeComment}
@@ -130,10 +131,10 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
-                    <Modal.Title>{item.title}</Modal.Title>
+                    <Modal.Title className="text-dark">{item.title}</Modal.Title>
                     <button className="px-2" onClick={handleClose}> x </button>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body className="text-dark">
                     <p>Self Intro: {item.selfintro}</p>
                     <p>USP: {item.usp}</p>
                     <p>Goals: {item.goals} </p>
@@ -170,6 +171,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
                                     <button type="submit" className="btn bg-transparent"><img src="https://img.icons8.com/offices/30/000000/filled-like.png"/> </button>
                                     </Form>
                                 </Col>
+
                                 <Col md={4}>
                                     <button className="btn bg-transparent text-dark" onClick={handleShow}> <VisibilityIcon /> </button>
 

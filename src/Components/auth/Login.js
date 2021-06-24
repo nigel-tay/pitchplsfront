@@ -13,15 +13,10 @@ function Login({auth, setAuth}) {
     const form = useRef(null)
 
 
-
-
-
-
-
     async function submitForm(e) {
         e.preventDefault()
         try {
-            let {data: {token}} = await axios.post("/auth/login", data)
+            let {data: {token}} = await axios.post("/api/auth/login", data)
             console.log(token)
             localStorage.setItem("token", token)
             setAuth(true)
@@ -50,8 +45,11 @@ function Login({auth, setAuth}) {
 
                     <fieldset className="border p-3 rounded">
                         <legend
-                            className={`${styles.loginFormLegend} border rounded p-1 `}
-                        >
+
+                            className={`${styles.loginFormLegend} border rounded p-1 text-center text-dark`}
+
+
+                     >
                             Login Form
                         </legend>
                         <Form ref={form} onSubmit={submitForm} method="post">

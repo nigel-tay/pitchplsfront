@@ -3,18 +3,18 @@
   text-align: center;
 }
 
+
 .banner {
   background-image: url("https://image.shutterstock.com/image-vector/cats-banner-260nw-441292912.jpg");
-  height: 18vh;
+  height: 20vh;
   display: flex;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   background-size: contain;
   background-blend-mode: lighten;
   background-color: rgba(255,255,255,0.6);
   align-items: flex-start;
   justify-content: center;
 }
-
 
 :root{
   --clr-text: #183a1d;
@@ -26,9 +26,66 @@
   --ff-serif: 'Roboto', sans-serif;
 }
 
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.navButton:hover {
+  background-color: lightblue;
+  border-style: solid;
+  border-width: 1px;
+  color: black;
+  font-size: 20px;
+  transform: scale(1.1);
+
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dashboardcontainer {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 1px;
+  margin-top: 60px;
+}
+
+
+@media screen and (max-width: 780px) {
+  .dashboardcontainer {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 1px;
+    margin-top: 60px;
+  }
+}
+
 html{
   box-sizing: border-box;
   font-family: var(--ff-serif);
   color: var(--clr-accent);
   font-size: 1.125rem;
 }
+
