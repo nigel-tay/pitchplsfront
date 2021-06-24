@@ -14,6 +14,7 @@ Pitch Please is a platform for like minded tech individuals to connect. Be it Re
 - Mongoose
 - Material
 - Tippy.js
+- Pusher
 
 
 ### Wireframes
@@ -90,17 +91,6 @@ Many heads tackling a single problem made project progression much smoother.
 
 ### Unsolved problems
 
-List unsolved problems which would be fixed in future iterations.
-
-## APIs Used
-
-List your APIs you have used in this project and explain why did you use it.
+We were still unable to implement a realtime chat with react redux. We tried our best to implement it without redux but could not. Currently, all chats are non user specific as well.
 
 ---
-
-## Acknowledgments
-
-
----
-
- ## References
