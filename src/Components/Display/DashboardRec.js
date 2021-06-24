@@ -81,9 +81,9 @@ function DashboardRec() {
                 <Col md={9} className={`${styles.makeThisScroll} border border-2 border-dark`}>
                     <div style={{width: "100%",
                                 marginBottom: "20px",
-                        position: 'fixed',
+                        position: 'relative',
                         zIndex: "100",
-                        left: "31.5%"}}>
+                        left: "40.5%"}}>
                     <img style={{width: "35px",
                                 position: "absolute",
                                 margin: "5px"}}

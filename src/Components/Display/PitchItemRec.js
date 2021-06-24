@@ -2,6 +2,8 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Container, Card, Col, Row, Modal, Form, InputGroup, FormControl} from "react-bootstrap";
 import axios from "axios"
 import styles from "./PitchItem.module.css"
+import ForumIcon from '@material-ui/icons/Forum';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 
 
@@ -50,13 +52,22 @@ function PitchItemRec({item, setShowFav, user}) {
         const firstMsg = prompt('Please enter a welcome message')
         if (chatName && firstMsg) {
             let chatId = ''
-            axios.post('http://localhost:9000/new/conversation', {
+            let recId = ''
+            let jsId = ''
+            await axios.get(`/user/${user._id}`)
+                .then((res)=>{
+                    recId = res.data.user._id
+                    jsId = item.creator
+                    console.log(recId)
+                    console.log(jsId)
+                })
+            await axios.post('http://localhost:9000/new/conversation', {
                 chatName: chatName
             }).then((res) => {
                 chatId = res.data._id
             }).then(() => {
                 window.open(`http://localhost:3001/`, '_blank')
-                axios.post(`http://localhost:9000/new/message?id=${chatId}`, {
+                axios.post(`http://localhost:9000/new/message?id=${chatId}&recId=${recId}&jsId=${jsId}`, {
                     message: firstMsg,
                     timestamp: Date.now(),
                     user: user
@@ -103,12 +114,12 @@ function PitchItemRec({item, setShowFav, user}) {
                                     </Form>
                                 </Col>
                                         <Col md={4}>
-                                        <button className="btn bg-transparent border border-dark text-dark" onClick={chatStart} > Chat!</button>
+                                        <button className="btn bg-transparent border border-dark text-dark" onClick={chatStart} ><ForumIcon /></button>
                                         </Col>
 
 
                                 <Col md={4}>
-                                    <button className="btn bg-transparent border border-dark text-dark" onClick={handleShow}> More </button>
+                                    <button className="btn bg-transparent border border-dark text-dark" onClick={handleShow}><VisibilityIcon /></button>
 
                                 </Col>
                             </Row>
