@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Col, Row, Form, Modal} from "react-bootstrap";
 import styles from "./PitchItem.module.css"
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -6,8 +6,12 @@ import axios from "axios";
 import {BrowserRouter, Redirect, Route, Switch, NavLink} from "react-router-dom";
 import Message from "./Message";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
-
 function FavouritePitches({item, user, setShowFav}) {
+import VisibilityIcon from '@material-ui/icons/Visibility';
+
+  
+function FavouritePitches({item, setShowFav, user}) {
+
     const form = useRef(null)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -22,8 +26,6 @@ function FavouritePitches({item, user, setShowFav}) {
     async function getFavourites() {
         console.log('YOUR MATHER')
         let {data} = await axios.get(`/user/${user._id}`)
-        // console.log("data",data)
-        // console.log("fav", data.user.favourites)
         if (data.user.favourites) {
             setShowFav(data.user.favourites.reverse())
         } else {
@@ -41,6 +43,7 @@ function FavouritePitches({item, user, setShowFav}) {
                         authorization: `Bearer ${localStorage.token}`
                     }
                 })
+                getFave()
                 console.log(res.data)
 
             } catch (e) {
@@ -68,27 +71,6 @@ function FavouritePitches({item, user, setShowFav}) {
         console.log(post)
         console.log("item", item)
     }
-
-    // async function postMessage(e) {
-    //     e.preventDefault()
-    //     try{
-    //         await axios.put(`/pitch/editcomment/${item._id}`, post);
-    //         alert('Pitch Edited!');
-    //         // setShowEdit(false)
-    //     }catch (e) {
-    //         console.log(e.response)
-    //     }
-    // }
-
-    // function changMessage(e) {
-    //     setMessage(prevState => ({...prevState, [e.target.name]: e.target.value}))
-    //     console.log(message)
-    //     // console.log("item", item)
-    // }
-
-    // function redirectToMessage(){
-    //     return <Redirect to="/message" />
-    // }
 
     return (
         <div>
@@ -170,6 +152,7 @@ function FavouritePitches({item, user, setShowFav}) {
                         </Col>
                         <Col md={4}>
                         <button className="btn bg-transparent text-dark" onClick={handleShow}> <VisibilityIcon/> </button>
+
                         </Col>
 
                     </Row>

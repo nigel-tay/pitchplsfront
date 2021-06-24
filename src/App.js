@@ -1,4 +1,3 @@
-
 import React, {useRef, useEffect,useState} from "react";
 import './App.css';
 import axios from "axios";
@@ -10,9 +9,9 @@ import DashboardRec from "./Components/Display/DashboardRec";
 import NotFound from "./Components/auth/NotFound";
 import Navigation from "./Components/Navigation";
 import {Container} from "react-bootstrap";
-import Home from "./Components/Display/Home";
 import About from "./Components/Display/About";
 import Message from "./Components/Display/Message";
+import Home from "./Components/Display/Home";
 
 function App() {
     const [auth, setAuth] = useState({})
@@ -40,36 +39,27 @@ function App() {
 
         setUserStats()
     }, [auth])
-
-
-
-
-
-  return (
-    <div>
-
-        <BrowserRouter>
-            <div className="banner">
+  
+    return (
+        <div>
+            <BrowserRouter>
+                <div className="banner">
                 <Navigation setAuth={setAuth} setUser={setUser} user={user} />
-
-            </div>
-
-            <Switch>
+                </div>
+                <Switch>
                     <Route path="/" exact>
                         <Home />
                     </Route>
                     <Route path="/about" exact>
                         <About/>
                     </Route>
+
                 <Route path="/login" exact>
                     <Login auth={auth} setAuth={setAuth}/>
                 </Route>
-                <Route path="/register" exact>
+                    <Route path="/register" exact>
                     <Register auth={auth} setAuth={setAuth}/>
                 </Route>
-                    {/*<Route path="/singlepitch">*/}
-                    {/*    <Single user={user} />*/}
-                    {/*</Route>*/}
                 <PrivateRouter auth={auth} user={user} path="/dashboard" exact Component={Dashboard} />
                 <PrivateRouter auth={auth} user={user} path="/recruiter" exact Component={DashboardRec} />
 
@@ -82,10 +72,12 @@ function App() {
                 </Route>
             </Switch>
         </BrowserRouter>
-
     </div>
   );
+
 }
+
+
 function PrivateRouter({auth, user, Component, path, ...rest}){
     return(
         <>

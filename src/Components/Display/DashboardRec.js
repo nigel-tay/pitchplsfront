@@ -13,26 +13,6 @@ function DashboardRec() {
     const [showFav, setShowFav] = useState([])
     const [search, setSearch] = useState("")
     const [searchFav, setSearchFav] = useState("")
-    // const [myMsg, setMyMsg] = useState([])
-    // const [show, setShow] = useState(false);
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
-
-    // async function getMessage() {
-    //     try{
-    //         let {data} = await axios.get(`/user/${user._id}`);
-    //         console.log(data.user.messages)
-    //         setMyMsg(data.user.messages)
-    //         // alert('Pitch Edited!');
-    //         // console.log(message)
-    //     }catch (e) {
-    //         console.log(e.response)
-    //     }
-    //     handleShow()
-    // }
-
-
-
 
     useEffect(() => {
         async function setUserStats() {
@@ -79,47 +59,19 @@ function DashboardRec() {
         }
         getFavourites()
     }, [user])
-  //
-  // useEffect( () => {
-  //     getFavourites()
-  //
-  // }, [user])
-
-// useEffect( () => {
-    //
-    //     getPitch()
-    // }, [user])
+  
     return (
         <Container fluid>
-
-            {/*<button onClick={getMessage}> Get Messages</button>*/}
-
-
-
-            {/*/!*<button onClick={handleShow}> Message </button>*!/*/}
-            {/*<Modal show={show} onHide={handleClose}>*/}
-            {/*    <div className={`border border-dark border-2 px-2`}>*/}
-            {/*        <h3 className="text-danger text-center">My messages:</h3>*/}
-            {/*        {myMsg.map(msg => (*/}
-            {/*            <Reply*/}
-            {/*                msg={msg}*/}
-            {/*                user={user}/>*/}
-
-            {/*        ))}*/}
-
-            {/*    </div>*/}
-            {/*    /!*<button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>*!/*/}
-
-            {/*</Modal>*/}
 
 
             <Row>
                 <Col md={9} className={`${styles.makeThisScroll} border border-2 border-dark`}>
                     <div style={{width: "100%",
                                 marginBottom: "20px",
-                        position: 'fixed',
+                        position: 'relative',
                         zIndex: "100",
                         left: "31.5%"}}>
+
                     <img style={{width: "35px",
                                 position: "absolute",
                                 margin: "5px"}}
@@ -153,13 +105,9 @@ function DashboardRec() {
 
 
                         ))}
-
                     </div>
                 </Col>
                 <Col md={3} className={`${styles.backgroundCork} border border-dark border-2`}>
-                    {/*<Message user={user} showFav={showFav}/>*/}
-
-                    {/*<h4 className="mt-3"> My Favourite Pitches</h4>*/}
                     <div style={{width: "100%",
                         marginTop: "10px",
                         position: 'fixed',

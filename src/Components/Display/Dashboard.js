@@ -5,6 +5,9 @@ import {Container, Form, Row, Col, Modal} from "react-bootstrap";
 import PitchItem from "./PitchItem";
 import styles from "./Dashboard.module.css"
 import Reply from "./Reply";
+import InfoIcon from '@material-ui/icons/Info';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 
 const Dashboard = () => {
@@ -44,17 +47,16 @@ const Dashboard = () => {
         // console.log(post)
     },[user])
 
-
-
         async function getPitch() {
             console.log("YOUR MATHER")
             let {data} = await axios.get(`/user/${user._id}`)
             if(data.user.pitches){
+
             setPitch(data.user.pitches.reverse())
-            }else {
-                setPitch(null)
-            }
+        }else {
+            setPitch(null)
         }
+    }
 
     useEffect(() => {
         getPitch()
@@ -67,7 +69,7 @@ const Dashboard = () => {
             let res = await axios.post(`/pitch/create`, post, {
             })
             console.log(res)
-            //get response
+            getPitch()
         } catch (e) {
             console.log(e)
         }
@@ -80,56 +82,35 @@ const Dashboard = () => {
         console.log(post)
     }
 
-
-    // async function getMessage() {
-    //     try{
-    //         let {data} = await axios.get(`/user/${user._id}`);
-    //         console.log(data.user.messages)
-    //         setMyMsg(data.user.messages)
-    //         // alert('Pitch Edited!');
-    //         // console.log(message)
-    //     }catch (e) {
-    //         console.log(e.response)
-    //     }
-    //     handleShow()
-    // }
-
-
-
 if(user.role === "recruiter"){
    return < Redirect to="/recruiter" />
 }
 
-//////////this part is for jobseeker//////////
-
     return (
         <Container fluid>
-        {/*<button onClick={getMessage}> Get Messages</button>*/}
-
-
-
-            {/*<button onClick={handleShow}> Message </button>*/}
-            {/*<Modal show={show} onHide={handleClose}>*/}
-            {/*    <div className={`border border-dark border-2`}>*/}
-            {/*        My messages:*/}
-            {/*        {myMsg.map(msg => (*/}
-            {/*            <Reply*/}
-            {/*            msg={msg}*/}
-            {/*            user={user}/>*/}
-
-            {/*        ))}*/}
-
-            {/*    </div>*/}
-            {/*    /!*<button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>*!/*/}
-
-            {/*</Modal>*/}
-
+       
             <Row>
                         <Col md={3} className={`${styles.sidebar} border border-dark border-2`}>
-                    <h3 className="text-center mt-4"> Create New Pitch:</h3>
+                    <h4 className="text-center mt-2"> Create New Pitch:</h4>
                     <Form ref={form} id="form" onSubmit={submitPost} method="post">
-                        <Row className="justify-content-center mx-2">
-                            <label>Title * </label>
+                        <Row className="justify-content-center mx-2 text-center">
+
+                            <div className="d-flex justify-content-center align-content-center">
+                                <label>Title</label>
+                                <Tippy
+                                    content={<>
+                                        A short and concise <br/>
+                                        summary of what <br/>
+                                        your skills are
+                                        </>}
+                                    placement="right"
+                                >
+                                    <InfoIcon
+                                              color="disabled"
+                                              style={{ fontSize: "1em" }}
+                                    />
+                                </Tippy>
+                            </div>
 
                             <textarea onChange={change}
                                    type="text"
@@ -142,20 +123,50 @@ if(user.role === "recruiter"){
                                    required={true}
                              />
 
-                            <label>Self intro *</label>
+
+                            <div className="d-flex justify-content-center align-content-center">
+                                <label>Self intro</label>
+                                <Tippy
+                                    content={<>
+                                        Introduce yourself<br/>
+                                        and add a simple<br/>
+                                        greeting
+                                    </>}
+                                    placement="right"
+                                >
+                                    <InfoIcon
+                                        color="disabled"
+                                        style={{ fontSize: "1em" }}
+                                    />
+                                </Tippy>
+                            </div>
                             <textarea onChange={change}
                                       rows = "3"
                                       cols = "30"
                                       type="text"
                                       name="selfintro"
                                       className="form-control"
-                                      placeholder="Enter self Intro"
+                                      placeholder="Enter self Introduction"
                                       required={true}
                                       maxLength={200} />
 
 
-
-                            <label>USP *</label>
+                            <div className="d-flex justify-content-center align-content-center">
+                                <label>USP</label>
+                                <Tippy
+                                    content={<>
+                                        A Unique Selling Point<br/>
+                                        that sets you out from<br/>
+                                        your competition
+                                    </>}
+                                    placement="right"
+                                >
+                                    <InfoIcon
+                                        color="disabled"
+                                        style={{ fontSize: "1em" }}
+                                    />
+                                </Tippy>
+                            </div>
                             <textarea onChange={change}
                                    type="text"
                                    name="usp"
@@ -163,11 +174,26 @@ if(user.role === "recruiter"){
                                       cols = "30"
                                    className="form-control"
                                    aria-describedby="Enter usp "
-                                   placeholder="Enter usp "
+                                   placeholder="Enter USP"
                                    required={true}
                                       maxLength={200}/>
 
-                            <label>Goals *</label>
+                            <div className="d-flex justify-content-center align-content-center">
+                                <label>Goals</label>
+                                <Tippy
+                                    content={<>
+                                        What you hope<br/>
+                                        to achieve; or<br/>
+                                        bring to the table
+                                    </>}
+                                    placement="right"
+                                >
+                                    <InfoIcon
+                                        color="disabled"
+                                        style={{ fontSize: "1em" }}
+                                    />
+                                </Tippy>
+                            </div>
                             <textarea onChange={change}
                                    type="text"
                                    name="goals"
@@ -178,7 +204,23 @@ if(user.role === "recruiter"){
                                    placeholder="Enter goals"
                                    required={true}
                             maxLength={200}/>
-                            <label>Select Colour *</label>
+
+                            <div className="d-flex justify-content-center align-content-center">
+                                <label>Colour</label>
+                                <Tippy
+                                    content={<>
+                                        Select the colour<br/>
+                                        of your post it<br/>
+                                        Pitch
+                                    </>}
+                                    placement="right"
+                                >
+                                    <InfoIcon
+                                        color="disabled"
+                                        style={{ fontSize: "1em" }}
+                                    />
+                                </Tippy>
+                            </div>
                             <select onChange={change}
                                     required={true}
                                     placeholder="select colour!"
@@ -195,7 +237,7 @@ if(user.role === "recruiter"){
                             </select>
 
                             <button type="submit" className="btn border-dark text-center m-2">
-                                <h3>CREATE PITCH</h3>
+                                <h4>CREATE PITCH</h4>
                             </button>
 
                         </Row>

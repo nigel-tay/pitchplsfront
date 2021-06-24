@@ -26,7 +26,7 @@ function Navigation({setAuth, setUser, user}) {
     }
 
 
-     function logout(e) {
+    function logout(e) {
         e.preventDefault()
         setAuth(false)
         setUser(null)
@@ -34,8 +34,9 @@ function Navigation({setAuth, setUser, user}) {
     }
 
     return (
+
         <Navbar bg="transparent" expand="lg" className="text-center w-100">
-            <h3 className="px-4">Pitch Please!</h3>
+            <NavLink to="/" className="navButton font-monospace nav-link"><h3 className="px-4">Pitch Please!</h3></NavLink>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav" className="bg-white">
 

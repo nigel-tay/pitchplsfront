@@ -7,7 +7,6 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 function PitchItemRec({item, setPitch, user, setShowFav}) {
-    // const [user, setUser] = useState({})
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -15,11 +14,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
     const handleCloseComment = () => setShowComment(false);
     const handleShowComment = () => setShowComment(true);
     const [comment, setComment] = useState({name: user.name, text: ""})
-
     const form = useRef(null)
-
-
-
 
     async function getFavourites() {
         console.log('YOUR MATHER')
@@ -42,6 +37,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
                         authorization: `Bearer ${localStorage.token}`
                     }
                 })
+                getFave()
                 console.log(res.data)
 
             } catch (e) {
@@ -50,27 +46,6 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
         }
         getFavourites()
     }
-
-    // async function chatStart(e) {
-    //     e.preventDefault()
-    //     const chatName = item.title
-    //     if (chatName) {
-    //         let chatId = ''
-    //         axios.post('http://localhost:9000/new/conversation', {
-    //             chatName: chatName
-    //         }).then((res) => {
-    //             chatId = res.data._id
-    //         }).then(() => {
-    //             const firstMsg = prompt('Please enter a welcome message')
-    //             window.open(`http://localhost:3001/`, '_blank')
-    //             axios.post(`http://localhost:9000/new/message?id=${chatId}`, {
-    //                 message: firstMsg,
-    //                 timestamp: Date.now(),
-    //                 user: user
-    //             })
-    //         })
-    //     }
-    // }
 
     async function getPitch() {
         console.log('YOUR FATHAR')
@@ -87,6 +62,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
 
     async function postComment(e) {
         e.preventDefault()
+
         try{
             await axios.put(`/pitch/editcomment/${item._id}`, comment);
             setShowComment(false)
@@ -155,13 +131,12 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
                             <h4>{item.title}</h4>
                         <span>  {item.selfintro}</span>
                         <span> {item.usp}, </span>
-
+                        <span >  {item.goals}, </span>
                             <Row className="justify-content-center"
                                  style={{
                                      position: "fixed",
                                      width: "100%",
-                                     bottom: 0,
-                                     paddingBottom: 0
+                                     bottom: 0
                                  }}>
                                 <Col md={4}>
 
@@ -169,13 +144,9 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
                                     <button type="submit" className="btn bg-transparent"><img src="https://img.icons8.com/offices/30/000000/filled-like.png"/> </button>
                                     </Form>
                                 </Col>
-                                        {/*<Col md={4}>*/}
-
-                                        {/*</Col>*/}
-
-
                                 <Col md={4}>
                                     <button className="btn bg-transparent text-dark" onClick={handleShow}> <VisibilityIcon /> </button>
+
 
                                 </Col>
                             </Row>

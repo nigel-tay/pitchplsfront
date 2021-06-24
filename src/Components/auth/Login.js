@@ -50,7 +50,7 @@ function Login({auth, setAuth}) {
 
                     <fieldset className="border p-3 rounded">
                         <legend
-                            className={`${styles.loginFormLegend} border rounded p-1 text-center`}
+                            className={`${styles.loginFormLegend} border rounded p-1 `}
                         >
                             Login Form
                         </legend>
