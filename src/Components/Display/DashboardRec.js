@@ -35,18 +35,19 @@ function DashboardRec() {
         setUserStats()
     }, [])
 
-    useEffect( () => {
+    useEffect(() => {
         async function getPitch() {
             console.log('YOUR FATHAR')
             let {data} = await axios.get(`/api/pitch`)
             setPitch(data.pitches.reverse())
             // console.log("data", data)
         }
+
         getPitch()
     }, [user])
 
 
-    useEffect( () => {
+    useEffect(() => {
         async function getFavourites() {
             console.log('YOUR MATHER')
             let {data} = await axios.get(`/api/user/${user._id}`)
@@ -58,91 +59,98 @@ function DashboardRec() {
                 setShowFav(null)
             }
         }
+
         getFavourites()
     }, [user])
 
-  
+
     return (
         <Container fluid>
 
             <Row>
                 <Col md={9} className={`${styles.makeThisScroll} border border-2 border-dark`}>
-                    <div style={{width: "100%",
+                    <div style={{
+                        width: "100%",
 
-                                  marginBottom: "20px",
-                                  position: 'fixed',
-                                  zIndex: "100",
-                                  left: "31.5%"}}>
+                        marginBottom: "20px",
+                        position: 'fixed',
+                        zIndex: "100",
+                        left: "31.5%"
+                    }}>
 
-                    <img style={{width: "35px",
-                                position: "absolute",
-                                margin: "5px"}}
-                                src="https://i.pinimg.com/originals/05/9b/ad/059bad28392cfadc21541a367b145e29.png" />
-                    <input type="text" placeholder="Search Pitches"
-                           className={`${styles.inputStyle} pl-3 text-center`}
-                           onChange={e => setSearch(e.target.value)}/>
+                        <img style={{
+                            width: "35px",
+                            position: "absolute",
+                            margin: "5px"
+                        }}
+                             src="https://i.pinimg.com/originals/05/9b/ad/059bad28392cfadc21541a367b145e29.png"/>
+                        <input type="text" placeholder="Search Pitches"
+                               className={`${styles.inputStyle} pl-3 text-center`}
+                               onChange={e => setSearch(e.target.value)}/>
                     </div>
-                        <div className="dashboardcontainer">
+                    <div className="dashboardcontainer">
                         {pitch.filter(item => {
-                            if (search === ""){
+                            if (search === "") {
+                                return item
+                            } else if (item.title.toLowerCase().includes(search.toLowerCase())) {
                                 return item
                             }
-                            else if (item.title.toLowerCase().includes(search.toLowerCase())){
-                                return item
-                            }
-                        }).map((item,i) => (
+                        }).map((item, i) => (
                             <PitchItemRec item={item}
                                           key={i}
                                           user={user}
                                           setShowFav={setShowFav}
-                                          setPitch={setPitch}
-
-                            />
+                                          setPitch={setPitch}/>
 
 
                         ))}
                     </div>
+
                 </Col>
                 <Col md={3} className={`${styles.backgroundCork} border border-dark border-2`}>
 
-                    <div style={{width: "100%",
+                    <div style={{
+                        width: "100%",
                         marginTop: "10px",
                         position: 'fixed',
                         zIndex: "100",
-                        left: "78%"}}>
-                        <img style={{width: "35px",
+                        left: "78%"
+                    }}>
+                        <img style={{
+                            width: "35px",
                             position: "absolute",
-                            margin: "5px"}}
-                             src="https://i.pinimg.com/originals/05/9b/ad/059bad28392cfadc21541a367b145e29.png" />
+                            margin: "5px"
+                        }}
+                             src="https://i.pinimg.com/originals/05/9b/ad/059bad28392cfadc21541a367b145e29.png"/>
 
                         <input type="text" placeholder="Search Favourite Pitches"
                                className={`${styles.inputStyle} py-3 my-2 w-100 text-center`}
                                onChange={e => setSearchFav(e.target.value)}/>
 
-                    <div style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(1, auto)",
-                        gridGap: "1px",
-                        marginTop: "70px",
+                        <div style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(1, auto)",
+                            gridGap: "1px",
+                            marginTop: "70px",
 
-                    }}>
-                        {showFav.filter(item => {
-                            if (searchFav === ""){
-                                return item
-                            }
-                            else if (item.title.toLowerCase().includes(searchFav.toLowerCase())){
-                                return item
-                            }
-                        }).map((item, i) => (
+                        }}>
+                            {showFav.filter(item => {
+                                if (searchFav === "") {
+                                    return item
+                                } else if (item.title.toLowerCase().includes(searchFav.toLowerCase())) {
+                                    return item
+                                }
+                            }).map((item, i) => (
 
-                            <FavouritePitches item={item} user={user} setShowFav={setShowFav}
-                                              key={i}/>
-                        ))}
+                                <FavouritePitches item={item} user={user} setShowFav={setShowFav}
+                                                  key={i}/>
+                            ))}
+                        </div>
                     </div>
                 </Col>
             </Row>
         </Container>
-    );
+);
 }
 
 export default DashboardRec;
