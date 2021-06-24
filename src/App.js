@@ -10,10 +10,9 @@ import DashboardChat from "./Components/Chat/DashboardChat";
 import NotFound from "./Components/auth/NotFound";
 import Navigation from "./Components/Navigation";
 import {Container} from "react-bootstrap";
-
 import About from "./Components/Display/About";
+import Message from "./Components/Display/Message";
 import Home from "./Components/Display/Home";
-
 
 function App() {
     const [auth, setAuth] = useState({})
@@ -41,7 +40,6 @@ function App() {
 
         setUserStats()
     }, [auth])
-
 
     return (
         <div>
@@ -76,8 +74,8 @@ function App() {
             </BrowserRouter>
         </div>
     )
-}
 
+}
 
 function PrivateRouter({auth, user, Component, path, ...rest}) {
     return (
