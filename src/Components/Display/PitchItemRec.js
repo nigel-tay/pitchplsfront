@@ -56,7 +56,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
     async function getPitch() {
         console.log('YOUR FATHAR')
         let {data} = await axios.get(`/api/pitch`)
-        setPitch(data.pitches)
+        setPitch(data.pitches.reverse())
 
     }
 
@@ -86,7 +86,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
 
             <Modal show={showComment} onHide={handleCloseComment}>
                 <Form ref={form} id="form" onSubmit={postComment} method="post">
-                    <Row className="justify-content-center mx-2">
+                    <Row className="justify-content-center mx-2 text-dark">
                         <label>Title * </label>
 
                         <input onChange={changeComment}
@@ -109,10 +109,10 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
-                    <Modal.Title>{item.title}</Modal.Title>
+                    <Modal.Title className="text-dark">{item.title}</Modal.Title>
                     <button className="px-2" onClick={handleClose}> x </button>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body className="text-dark">
                     <p>Self Intro: {item.selfintro}</p>
                     <p>USP: {item.usp}</p>
                     <p>Goals: {item.goals} </p>

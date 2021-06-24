@@ -55,7 +55,7 @@ function Reply({msg, user}) {
                               cols = "30"
                               className="form-control"
                               aria-describedby="Enter title"
-                              placeholder="Enter title"
+                              placeholder="Type Your Message Here"
                     />
                     <Row className="justify-content-end">
                     <button type="submit" className=" w-25 btn border text-center mt-2">

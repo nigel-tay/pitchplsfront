@@ -40,7 +40,7 @@ function DashboardRec() {
         async function getPitch() {
             console.log('YOUR FATHAR')
             let {data} = await axios.get(`/api/pitch`)
-            setPitch(data.pitches)
+            setPitch(data.pitches.reverse())
             // console.log("data", data)
         }
         getPitch()

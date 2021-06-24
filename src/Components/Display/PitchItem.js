@@ -82,10 +82,10 @@ function PitchItem({item, user, setPitch}) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
-                    <Modal.Title>{item.title}</Modal.Title>
+                    <Modal.Title className="text-dark">{item.title}</Modal.Title>
                     <button className="px-2" onClick={handleClose}> x</button>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body className="text-dark">
                     <p>Self Intro: {item.selfintro}</p>
                     <p>USP: {item.usp}</p>
                     <p>Goals: {item.goals} </p>
@@ -104,7 +104,7 @@ function PitchItem({item, user, setPitch}) {
 
             <Modal show={showComment} onHide={handleCloseComment}>
                 <Form ref={form} id="form" onSubmit={postComment} method="post">
-                    <Row className="justify-content-center mx-2">
+                    <Row className="justify-content-center mx-2 text-dark">
                         <label>Comment * </label>
 
                         <input onChange={changeComment}
@@ -129,7 +129,7 @@ function PitchItem({item, user, setPitch}) {
 
             <Modal show={showEdit} onHide={handleCloseEdit}>
                 <Form ref={form} id="form" onSubmit={editPost} method="post">
-                    <Row className="justify-content-center mx-2">
+                    <Row className="justify-content-center mx-2 text-dark" >
                         <label>Title * </label>
 
                         <input onChange={change}

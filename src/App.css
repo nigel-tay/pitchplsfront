@@ -8,9 +8,9 @@ html {
 
 .banner {
   background-image: url("https://image.shutterstock.com/image-vector/cats-banner-260nw-441292912.jpg");
-  height: 18vh;
+  height: 20vh;
   display: flex;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   background-size: contain;
   background-blend-mode: lighten;
   background-color: rgba(255,255,255,0.6);

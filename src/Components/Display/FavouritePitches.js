@@ -69,26 +69,6 @@ function FavouritePitches({item, user, setShowFav}) {
         console.log("item", item)
     }
 
-    // async function postMessage(e) {
-    //     e.preventDefault()
-    //     try{
-    //         await axios.put(`/api/pitch/editcomment/${item._id}`, post);
-    //         alert('Pitch Edited!');
-    //         // setShowEdit(false)
-    //     }catch (e) {
-    //         console.log(e.response)
-    //     }
-    // }
-
-    // function changMessage(e) {
-    //     setMessage(prevState => ({...prevState, [e.target.name]: e.target.value}))
-    //     console.log(message)
-    //     // console.log("item", item)
-    // }
-
-    // function redirectToMessage(){
-    //     return <Redirect to="/message" />
-    // }
 
     return (
         <div>
@@ -97,10 +77,10 @@ function FavouritePitches({item, user, setShowFav}) {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
-                    <Modal.Title>{item.title}</Modal.Title>
+                    <Modal.Title className="text-dark">{item.title}</Modal.Title>
                     <button className="px-2" onClick={handleClose}> x </button>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body className="text-dark">
                     <span> {item.selfintro}</span>
                     <p>Self Intro: {item.selfintro}</p>
                     <p>USP: {item.usp}</p>
@@ -150,7 +130,7 @@ function FavouritePitches({item, user, setShowFav}) {
                     <span>USP: {item.usp}</span>
                     <span>Goals: {item.goals} </span>
 
-                    <Row className="justify-content-end"
+                    <Row className=" w-auto"
                          style={{
                              position: "fixed",
                              width: "100%",
@@ -158,17 +138,20 @@ function FavouritePitches({item, user, setShowFav}) {
                              paddingBottom: 0
                          }}>
 
-                        <Col md={7}>
+                        <Col md={4}>
                         <Form ref={form} id="form" onSubmit={removeFav}>
 
                             <button className="btn bg-transparent" type="submit"><img src="https://img.icons8.com/offices/30/000000/dislike.png"/></button>
-                            <button className="btn bg-transparent text-dark" onClick={handleShow}> <VisibilityIcon/> </button>
-
                             </Form>
                         </Col>
-                        <Col md={5}>
-
+                        <Col md={4}>
+                            {/*//hererererererererer*/}
                             <Message user={user} item={item}/>
+                        </Col>
+                        <Col md={4}>
+                            <button className="btn bg-transparent text-dark" onClick={handleShow}> <VisibilityIcon/> </button>
+
+
                         </Col>
 
 
