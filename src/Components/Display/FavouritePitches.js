@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Col, Row, Form, Modal} from "react-bootstrap";
 import styles from "./PitchItem.module.css"
 import axios from "axios";
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 function FavouritePitches({item, setShowFav, user}) {
     const form = useRef(null)
@@ -80,7 +81,7 @@ function FavouritePitches({item, setShowFav, user}) {
                         </Form>
                         </Col>
                         <Col md={6}>
-                        <button className="btn bg-light text-dark" onClick={handleShow}> See More </button>
+                        <button className="btn bg-light text-dark" onClick={handleShow}><VisibilityIcon /></button>
                         </Col>
                     </Row>
 
