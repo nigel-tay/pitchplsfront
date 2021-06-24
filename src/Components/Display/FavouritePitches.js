@@ -1,13 +1,13 @@
 import React, {useRef, useState} from 'react';
 import {Col, Row, Form, Modal} from "react-bootstrap";
-import styles from "./PitchItem.module.css"
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import axios from "axios";
-import {BrowserRouter, Redirect, Route, Switch, NavLink} from "react-router-dom";
 import Message from "./Message";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 
-function FavouritePitches({item, user, setShowFav}) {
+
+function FavouritePitches({item, setShowFav, user}) {
+
     const form = useRef(null)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -21,9 +21,11 @@ function FavouritePitches({item, user, setShowFav}) {
 
     async function getFavourites() {
         console.log('YOUR MATHER')
+
         let {data} = await axios.get(`/api/user/${user._id}`)
         // console.log("data",data)
         // console.log("fav", data.user.favourites)
+
         if (data.user.favourites) {
             setShowFav(data.user.favourites.reverse())
         } else {
@@ -149,6 +151,7 @@ function FavouritePitches({item, user, setShowFav}) {
                             <Message user={user} item={item}/>
                         </Col>
                         <Col md={4}>
+
                             <button className="btn bg-transparent text-dark" onClick={handleShow}> <VisibilityIcon/> </button>
 
 

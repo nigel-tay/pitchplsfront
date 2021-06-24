@@ -19,13 +19,14 @@ function Register({auth, setAuth}) {
             setAuth(true)
 
         } catch (e) {
-            console.log(e)
+            console.log(e.response)
             alert(e)
         }
     }
 
     function change(e) {
         setData(prevState => ({...prevState, [e.target.name]: e.target.value}))
+        console.log(data)
     }
 
     if (auth) {
@@ -41,7 +42,9 @@ function Register({auth, setAuth}) {
                     <div className={styles.registrationFormContainer}>
                         <fieldset className="border p-3 rounded">
                             <legend
+
                                 className={`${styles.registrationFormLegend} border rounded p-1 text-center text-dark`}
+
                             >
                                 Registration Form
                             </legend>
@@ -111,7 +114,7 @@ function Register({auth, setAuth}) {
                                     </button>
                                 </div>
                             </Form>
-                            {/*<a href='http://localhost:8000/auth/linkedin/callback' > Login with LinkedIn</a>*/}
+                            
                         </fieldset>
                     </div>
                 </div>

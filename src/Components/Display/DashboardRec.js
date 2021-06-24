@@ -15,7 +15,6 @@ function DashboardRec() {
     const [searchFav, setSearchFav] = useState("")
 
 
-
     useEffect(() => {
         async function setUserStats() {
             try {
@@ -62,19 +61,19 @@ function DashboardRec() {
         getFavourites()
     }, [user])
 
-    // }, [user])
+  
     return (
         <Container fluid>
-
-
 
             <Row>
                 <Col md={9} className={`${styles.makeThisScroll} border border-2 border-dark`}>
                     <div style={{width: "100%",
+
                                   marginBottom: "20px",
                                   position: 'fixed',
                                   zIndex: "100",
                                   left: "31.5%"}}>
+
                     <img style={{width: "35px",
                                 position: "absolute",
                                 margin: "5px"}}
@@ -102,11 +101,19 @@ function DashboardRec() {
 
 
                         ))}
-
                     </div>
                 </Col>
                 <Col md={3} className={`${styles.backgroundCork} border border-dark border-2`}>
 
+                    <div style={{width: "100%",
+                        marginTop: "10px",
+                        position: 'fixed',
+                        zIndex: "100",
+                        left: "78%"}}>
+                        <img style={{width: "35px",
+                            position: "absolute",
+                            margin: "5px"}}
+                             src="https://i.pinimg.com/originals/05/9b/ad/059bad28392cfadc21541a367b145e29.png" />
 
                         <input type="text" placeholder="Search Favourite Pitches"
                                className={`${styles.inputStyle} py-3 my-2 w-100 text-center`}
@@ -127,6 +134,7 @@ function DashboardRec() {
                                 return item
                             }
                         }).map((item, i) => (
+
                             <FavouritePitches item={item} user={user} setShowFav={setShowFav}
                                               key={i}/>
                         ))}

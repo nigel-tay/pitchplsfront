@@ -1,17 +1,16 @@
-import React, {useRef, useState} from 'react';
-import {Container, Card, Col, Row, Modal, Form} from "react-bootstrap";
+import React, {useEffect, useRef, useState} from 'react';
+import {Col, Row, Modal, Form} from "react-bootstrap";
 import axios from "axios"
-import styles from "./PitchItem.module.css"
+import 'tippy.js/dist/tippy.css';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 
-
-
-function PitchItem({item, user, setPitch}) {
+function PitchItem({item, setPitch}) {
     const [show, setShow] = useState(false);
+    const [user, setUser] = useState({})
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [showEdit, setShowEdit] = useState(false);
@@ -24,6 +23,35 @@ function PitchItem({item, user, setPitch}) {
     const [comment, setComment] = useState({name: user.name, text: ""})
     const form = useRef(null)
 
+    useEffect(() => {
+        async function setUserStats() {
+            try {
+                let {data} = await axios.get("/auth/user", {
+                    headers: {
+                        authorization: `Bearer ${localStorage.token}`
+                    }
+                })
+                setUser(data.user)
+                // console.log(user._id)
+
+            } catch (e) {
+                setUser({})
+                localStorage.removeItem("token")
+            }
+        }
+
+        setUserStats()
+    }, [])
+
+    async function getPitch() {
+        let {data} = await axios.get(`/user/${user._id}`)
+        console.log("testing")
+        if(data.user.pitches){
+            setPitch(data.user.pitches.reverse())
+        }else {
+            setPitch(null)
+        }
+    }
 
     async function deletePost() {
         await axios.delete(`/api/pitch/delete/${item._id}`);
@@ -39,6 +67,7 @@ function PitchItem({item, user, setPitch}) {
         }else {
             setPitch(null)
         }
+
     }
 
 
@@ -60,7 +89,6 @@ function PitchItem({item, user, setPitch}) {
         alert('Pitch Edited!');
         setShowEdit(false)
         getPitch()
-
     }
 
     async function postComment(e) {
@@ -75,7 +103,6 @@ function PitchItem({item, user, setPitch}) {
         getPitch()
     }
 
-    // console.log(item.comments)
     return (
 
         <div>
@@ -129,8 +156,10 @@ function PitchItem({item, user, setPitch}) {
 
             <Modal show={showEdit} onHide={handleCloseEdit}>
                 <Form ref={form} id="form" onSubmit={editPost} method="post">
+
                     <Row className="justify-content-center mx-2 text-dark" >
                         <label>Title * </label>
+
 
                         <input onChange={change}
                                type="text"
@@ -143,7 +172,7 @@ function PitchItem({item, user, setPitch}) {
                                defaultValue={item.title}
                                required={true}/>
 
-                        <label>Self intro *</label>
+                        <label>Self introduction</label>
                         <textarea onChange={change}
                                   rows="5"
                                   cols="60"
@@ -155,7 +184,7 @@ function PitchItem({item, user, setPitch}) {
                                   maxLength={200}/>
 
 
-                        <label>USP *</label>
+                        <label>USP</label>
                         <textarea onChange={change}
                                   type="text"
                                   name="usp"
@@ -167,7 +196,7 @@ function PitchItem({item, user, setPitch}) {
                                   defaultValue={item.usp}
                                   maxLength={200}/>
 
-                        <label>Goals *</label>
+                        <label>Goals</label>
                         <textarea onChange={change}
                                   type="text"
                                   name="goals"
@@ -210,7 +239,6 @@ function PitchItem({item, user, setPitch}) {
                                 <button className="btn   bg-transparent px-2 mx-1" onClick={handleShow}> <VisibilityIcon /></button>
                                 <button className="btn   bg-transparent px-2 mx-1" onClick={handleShowEdit}> <EditIcon /></button>
                                 <button className="btn   bg-transparent px-2" onClick={deletePost}> <DeleteIcon /></button>
-
                             </Col>
                         </Row>
 

@@ -1,10 +1,8 @@
+
 .App {
   text-align: center;
 }
 
-html {
-  color: black
-}
 
 .banner {
   background-image: url("https://image.shutterstock.com/image-vector/cats-banner-260nw-441292912.jpg");
@@ -27,6 +25,7 @@ html {
   --ff-title: 'Italiana', serif;
   --ff-serif: 'Roboto', sans-serif;
 }
+
 
 
 
@@ -82,3 +81,11 @@ html {
     margin-top: 60px;
   }
 }
+
+html{
+  box-sizing: border-box;
+  font-family: var(--ff-serif);
+  color: var(--clr-accent);
+  font-size: 1.125rem;
+}
+

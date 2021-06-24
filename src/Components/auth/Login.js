@@ -45,8 +45,11 @@ function Login({auth, setAuth}) {
 
                     <fieldset className="border p-3 rounded">
                         <legend
+
                             className={`${styles.loginFormLegend} border rounded p-1 text-center text-dark`}
-                        >
+
+
+                     >
                             Login Form
                         </legend>
                         <Form ref={form} onSubmit={submitForm} method="post">

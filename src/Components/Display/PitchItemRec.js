@@ -7,7 +7,6 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 function PitchItemRec({item, setPitch, user, setShowFav}) {
-    // const [user, setUser] = useState({})
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -15,11 +14,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
     const handleCloseComment = () => setShowComment(false);
     const handleShowComment = () => setShowComment(true);
     const [comment, setComment] = useState({name: user.name, text: ""})
-
     const form = useRef(null)
-
-
-
 
     async function getFavourites() {
         console.log('YOUR MATHER')
@@ -52,9 +47,8 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
     }
 
 
-
     async function getPitch() {
-        console.log('YOUR FATHAR')
+      
         let {data} = await axios.get(`/api/pitch`)
         setPitch(data.pitches.reverse())
 
@@ -68,6 +62,34 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
 
     async function postComment(e) {
         e.preventDefault()
+
+//         const chatName = item.title
+//         const firstMsg = prompt('Please enter a welcome message')
+//         if (chatName && firstMsg) {
+//             let chatId = ''
+//             let recId = ''
+//             let jsId = ''
+//             await axios.get(`/user/${user._id}`)
+//                 .then((res)=>{
+//                     recId = res.data.user._id
+//                     jsId = item.creator
+//                     console.log(recId)
+//                     console.log(jsId)
+//                 })
+//             await axios.post('/chat/new/conversation', {
+//                 chatName: chatName
+//             }).then((res) => {
+//                 chatId = res.data._id
+//             }).then(() => {
+//                 axios.post(`/chat/first/message?id=${chatId}&recId=${recId}&jsId=${jsId}`, {
+//                     message: firstMsg,
+//                     timestamp: Date.now(),
+//                     user: user
+//                 })
+//                 console.log(user)
+//                 alert("Message Sent")
+//             })
+
         try{
             await axios.put(`/api/pitch/editcomment/${item._id}`, comment);
             setShowComment(false)
@@ -136,13 +158,12 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
                             <h4>{item.title}</h4>
                         <span>  {item.selfintro}</span>
                         <span> {item.usp}, </span>
-
+                        <span >  {item.goals}, </span>
                             <Row className="justify-content-center"
                                  style={{
                                      position: "fixed",
                                      width: "100%",
-                                     bottom: 0,
-                                     paddingBottom: 0
+                                     bottom: 0
                                  }}>
                                 <Col md={4}>
 
@@ -151,10 +172,9 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
                                     </Form>
                                 </Col>
 
-
-
                                 <Col md={4}>
                                     <button className="btn bg-transparent text-dark" onClick={handleShow}> <VisibilityIcon /> </button>
+
 
                                 </Col>
                             </Row>

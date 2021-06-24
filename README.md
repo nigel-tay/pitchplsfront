@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# Pitch Please!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Pitch Please is a platform for like minded tech individuals to connect. Be it Recruiter or Job Seeker, we hope that our application can be the bridge that connects potential talents with companies based only on a single post-it elevator pitch. No photos, no judgement, just give us your Pitch Please!
 
-In the project directory, you can run:
+### Technologies Used
 
-### `npm start`
+- React
+- Bootstrap with react
+- Ajax (axios) for API calls
+- Passport authentication
+- MongoDB
+- Mongoose
+- Material
+- Tippy.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Wireframes
 
-### `npm test`
+#### Initial planning with rough sketches for wire framing<br/>
+<img src="images/wire.png" width="70%">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Plan for component paths<br/>
+<img src="images/componentPath.png" width="70%">
 
-### `npm run build`
+### User Stories
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+User(Job Seeker) must be able to:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Easily locate and register/sign up for an account on Pitch Please.
+- Intuitively create a pitch and post/draft it to their pitch list once signed up/logged in.
+- Be able to communicate with Recruiter when recruiter reaches out.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+User(Recruiter) must be able to:
+- Easily locate and register/sign up for an account on Pitch Please.
+- Search for pitches by category. (e.g. React, Javascript)
+- Add favourite pitches to their Short List.
+- Make contact with Job Seekers.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Planning and Development Process
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Phase 1: Pre-Project week<br/>
+Discuss on potential project ideas and shortlist the best few. Eventually decided on our current project Pitch Please.
+After discussing as a group what we foresee the app to need, each member was delegated a task to further research upon.
 
-## Learn More
+Applications like Trello and Figma was used to help us plan and delegate work.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Trello, a kanban board tool allowing better planning and clarity<br/>
+<img src="images/trello.png" width="70%">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### More detailed design work with Figma. Planning colours for the theme of our app<br/>
+<img src="images/figma.png" width="70%">
 
-### Code Splitting
+Phase 2: First half of Project Week<br/>
+We knew from previous experience that it was important to have a good foundation to build upon.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+We agreed upon what was required for the backend (models, routes, etc), before proceeding with component creation on React.
 
-### Analyzing the Bundle Size
+Rough layout and main components were created, alongside the paths that linked the frontend together. Once that was done, we could finally link both front and backends together to start mapping our information to be displayed on the frontend.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Some functions we implemented:
 
-### Making a Progressive Web App
+Separate dashboards for Job seekers and Recruiters, including different funcitonality for the Post-it pitches.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Job Seeker view<br/>
+<img src="images/jobseeker.png" width="70%">
 
-### Advanced Configuration
+#### Recruiter view<br/>
+<img src="images/recruiter.png" width="70%">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### Search function<br/>
+<img src="images/search.png" width="70%">
 
-### Deployment
+Phase 3: The final stretch; Finishing up the Project<br/>
+By Thursday we were 90% done. All that was left was to continue working on our chat function and polish the site's CSS.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Problem-Solving Strategy
 
-### `npm run build` fails to minify
+Working on our problems together helped the team understand different complexities of the different components in the project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+It was the first time any of us were attempting to implement a live chat. Hence it was difficult understanding its complexities.
+We tried our best to break down this daunting task into smaller problems that we could take on and slowly worked our way up.
+
+Many heads tackling a single problem made project progression much smoother.
+
+### Unsolved problems
+
+List unsolved problems which would be fixed in future iterations.
+
+## APIs Used
+
+List your APIs you have used in this project and explain why did you use it.
+
+---
+
+## Acknowledgments
+
+
+---
+
+ ## References

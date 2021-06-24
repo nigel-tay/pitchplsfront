@@ -6,12 +6,15 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@tippyjs/react": "^4.2.5",
     "bootstrap": "^5.0.1",
+    "pusher-js": "^7.0.3",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
     "react-native": "^0.64.2",
     "react-scripts": "4.0.3",
+    "scroll-snap": "^3.2.4",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -42,6 +45,7 @@
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
+    "react-flip-move": "^3.0.4",
     "react-hook-form": "^7.8.8",
     "react-router-dom": "^5.2.0"
   }
