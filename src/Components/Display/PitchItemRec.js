@@ -23,7 +23,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
 
     async function getFavourites() {
         console.log('YOUR MATHER')
-        let {data} = await axios.get(`/user/${user._id}`)
+        let {data} = await axios.get(`/api/user/${user._id}`)
         // console.log("data",data)
         // console.log("fav", data.user.favourites)
         if (data.user.favourites) {
@@ -37,7 +37,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
         console.log("item id", item._id)
         if (item) {
             try {
-                let res = await axios.put(`/user/edit/`, item, {
+                let res = await axios.put(`/api/user/edit/`, item, {
                     headers: {
                         authorization: `Bearer ${localStorage.token}`
                     }
@@ -51,30 +51,11 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
         getFavourites()
     }
 
-    // async function chatStart(e) {
-    //     e.preventDefault()
-    //     const chatName = item.title
-    //     if (chatName) {
-    //         let chatId = ''
-    //         axios.post('http://localhost:9000/new/conversation', {
-    //             chatName: chatName
-    //         }).then((res) => {
-    //             chatId = res.data._id
-    //         }).then(() => {
-    //             const firstMsg = prompt('Please enter a welcome message')
-    //             window.open(`http://localhost:3001/`, '_blank')
-    //             axios.post(`http://localhost:9000/new/message?id=${chatId}`, {
-    //                 message: firstMsg,
-    //                 timestamp: Date.now(),
-    //                 user: user
-    //             })
-    //         })
-    //     }
-    // }
+
 
     async function getPitch() {
         console.log('YOUR FATHAR')
-        let {data} = await axios.get(`/pitch`)
+        let {data} = await axios.get(`/api/pitch`)
         setPitch(data.pitches)
 
     }
@@ -88,7 +69,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
     async function postComment(e) {
         e.preventDefault()
         try{
-            await axios.put(`/pitch/editcomment/${item._id}`, comment);
+            await axios.put(`/api/pitch/editcomment/${item._id}`, comment);
             setShowComment(false)
             getPitch()
         }catch (e) {
@@ -169,9 +150,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
                                     <button type="submit" className="btn bg-transparent"><img src="https://img.icons8.com/offices/30/000000/filled-like.png"/> </button>
                                     </Form>
                                 </Col>
-                                        {/*<Col md={4}>*/}
 
-                                        {/*</Col>*/}
 
 
                                 <Col md={4}>

@@ -23,7 +23,7 @@ function Message({user, item}) {
         e.preventDefault()
         console.log(message)
         try{
-            await axios.put(`/user/messages/${item.creator}`, message);
+            await axios.put(`/api/user/messages/${item.creator}`, message);
             alert('Message Sent! :D');
             handleClose()
         }catch (e) {
@@ -40,7 +40,7 @@ function Message({user, item}) {
     async function getMessage() {
 
         try{
-            let {data} = await axios.get(`/user/${user._id}`);
+            let {data} = await axios.get(`/api/user/${user._id}`);
             console.log(data.user.messages)
             setMyMsg(data.user.messages.reverse())
             // setMyMsg(data.messages)

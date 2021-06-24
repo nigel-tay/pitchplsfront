@@ -20,7 +20,7 @@ function Single({msg}) {
     };
 
     async function getSingle(){
-        let {data} = await axios.get(`/pitch/${msg.pitchId}`)
+        let {data} = await axios.get(`/api/pitch/${msg.pitchId}`)
         console.log(data.pitch)
         setSingle(data.pitch)
 

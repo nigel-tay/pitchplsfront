@@ -26,14 +26,14 @@ function PitchItem({item, user, setPitch}) {
 
 
     async function deletePost() {
-        await axios.delete(`/pitch/delete/${item._id}`);
+        await axios.delete(`/api/pitch/delete/${item._id}`);
         console.log('Delete successful');
         getPitch()
     }
 
     async function getPitch() {
         // console.log("YOUR MATHER")
-        let {data} = await axios.get(`/user/${user._id}`)
+        let {data} = await axios.get(`/api/user/${user._id}`)
         if(data.user.pitches){
             setPitch(data.user.pitches.reverse())
         }else {
@@ -56,7 +56,7 @@ function PitchItem({item, user, setPitch}) {
 
     async function editPost(e) {
         e.preventDefault()
-        await axios.put(`/pitch/edit/${item._id}`, post);
+        await axios.put(`/api/pitch/edit/${item._id}`, post);
         alert('Pitch Edited!');
         setShowEdit(false)
         getPitch()
@@ -66,7 +66,7 @@ function PitchItem({item, user, setPitch}) {
     async function postComment(e) {
         e.preventDefault()
         try{
-            await axios.put(`/pitch/editcomment/${item._id}`, comment);
+            await axios.put(`/api/pitch/editcomment/${item._id}`, comment);
             setShowComment(false)
 
         }catch (e) {

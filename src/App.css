@@ -1,6 +1,11 @@
 .App {
   text-align: center;
 }
+
+html {
+  color: black
+}
+
 .banner {
   background-image: url("https://image.shutterstock.com/image-vector/cats-banner-260nw-441292912.jpg");
   height: 18vh;
@@ -12,7 +17,6 @@
   align-items: flex-start;
   justify-content: center;
 }
-
 
 :root{
   --clr-text: #183a1d;
@@ -59,5 +63,22 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.dashboardcontainer {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 1px;
+  margin-top: 60px;
+}
+
+
+@media screen and (max-width: 780px) {
+  .dashboardcontainer {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 1px;
+    margin-top: 60px;
   }
 }

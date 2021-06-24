@@ -23,7 +23,7 @@ function App() {
     useEffect(() => {
         async function setUserStats() {
             try {
-                let {data} = await axios.get("/auth/user", {
+                let {data} = await axios.get("/api/auth/user", {
                     headers: {
                         authorization: `Bearer ${localStorage.token}`
                     }

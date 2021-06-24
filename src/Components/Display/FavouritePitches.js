@@ -21,7 +21,7 @@ function FavouritePitches({item, user, setShowFav}) {
 
     async function getFavourites() {
         console.log('YOUR MATHER')
-        let {data} = await axios.get(`/user/${user._id}`)
+        let {data} = await axios.get(`/api/user/${user._id}`)
         // console.log("data",data)
         // console.log("fav", data.user.favourites)
         if (data.user.favourites) {
@@ -36,7 +36,7 @@ function FavouritePitches({item, user, setShowFav}) {
         console.log("remove",item)
         if (item) {
             try {
-                let res = await axios.put(`/user/editing/`, item, {
+                let res = await axios.put(`/api/user/editing/`, item, {
                     headers: {
                         authorization: `Bearer ${localStorage.token}`
                     }
@@ -54,7 +54,7 @@ function FavouritePitches({item, user, setShowFav}) {
     async function postComment(e) {
         e.preventDefault()
         try{
-        await axios.put(`/pitch/editcomment/${item._id}`, post);
+        await axios.put(`/api/pitch/editcomment/${item._id}`, post);
         alert('Commented!');
         setShowEdit(false)
         }catch (e) {
@@ -72,7 +72,7 @@ function FavouritePitches({item, user, setShowFav}) {
     // async function postMessage(e) {
     //     e.preventDefault()
     //     try{
-    //         await axios.put(`/pitch/editcomment/${item._id}`, post);
+    //         await axios.put(`/api/pitch/editcomment/${item._id}`, post);
     //         alert('Pitch Edited!');
     //         // setShowEdit(false)
     //     }catch (e) {
@@ -158,19 +158,19 @@ function FavouritePitches({item, user, setShowFav}) {
                              paddingBottom: 0
                          }}>
 
-                        <Col md={4}>
+                        <Col md={7}>
                         <Form ref={form} id="form" onSubmit={removeFav}>
 
                             <button className="btn bg-transparent" type="submit"><img src="https://img.icons8.com/offices/30/000000/dislike.png"/></button>
+                            <button className="btn bg-transparent text-dark" onClick={handleShow}> <VisibilityIcon/> </button>
 
                             </Form>
                         </Col>
-                        <Col md={4}>
+                        <Col md={5}>
+
                             <Message user={user} item={item}/>
                         </Col>
-                        <Col md={4}>
-                        <button className="btn bg-transparent text-dark" onClick={handleShow}> <VisibilityIcon/> </button>
-                        </Col>
+
 
                     </Row>
 
