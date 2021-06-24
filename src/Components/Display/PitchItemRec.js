@@ -4,19 +4,22 @@ import axios from "axios"
 import styles from "./PitchItem.module.css"
 import ForumIcon from '@material-ui/icons/Forum';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
-
-
-function PitchItemRec({item, setShowFav, user}) {
+function PitchItemRec({item, setPitch, user, setShowFav}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    const [showComment, setShowComment] = useState(false);
+    const handleCloseComment = () => setShowComment(false);
+    const handleShowComment = () => setShowComment(true);
+    const [comment, setComment] = useState({name: user.name, text: ""})
     const form = useRef(null)
 
-    async function getFave() {
-
+    async function getFavourites() {
+        console.log('YOUR MATHER')
         let {data} = await axios.get(`/user/${user._id}`)
+        // console.log("data",data)
         // console.log("fav", data.user.favourites)
         if (data.user.favourites) {
             setShowFav(data.user.favourites.reverse())
@@ -24,12 +27,9 @@ function PitchItemRec({item, setShowFav, user}) {
             setShowFav(null)
         }
     }
-
     async function submitFav(e) {
         e.preventDefault(e)
-        // setShow(false)
         console.log("item id", item._id)
-
         if (item) {
             try {
                 let res = await axios.put(`/user/edit/`, item, {
@@ -44,51 +44,83 @@ function PitchItemRec({item, setShowFav, user}) {
                 console.log(e)
             }
         }
+        getFavourites()
     }
 
-    async function chatStart(e) {
+    async function getPitch() {
+        console.log('YOUR FATHAR')
+        let {data} = await axios.get(`/pitch`)
+        setPitch(data.pitches)
+
+    }
+
+    function changeComment(e) {
+        setComment(prevState => ({...prevState, [e.target.name]: e.target.value}))
+
+        console.log("item", item)
+    }
+
+    async function postComment(e) {
         e.preventDefault()
-        const chatName = item.title
-        const firstMsg = prompt('Please enter a welcome message')
-        if (chatName && firstMsg) {
-            let chatId = ''
-            let recId = ''
-            let jsId = ''
-            await axios.get(`/user/${user._id}`)
-                .then((res)=>{
-                    recId = res.data.user._id
-                    jsId = item.creator
-                    console.log(recId)
-                    console.log(jsId)
-                })
-            await axios.post('http://localhost:9000/new/conversation', {
-                chatName: chatName
-            }).then((res) => {
-                chatId = res.data._id
-            }).then(() => {
-                window.open(`http://localhost:3001/`, '_blank')
-                axios.post(`http://localhost:9000/new/message?id=${chatId}&recId=${recId}&jsId=${jsId}`, {
-                    message: firstMsg,
-                    timestamp: Date.now(),
-                    user: user
-                })
-            })
+
+        try{
+            await axios.put(`/pitch/editcomment/${item._id}`, comment);
+            setShowComment(false)
+            getPitch()
+        }catch (e) {
+            console.log(e.response)
         }
     }
+
 
     return (
 
         <div>
+
+
+
+            <Modal show={showComment} onHide={handleCloseComment}>
+                <Form ref={form} id="form" onSubmit={postComment} method="post">
+                    <Row className="justify-content-center mx-2">
+                        <label>Title * </label>
+
+                        <input onChange={changeComment}
+                               type="text"
+                               name="text"
+                               rows="3"
+                               cols="60"
+                               className="form-control"
+                               aria-describedby="Enter title"
+                               placeholder="Enter comment"
+                        />
+
+                        <button onClick={postComment} className="btn border-dark text-center m-2">
+                            <ChatBubbleIcon />
+                        </button>
+
+                    </Row>
+                </Form>
+            </Modal>
+
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>{item.title}</Modal.Title>
                     <button className="px-2" onClick={handleClose}> x </button>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>{item.selfintro}</p>
-                    <p>{item.usp}</p>
-                    <p>{item.goals} </p>
-                </Modal.Body>
+                    <p>Self Intro: {item.selfintro}</p>
+                    <p>USP: {item.usp}</p>
+                    <p>Goals: {item.goals} </p>
+                    <p>Comments:
+                        { item.comments?.map(comment => (
+
+                            <div>{comment.name} said: {comment.text}</div>
+                        ))}
+                    </p>
+                    <Row>
+                    <button className="btn border-dark bg-transparent text-dark" onClick={handleShowComment} ><ChatBubbleIcon /></button>
+                    </Row>
+                    </Modal.Body>
             </Modal>
 
             <div className={`${styles.makethishover}`}>
@@ -104,8 +136,7 @@ function PitchItemRec({item, setShowFav, user}) {
                                  style={{
                                      position: "fixed",
                                      width: "100%",
-                                     bottom: 0,
-                                     paddingBottom: 10,
+                                     bottom: 0
                                  }}>
                                 <Col md={4}>
 
@@ -113,13 +144,9 @@ function PitchItemRec({item, setShowFav, user}) {
                                     <button type="submit" className="btn bg-transparent"><img src="https://img.icons8.com/offices/30/000000/filled-like.png"/> </button>
                                     </Form>
                                 </Col>
-                                        <Col md={4}>
-                                        <button className="btn bg-transparent border border-dark text-dark" onClick={chatStart} ><ForumIcon /></button>
-                                        </Col>
-
-
                                 <Col md={4}>
-                                    <button className="btn bg-transparent border border-dark text-dark" onClick={handleShow}><VisibilityIcon /></button>
+                                    <button className="btn bg-transparent text-dark" onClick={handleShow}> <VisibilityIcon /> </button>
+
 
                                 </Col>
                             </Row>

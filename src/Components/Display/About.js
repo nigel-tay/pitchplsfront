@@ -16,6 +16,7 @@ function About(props) {
                 What this means is, Recruiters can connect with the person you truly are underneath,
                 without any prejudice to your race, religion or gender.<br/>
                 <br/>
+
                 With our platform, we hope that Occupational Inequality will soon be a thing of the past.
             </p>
         </div>

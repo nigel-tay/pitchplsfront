@@ -1,9 +1,10 @@
 import React, {useRef, useEffect, useState } from "react";
 import {Redirect} from "react-router-dom";
 import axios from "axios";
-import {Container, Form, Row,Col} from "react-bootstrap";
+import {Container, Form, Row, Col, Modal} from "react-bootstrap";
 import PitchItem from "./PitchItem";
 import styles from "./Dashboard.module.css"
+import Reply from "./Reply";
 import InfoIcon from '@material-ui/icons/Info';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
@@ -14,6 +15,10 @@ const Dashboard = () => {
     const [pitch, setPitch] = useState([])
     const [post, setPost] = useState({})
     const form = useRef(null)
+    // const [myMsg, setMyMsg] = useState([])
+    // const [show, setShow] = useState(false);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
 
     useEffect(() => {
         async function setUserStats() {
@@ -36,18 +41,17 @@ const Dashboard = () => {
     }, [])
 
 
+
     useEffect(() =>{
         setPost({creator : user._id})
         // console.log(post)
     },[user])
 
+        async function getPitch() {
+            console.log("YOUR MATHER")
+            let {data} = await axios.get(`/user/${user._id}`)
+            if(data.user.pitches){
 
-//this is to get pitch from a user
-
-    async function getPitch() {
-        let {data} = await axios.get(`/user/${user._id}`)
-        console.log("testing")
-        if(data.user.pitches){
             setPitch(data.user.pitches.reverse())
         }else {
             setPitch(null)
@@ -55,7 +59,6 @@ const Dashboard = () => {
     }
 
     useEffect(() => {
-
         getPitch()
     }, [user])
 
@@ -70,6 +73,7 @@ const Dashboard = () => {
         } catch (e) {
             console.log(e)
         }
+        getPitch()
     }
 
 
@@ -78,22 +82,14 @@ const Dashboard = () => {
         console.log(post)
     }
 
-
-
-
-
-
-
 if(user.role === "recruiter"){
    return < Redirect to="/recruiter" />
 }
 
-//////////this part is for jobseeker//////////
-
     return (
         <Container fluid>
+       
             <Row>
-                {/*<Col md={4} className="">*/}
                         <Col md={3} className={`${styles.sidebar} border border-dark border-2`}>
                     <h4 className="text-center mt-2"> Create New Pitch:</h4>
                     <Form ref={form} id="form" onSubmit={submitPost} method="post">
@@ -258,8 +254,11 @@ if(user.role === "recruiter"){
                         margin: "2px",
                     }} >
                     {pitch.map((item,i) => (
-                        <PitchItem item={item} setPitch={setPitch}
-                                key ={i}/>
+                        <PitchItem
+                            item={item}
+                            key ={i}
+                            user={user}
+                            setPitch={setPitch}/>
                     )) }
                     </div>
                 </Col>
