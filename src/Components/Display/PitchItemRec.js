@@ -69,19 +69,19 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
 //             let chatId = ''
 //             let recId = ''
 //             let jsId = ''
-//             await axios.get(`/user/${user._id}`)
+//             await axios.get(`/apiuser/${user._id}`)
 //                 .then((res)=>{
 //                     recId = res.data.user._id
 //                     jsId = item.creator
 //                     console.log(recId)
 //                     console.log(jsId)
 //                 })
-//             await axios.post('/chat/new/conversation', {
+//             await axios.post('/apichat/new/conversation', {
 //                 chatName: chatName
 //             }).then((res) => {
 //                 chatId = res.data._id
 //             }).then(() => {
-//                 axios.post(`/chat/first/message?id=${chatId}&recId=${recId}&jsId=${jsId}`, {
+//                 axios.post(`/api/chat/first/message?id=${chatId}&recId=${recId}&jsId=${jsId}`, {
 //                     message: firstMsg,
 //                     timestamp: Date.now(),
 //                     user: user

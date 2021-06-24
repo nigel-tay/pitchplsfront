@@ -16,7 +16,7 @@ function SidebarChat({ id, chatName }) {
     const [lastTimestamp, setLastTimestamp] = useState([]);
 
     const getSidebarElement = () => {
-        axios.get(`/chat/get/lastMessage/?id=${id}`)
+        axios.get(`/api/chat/get/lastMessage/?id=${id}`)
             .then((res) => {
                 setLastMsg(res.data.message)
                 setLastPhoto(res.data.user.photo)
@@ -46,7 +46,7 @@ function SidebarChat({ id, chatName }) {
             // }
             // className="sidebarChat"
         >
-            <Avatar src={lastPhoto} />
+            {/*<Avatar src={lastPhoto} />*/}
             <div className="sidebarChat__info">
                 <h3>{chatName}</h3>
                 <p>{lastMsg}</p>

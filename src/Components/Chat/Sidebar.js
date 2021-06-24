@@ -47,7 +47,7 @@ function Sidebar({user, auth}) {
     //
     //
     // async function getChat() {
-    //     let {data} = await axios.get(`/chat/get/conversationFromRC?id=${userID}`)
+    //     let {data} = await axios.get(`/apichat/get/conversationFromRC?id=${userID}`)
     //     console.log(data)
     //     console.log("message:",data[0]?.conversation[0]?.message)
     //     if (data[0]){
@@ -56,7 +56,7 @@ function Sidebar({user, auth}) {
     // }
     //
     // async function getConversation() {
-    //        await axios.get(`/chat/get/conversation?id=60d401e927522d0988147a8b`)
+    //        await axios.get(`/apichat/get/conversation?id=60d401e927522d0988147a8b`)
     //             .then((res) => {
     //                 setMessages(res.data[0])
     //
@@ -65,7 +65,7 @@ function Sidebar({user, auth}) {
     // }
     //
     // function addMessage() {
-    //     axios.post(`/chat/new/message?id=60d401e927522d0988147a8b`, {
+    //     axios.post(`/api/chat/new/message?id=60d401e927522d0988147a8b`, {
     //         message: "This is a test!",
     //         timestamp: Date.now(),
     //         user: user
@@ -80,7 +80,7 @@ function Sidebar({user, auth}) {
 
 
     const getChats = () => {
-        axios.get('/chat/get/conversationList')
+        axios.get('/api/chat/get/conversationList')
             .then((res) => {
                 setChats(res.data)
             })
@@ -104,12 +104,12 @@ function Sidebar({user, auth}) {
     //     if (chatName && firstMsg) {
     //         let chatId = ''
     //
-    //         axios.post('/chat/new/conversation', {
+    //         axios.post('/apichat/new/conversation', {
     //             chatName: chatName
     //         }).then((res) => {
     //             chatId = res.data._id
     //         }).then(() => {
-    //             axios.post(`/chat/new/message?id=${chatId}`, {
+    //             axios.get(`/api/chat/new/message?id=${chatId}`, {
     //                 message: firstMsg,
     //                 timestamp: Date.now(),
     //                 user: user

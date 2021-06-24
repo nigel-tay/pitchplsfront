@@ -16,14 +16,15 @@ function Chat({user, chatId, chatName}) {
     const [messages, setMessages] = useState([]);
 
 
-    const getConversation = (chatId) => {
-        if (chatId) {
-            axios.get(`/get/conversation?id=${chatId}`)
-                .then((res) => {
-                    setMessages(res.data[0].conversation)
-                })
+
+
+    function getConversation() {
+        axios.get(`/api/chat/get/conversation?id=60d49d46b84852b62dddc556`)
+            .then((res) => {
+                setMessages(res.data[0].conversation)
+            })
+        console.log('messages',messages)
         }
-    }
 
     useEffect(() => {
         pusher.unsubscribe('messages')
@@ -38,7 +39,7 @@ function Chat({user, chatId, chatName}) {
     const sendMessage = (e) => {
         e.preventDefault();
 
-        axios.post(`/new/message?id=${chatId}`, {
+        axios.post(`/api/new/message?id=${chatId}`, {
             message: input,
             timestamp: Date.now(),
             user: user
@@ -76,7 +77,7 @@ function Chat({user, chatId, chatName}) {
                     />
                     <button onClick={sendMessage}>Send Message</button>
                 </form>
-
+                <button onClick={getConversation}>get convo</button>
                 <IconButton>
                     <MicNoneIcon className="chat__mic"/>
                 </IconButton>

@@ -44,7 +44,7 @@ function PitchItem({item, setPitch}) {
     }, [])
 
     async function getPitch() {
-        let {data} = await axios.get(`/user/${user._id}`)
+        let {data} = await axios.get(`/apiuser/${user._id}`)
         console.log("testing")
         if(data.user.pitches){
             setPitch(data.user.pitches.reverse())

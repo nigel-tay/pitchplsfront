@@ -139,6 +139,7 @@ function DashboardRec() {
                                               key={i}/>
                         ))}
                     </div>
+                    </div>
                 </Col>
             </Row>
         </Container>
