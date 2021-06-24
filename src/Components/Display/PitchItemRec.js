@@ -59,17 +59,18 @@ function PitchItemRec({item, setShowFav, user}) {
                     console.log(recId)
                     console.log(jsId)
                 })
-            await axios.post('http://localhost:9000/new/conversation', {
+            await axios.post('/chat/new/conversation', {
                 chatName: chatName
             }).then((res) => {
                 chatId = res.data._id
             }).then(() => {
-                window.open(`http://localhost:3001/`, '_blank')
-                axios.post(`http://localhost:9000/new/message?id=${chatId}&recId=${recId}&jsId=${jsId}`, {
+                axios.post(`/chat/first/message?id=${chatId}&recId=${recId}&jsId=${jsId}`, {
                     message: firstMsg,
                     timestamp: Date.now(),
                     user: user
                 })
+                console.log(user)
+                alert("Message Sent")
             })
         }
     }
