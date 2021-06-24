@@ -37,7 +37,7 @@ function Register({auth, setAuth}) {
         <div>
             <Container>
 
-                <div className={`${styles.container} container-fluid d-flex align-items-center justify-content-center`}>
+                <div className={`${styles.container} text-center container-fluid d-flex align-items-center justify-content-center`}>
                     <div className={styles.registrationFormContainer}>
                         <fieldset className="border p-3 rounded">
                             <legend
@@ -103,10 +103,10 @@ function Register({auth, setAuth}) {
                                 </div>
 
                                 <div className="d-flex align-items-center justify-content-center">
-                                    <button type="submit" className="btn btn-outline-primary">
+                                    <button type="submit" className="btn border-dark navButton mx-2">
                                         Submit
                                     </button>
-                                    <button className="btn btn-link">
+                                    <button className="btn border-dark navButton mx-2">
                                         <Link to="/login">Cancel</Link>
                                     </button>
                                 </div>

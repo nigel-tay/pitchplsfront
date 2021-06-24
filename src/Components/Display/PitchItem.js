@@ -2,9 +2,15 @@ import React, {useRef, useState} from 'react';
 import {Container, Card, Col, Row, Modal, Form} from "react-bootstrap";
 import axios from "axios"
 import styles from "./PitchItem.module.css"
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 
-function PitchItem({item, user}) {
+
+
+function PitchItem({item, user, setPitch}) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -22,7 +28,19 @@ function PitchItem({item, user}) {
     async function deletePost() {
         await axios.delete(`/pitch/delete/${item._id}`);
         console.log('Delete successful');
+        getPitch()
     }
+
+    async function getPitch() {
+        // console.log("YOUR MATHER")
+        let {data} = await axios.get(`/user/${user._id}`)
+        if(data.user.pitches){
+            setPitch(data.user.pitches.reverse())
+        }else {
+            setPitch(null)
+        }
+    }
+
 
 
     function change(e) {
@@ -33,7 +51,6 @@ function PitchItem({item, user}) {
 
     function changeComment(e) {
         setComment(prevState => ({...prevState, [e.target.name]: e.target.value}))
-
         console.log("item", item)
     }
 
@@ -42,6 +59,8 @@ function PitchItem({item, user}) {
         await axios.put(`/pitch/edit/${item._id}`, post);
         alert('Pitch Edited!');
         setShowEdit(false)
+        getPitch()
+
     }
 
     async function postComment(e) {
@@ -53,6 +72,7 @@ function PitchItem({item, user}) {
         }catch (e) {
             console.log(e.response)
         }
+        getPitch()
     }
 
     // console.log(item.comments)
@@ -66,24 +86,26 @@ function PitchItem({item, user}) {
                     <button className="px-2" onClick={handleClose}> x</button>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>{item.usp}</p>
-                    <p>{item.goals} </p>
-                    <p>{item.selfintro}</p>
+                    <p>Self Intro: {item.selfintro}</p>
+                    <p>USP: {item.usp}</p>
+                    <p>Goals: {item.goals} </p>
                     <p>Comments:
                         { item.comments?.map(comment => (
 
                                 <div>{comment.name} said: {comment.text}</div>
                             ))}
                     </p>
-                    <button className="btn border border-dark bg-transparent px-2" onClick={handleShowComment}> comment</button>
-
+                    <Row className=" justify-content-end" >
+                    <button
+                        className=" btn border-dark bg-transparent px-2 " onClick={handleShowComment}> <ChatBubbleIcon /></button>
+                    </Row>
                 </Modal.Body>
             </Modal>
 
             <Modal show={showComment} onHide={handleCloseComment}>
                 <Form ref={form} id="form" onSubmit={postComment} method="post">
                     <Row className="justify-content-center mx-2">
-                        <label>Title * </label>
+                        <label>Comment * </label>
 
                         <input onChange={changeComment}
                                type="text"
@@ -96,7 +118,7 @@ function PitchItem({item, user}) {
                         />
 
                         <button onClick={postComment} className="btn border-dark text-center m-2">
-                            <h3>Comment</h3>
+                           <ChatBubbleIcon />
                         </button>
 
                     </Row>
@@ -185,9 +207,9 @@ function PitchItem({item, user}) {
                                  paddingBottom: 10
                              }}>
                             <Col md={12}>
-                                <button className="btn border border-dark bg-transparent px-2 mx-1" onClick={handleShow}> show</button>
-                                <button className="btn border border-dark bg-transparent px-2 mx-1" onClick={handleShowEdit}> edit</button>
-                                <button className="btn border border-dark bg-transparent px-2" onClick={deletePost}> x</button>
+                                <button className="btn   bg-transparent px-2 mx-1" onClick={handleShow}> <VisibilityIcon /></button>
+                                <button className="btn   bg-transparent px-2 mx-1" onClick={handleShowEdit}> <EditIcon /></button>
+                                <button className="btn   bg-transparent px-2" onClick={deletePost}> <DeleteIcon /></button>
 
                             </Col>
                         </Row>

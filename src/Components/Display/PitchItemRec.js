@@ -2,10 +2,9 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Container, Card, Col, Row, Modal, Form, InputGroup, FormControl} from "react-bootstrap";
 import axios from "axios"
 import styles from "./PitchItem.module.css"
-import Message from "./Message";
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom"
-
-
+import ForumIcon from '@material-ui/icons/Forum';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 function PitchItemRec({item, setPitch, user, setShowFav}) {
     // const [user, setUser] = useState({})
@@ -19,24 +18,6 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
 
     const form = useRef(null)
 
-    // useEffect(() => {
-    //     async function setUserStats() {
-    //         try {
-    //             let {data} = await axios.get("/auth/user", {
-    //                 headers: {
-    //                     authorization: `Bearer ${localStorage.token}`
-    //                 }
-    //             })
-    //             setUser(data.user)
-    //
-    //         } catch (e) {
-    //             setUser({})
-    //             localStorage.removeItem("token")
-    //         }
-    //     }
-    //
-    //     setUserStats()
-    // }, [])
 
 
 
@@ -95,7 +76,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
         console.log('YOUR FATHAR')
         let {data} = await axios.get(`/pitch`)
         setPitch(data.pitches)
-        // console.log("data", data)
+
     }
 
     function changeComment(e) {
@@ -138,7 +119,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
                         />
 
                         <button onClick={postComment} className="btn border-dark text-center m-2">
-                            <h3>Comment</h3>
+                            <ChatBubbleIcon />
                         </button>
 
                     </Row>
@@ -151,17 +132,19 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
                     <button className="px-2" onClick={handleClose}> x </button>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>{item.usp}</p>
-                    <p>{item.goals} </p>
-                    <p>{item.selfintro}</p>
+                    <p>Self Intro: {item.selfintro}</p>
+                    <p>USP: {item.usp}</p>
+                    <p>Goals: {item.goals} </p>
                     <p>Comments:
                         { item.comments?.map(comment => (
 
                             <div>{comment.name} said: {comment.text}</div>
                         ))}
                     </p>
-                    <button className="btn bg-transparent text-dark" onClick={handleShowComment} >Comment</button>
-                </Modal.Body>
+                    <Row>
+                    <button className="btn border-dark bg-transparent text-dark" onClick={handleShowComment} ><ChatBubbleIcon /></button>
+                    </Row>
+                    </Modal.Body>
             </Modal>
 
             <div className={`${styles.makethishover}`}>
@@ -192,7 +175,7 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
 
 
                                 <Col md={4}>
-                                    <button className="btn bg-transparent text-dark" onClick={handleShow}> More </button>
+                                    <button className="btn bg-transparent text-dark" onClick={handleShow}> <VisibilityIcon /> </button>
 
                                 </Col>
                             </Row>

@@ -1,11 +1,13 @@
 import React, {useRef, useState} from 'react';
 import {Col, Row, Form, Modal} from "react-bootstrap";
 import styles from "./PitchItem.module.css"
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import axios from "axios";
 import {BrowserRouter, Redirect, Route, Switch, NavLink} from "react-router-dom";
 import Message from "./Message";
+import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 
-function FavouritePitches({item, user,setShowFav}) {
+function FavouritePitches({item, user, setShowFav}) {
     const form = useRef(null)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -14,11 +16,6 @@ function FavouritePitches({item, user,setShowFav}) {
     const handleCloseEdit = () => setShowEdit(false);
     const handleShowEdit = () => setShowEdit(true);
     const [post, setPost] = useState({name: user.name, text: ""})
-    // const [showMessage, setShowMessage] = useState(false);
-    // const handleCloseMessage = () => setShowMessage(false);
-    // const handleShowMessage = () => setShowMessage(true);
-    // const [message, setMessage] = useState({name: user.name, text: ""})
-
 
 
 
@@ -96,28 +93,6 @@ function FavouritePitches({item, user,setShowFav}) {
     return (
         <div>
 
-            <Message user={user} item={item}/>
-
-
-            {/*<Modal show={showMessage} onHide={handleCloseMessage}>*/}
-            {/*    <Modal.Header>*/}
-            {/*        <Modal.Title>Messages</Modal.Title>*/}
-            {/*        <button className="px-2" onClick={handleCloseMessage}> x </button>*/}
-            {/*    </Modal.Header>*/}
-            {/*    <Modal.Body>*/}
-            {/*        <span> {item.selfintro}</span>*/}
-            {/*        <p>{item.usp}</p>*/}
-            {/*        <p>{item.goals} </p>*/}
-            {/*        <p>{item.selfintro}</p>*/}
-            {/*        <p>Comments:*/}
-            {/*            {*/}
-            {/*                item?.comments?.map(comment => (*/}
-            {/*                    <div>{comment.name} said: {comment.text}</div>*/}
-            {/*                ))}*/}
-            {/*        </p>*/}
-            {/*        <button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>*/}
-            {/*    </Modal.Body>*/}
-            {/*</Modal>*/}
 
 
             <Modal show={show} onHide={handleClose}>
@@ -127,17 +102,19 @@ function FavouritePitches({item, user,setShowFav}) {
                 </Modal.Header>
                 <Modal.Body>
                     <span> {item.selfintro}</span>
-                    <p>{item.usp}</p>
-                    <p>{item.goals} </p>
-                    <p>{item.selfintro}</p>
+                    <p>Self Intro: {item.selfintro}</p>
+                    <p>USP: {item.usp}</p>
+                    <p>Goals: {item.goals} </p>
                     <p>Comments:
                         {
                             item?.comments?.map(comment => (
                                 <div>{comment.name} said: {comment.text}</div>
                             ))}
                     </p>
-                    <button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>
-                </Modal.Body>
+                    <Row>
+                    <button className="btn border-dark bg-transparent text-dark" onClick={handleShowEdit}> <ChatBubbleIcon /> </button>
+                    </Row>
+                    </Modal.Body>
             </Modal>
 
             <Modal show={showEdit} onHide={handleCloseEdit}>
@@ -155,8 +132,8 @@ function FavouritePitches({item, user,setShowFav}) {
                                placeholder="Enter comment"
                                />
 
-                        <button onClick={postComment} className="btn  border-dark text-center m-2">
-                            <h4>Comment</h4>
+                        <button onClick={postComment} className="btn border-dark text-center m-2">
+                            <ChatBubbleIcon />
                         </button>
 
                     </Row>
@@ -169,9 +146,9 @@ function FavouritePitches({item, user,setShowFav}) {
 
 
                     <h4 className="font-monospace"> {item.title}</h4>
-                    <span>  {item.selfintro}</span>
-                    <span> {item.usp}, </span>
-                    <span>  {item.goals}, </span>
+                    <span>Self Intro: {item.selfintro}</span>
+                    <span>USP: {item.usp}</span>
+                    <span>Goals: {item.goals} </span>
 
                     <Row className="justify-content-end"
                          style={{
@@ -180,6 +157,7 @@ function FavouritePitches({item, user,setShowFav}) {
                              bottom: 0,
                              paddingBottom: 0
                          }}>
+
                         <Col md={4}>
                         <Form ref={form} id="form" onSubmit={removeFav}>
 
@@ -188,10 +166,10 @@ function FavouritePitches({item, user,setShowFav}) {
                             </Form>
                         </Col>
                         <Col md={4}>
-                            <NavLink to="/message"> Message </NavLink>
+                            <Message user={user} item={item}/>
                         </Col>
                         <Col md={4}>
-                        <button className="btn bg-transparent text-dark" onClick={handleShow}> More </button>
+                        <button className="btn bg-transparent text-dark" onClick={handleShow}> <VisibilityIcon/> </button>
                         </Col>
 
                     </Row>

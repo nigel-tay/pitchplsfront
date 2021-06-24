@@ -3,8 +3,9 @@
 }
 .banner {
   background-image: url("https://image.shutterstock.com/image-vector/cats-banner-260nw-441292912.jpg");
-  height: 15vh;
+  height: 18vh;
   display: flex;
+  background-repeat: no-repeat;
   background-size: contain;
   background-blend-mode: lighten;
   background-color: rgba(255,255,255,0.6);
@@ -48,6 +49,8 @@
   border-width: 1px;
   color: black;
   font-size: 20px;
+  transform: scale(1.1);
+
 }
 
 @keyframes App-logo-spin {

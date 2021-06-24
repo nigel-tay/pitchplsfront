@@ -12,23 +12,24 @@ function DashboardRec() {
     const [pitch, setPitch] = useState([])
     const [showFav, setShowFav] = useState([])
     const [search, setSearch] = useState("")
-    const [myMsg, setMyMsg] = useState([])
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [searchFav, setSearchFav] = useState("")
+    // const [myMsg, setMyMsg] = useState([])
+    // const [show, setShow] = useState(false);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
 
-    async function getMessage() {
-        try{
-            let {data} = await axios.get(`/user/${user._id}`);
-            console.log(data.user.messages)
-            setMyMsg(data.user.messages)
-            // alert('Pitch Edited!');
-            // console.log(message)
-        }catch (e) {
-            console.log(e.response)
-        }
-        handleShow()
-    }
+    // async function getMessage() {
+    //     try{
+    //         let {data} = await axios.get(`/user/${user._id}`);
+    //         console.log(data.user.messages)
+    //         setMyMsg(data.user.messages)
+    //         // alert('Pitch Edited!');
+    //         // console.log(message)
+    //     }catch (e) {
+    //         console.log(e.response)
+    //     }
+    //     handleShow()
+    // }
 
 
 
@@ -91,25 +92,25 @@ function DashboardRec() {
     return (
         <Container fluid>
 
-            <button onClick={getMessage}> Get Messages</button>
+            {/*<button onClick={getMessage}> Get Messages</button>*/}
 
 
 
-            {/*<button onClick={handleShow}> Message </button>*/}
-            <Modal show={show} onHide={handleClose}>
-                <div className={`border border-dark border-2 px-2`}>
-                    <h3 className="text-danger text-center">My messages:</h3>
-                    {myMsg.map(msg => (
-                        <Reply
-                            msg={msg}
-                            user={user}/>
+            {/*/!*<button onClick={handleShow}> Message </button>*!/*/}
+            {/*<Modal show={show} onHide={handleClose}>*/}
+            {/*    <div className={`border border-dark border-2 px-2`}>*/}
+            {/*        <h3 className="text-danger text-center">My messages:</h3>*/}
+            {/*        {myMsg.map(msg => (*/}
+            {/*            <Reply*/}
+            {/*                msg={msg}*/}
+            {/*                user={user}/>*/}
 
-                    ))}
+            {/*        ))}*/}
 
-                </div>
-                {/*<button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>*/}
+            {/*    </div>*/}
+            {/*    /!*<button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>*!/*/}
 
-            </Modal>
+            {/*</Modal>*/}
 
 
             <Row>
@@ -158,23 +159,37 @@ function DashboardRec() {
                 <Col md={3} className={`${styles.backgroundCork} border border-dark border-2`}>
                     {/*<Message user={user} showFav={showFav}/>*/}
 
-                    <h4 className="mt-3"> My Favourite Pitches</h4>
-
+                    {/*<h4 className="mt-3"> My Favourite Pitches</h4>*/}
+                    <div style={{width: "100%",
+                        marginTop: "10px",
+                        position: 'fixed',
+                        zIndex: "100",
+                        left: "78%"}}>
+                        <img style={{width: "35px",
+                            position: "absolute",
+                            margin: "5px"}}
+                             src="https://i.pinimg.com/originals/05/9b/ad/059bad28392cfadc21541a367b145e29.png" />
+                        <input type="text" placeholder="Search Favourite Pitches"
+                               className={`${styles.inputStyle} pl-3 text-center`}
+                               onChange={e => setSearchFav(e.target.value)}/>
+                    </div>
                     <div style={{
                         display: "grid",
                         gridTemplateColumns: "repeat(1, auto)",
                         gridGap: "1px",
-                        marginTop: "20px",
+                        marginTop: "70px",
 
                     }}>
-                        {showFav.map((item, i) => (
-                            <FavouritePitches
-                                item={item}
-                                key={i}
-                                user={user}
-                                setShowFav={setShowFav}
-
-                            />
+                        {showFav.filter(item => {
+                            if (searchFav === ""){
+                                return item
+                            }
+                            else if (item.title.toLowerCase().includes(searchFav.toLowerCase())){
+                                return item
+                            }
+                        }).map((item, i) => (
+                            <FavouritePitches item={item} user={user} setShowFav={setShowFav}
+                                              key={i}/>
                         ))}
                     </div>
                 </Col>

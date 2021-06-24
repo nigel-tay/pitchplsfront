@@ -1,6 +1,6 @@
 import React, {useRef, useState} from "react";
 import {useForm} from "react-hook-form";
-import {Link, Redirect} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import styles from "./Login.module.css";
 import axios from "axios";
 import {Form} from "react-bootstrap";
@@ -12,20 +12,6 @@ function Login({auth, setAuth}) {
     const [data, setData] = useState({})
     const form = useRef(null)
 
-
-    async function facebook(){
-        try {
-            let data = await axios.get("/auth/facebook/")
-            console.log(data)
-            return <Redirect to="/auth/linkedin/callback" />
-            // localStorage.setItem("token", token)
-            // setAuth(true)
-
-        } catch (e) {
-            console.log(e)
-            alert('try again!')
-        }
-    }
 
 
 
@@ -55,17 +41,11 @@ function Login({auth, setAuth}) {
         return < Redirect to="/dashboard" />
     }
 
-    // function checkLoginState() {
-    //     FB.getLoginStatus(function(response) {
-    //         statusChangeCallback(response);
-    //     });
-    // }
-
 
 
     return (
         <div>
-            <div className={`${styles.container} container-fluid d-flex align-items-center justify-content-center`}>
+            <div className={`${styles.container} text-center container-fluid d-flex align-items-center justify-content-center`}>
                 <div className={styles.loginFormContainer}>
 
                     <fieldset className="border p-3 rounded">
@@ -107,22 +87,13 @@ function Login({auth, setAuth}) {
                                     Login
                                 </button>
 
-                                <button className="btn border-dark text-center mx-2">
-                                    <Link to="/register">New User</Link>
+                                <button className="btn border-dark text-dark text-center mx-2">
+                                    <NavLink to="/register">New User</NavLink>
                                 </button>
                             </div>
                         </Form>
-                        {/*<a href='http://localhost:8000/auth/linkedin/callback' > Login with LinkedIn</a>*/}
-                        {/*<a href='http://localhost:8000/auth/facebook/callback' > Login with Facebook</a>*/}
                     </fieldset>
 
-                    <button onClick={facebook} className="btn border-dark text-center mx-2">
-                        Login with Facebook
-                    </button>
-                    {/*<fb:login-button*/}
-                    {/*    scope="public_profile,email"*/}
-                    {/*    onlogin="checkLoginState();">*/}
-                    {/*</fb:login-button>*/}
                 </div>
             </div>
 

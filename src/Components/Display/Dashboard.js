@@ -12,10 +12,10 @@ const Dashboard = () => {
     const [pitch, setPitch] = useState([])
     const [post, setPost] = useState({})
     const form = useRef(null)
-    const [myMsg, setMyMsg] = useState([])
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const [myMsg, setMyMsg] = useState([])
+    // const [show, setShow] = useState(false);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
 
     useEffect(() => {
         async function setUserStats() {
@@ -45,10 +45,9 @@ const Dashboard = () => {
     },[user])
 
 
-//PLS REMIND ME TO REFACTOR THIS TO STOP THE INFINITE LOOP RERENDERS
-    useEffect(() => {
+
         async function getPitch() {
-            // console.log("YOUR MATHER")
+            console.log("YOUR MATHER")
             let {data} = await axios.get(`/user/${user._id}`)
             if(data.user.pitches){
             setPitch(data.user.pitches.reverse())
@@ -57,8 +56,9 @@ const Dashboard = () => {
             }
         }
 
+    useEffect(() => {
         getPitch()
-    }, [user,pitch])
+    }, [user])
 
 
     async function submitPost(e) {
@@ -71,6 +71,7 @@ const Dashboard = () => {
         } catch (e) {
             console.log(e)
         }
+        getPitch()
     }
 
 
@@ -80,18 +81,18 @@ const Dashboard = () => {
     }
 
 
-    async function getMessage() {
-        try{
-            let {data} = await axios.get(`/user/${user._id}`);
-            console.log(data.user.messages)
-            setMyMsg(data.user.messages)
-            // alert('Pitch Edited!');
-            // console.log(message)
-        }catch (e) {
-            console.log(e.response)
-        }
-        handleShow()
-    }
+    // async function getMessage() {
+    //     try{
+    //         let {data} = await axios.get(`/user/${user._id}`);
+    //         console.log(data.user.messages)
+    //         setMyMsg(data.user.messages)
+    //         // alert('Pitch Edited!');
+    //         // console.log(message)
+    //     }catch (e) {
+    //         console.log(e.response)
+    //     }
+    //     handleShow()
+    // }
 
 
 
@@ -103,25 +104,25 @@ if(user.role === "recruiter"){
 
     return (
         <Container fluid>
-        <button onClick={getMessage}> Get Messages</button>
+        {/*<button onClick={getMessage}> Get Messages</button>*/}
 
 
 
             {/*<button onClick={handleShow}> Message </button>*/}
-            <Modal show={show} onHide={handleClose}>
-                <div className={`border border-dark border-2`}>
-                    My messages:
-                    {myMsg.map(msg => (
-                        <Reply
-                        msg={msg}
-                        user={user}/>
+            {/*<Modal show={show} onHide={handleClose}>*/}
+            {/*    <div className={`border border-dark border-2`}>*/}
+            {/*        My messages:*/}
+            {/*        {myMsg.map(msg => (*/}
+            {/*            <Reply*/}
+            {/*            msg={msg}*/}
+            {/*            user={user}/>*/}
 
-                    ))}
+            {/*        ))}*/}
 
-                </div>
-                {/*<button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>*/}
+            {/*    </div>*/}
+            {/*    /!*<button className="btn bg-transparent text-dark" onClick={handleShowEdit}> Comment </button>*!/*/}
 
-            </Modal>
+            {/*</Modal>*/}
 
             <Row>
                         <Col md={3} className={`${styles.sidebar} border border-dark border-2`}>
@@ -211,9 +212,11 @@ if(user.role === "recruiter"){
                         margin: "2px",
                     }} >
                     {pitch.map((item,i) => (
-                        <PitchItem item={item}
-                                key ={i}
-                                user={user}/>
+                        <PitchItem
+                            item={item}
+                            key ={i}
+                            user={user}
+                            setPitch={setPitch}/>
                     )) }
                     </div>
                 </Col>

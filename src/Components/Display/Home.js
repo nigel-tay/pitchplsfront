@@ -1,6 +1,6 @@
 import React from 'react';
 import {Col, Row} from "react-bootstrap";
-import ScrollSnap from "scroll-snap";
+// import ScrollSnap from "scroll-snap";
 import styles from "./Home.module.css";
 
 function Home(props) {
@@ -60,8 +60,8 @@ function Home(props) {
                         <h3 className={`${styles.testimonialTitle}`}>"Diverse Workspace"</h3>
                         <img src="" alt="" className="product__img"/>
                         <p>Ever since using Pitch Please for my recruitment, our company is livelier than ever!
-                            We are a ragtag crew of people from all walks of life and this unique mix really helped us
-                            look at new projects from all angles.</p>
+                            We are a ragtag crew of people from all walks of life and this unique mix really helps us
+                            look at new projects from different lenses.</p>
                         <p>Dorothy Lam <br/>- Part of a real life Ragtag Crew</p>
                     </Col>
                 </Row>
@@ -74,21 +74,25 @@ function Home(props) {
                     <Col className={`${styles.teamPerson} gx-5`} md={3}>
                         <img className={`${styles.memberPhoto}`} src="https://ca.slack-edge.com/T0351JZQ0-U01PR1SCDF0-4a272807b931-512" alt="Photo of Benedict"/>
                         <div className={`${styles.teamName}`}>Benedict</div>
+                        <p>Bitcoin miner</p>
                         <a href="https://www.linkedin.com/in/benedict-lim/" className={`${styles.btn} ${styles.btnPrimary} ${styles.btnPrimary}`} target="_blank">Connect</a>
                     </Col>
                     <Col className={`${styles.teamPerson} gx-5`} md={3}>
                         <img className={`${styles.memberPhoto}`} src="https://ca.slack-edge.com/T0351JZQ0-U01UD4HLAD8-e57828b81ab5-512" alt="Photo of Jerald"/>
                         <div className={`${styles.teamName}`}>Jerald</div>
+                        <p>Sports dude</p>
                         <a href="https://www.linkedin.com/in/limejjerald/" className={`${styles.btn} ${styles.btnPrimary}`} target="_blank">Connect</a>
                     </Col>
                     <Col className={`${styles.teamPerson} gx-5`} md={3}>
                         <img className={`${styles.memberPhoto}`} src="https://ca.slack-edge.com/T0351JZQ0-U01K35GHLGG-e1f00267f44e-512" alt="Photo of Kimberly"/>
                         <div className={`${styles.teamName}`}>Kimberly</div>
+                        <p>Watermelon</p>
                         <a href="https://www.linkedin.com/in/kimberlyphua/" className={`${styles.btn} ${styles.btnPrimary}`} target="_blank">Connect</a>
                     </Col>
                     <Col className={`${styles.teamPerson} gx-5`} md={3}>
                         <img className={`${styles.memberPhoto}`} src="https://ca.slack-edge.com/T0351JZQ0-U01PPR8A10X-8f3cc18736a8-512" alt="Photo of Nigel"/>
                         <div className={`${styles.teamName}`}>Nigel</div>
+                        <p>Chinese boy</p>
                         <a href="https://www.linkedin.com/in/ninenigel9/" className={`${styles.btn} ${styles.btnPrimary}`} target="_blank">Connect</a>
                     </Col>
 
@@ -100,4 +104,4 @@ function Home(props) {
     );
 }
 
-export default Home;
+export default Home

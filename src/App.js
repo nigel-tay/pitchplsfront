@@ -50,10 +50,11 @@ function App() {
 
         <BrowserRouter>
             <div className="banner">
+                <Navigation setAuth={setAuth} setUser={setUser} user={user} />
 
-            <Navigation setAuth={setAuth} setUser={setUser} user={user} />
             </div>
-                <Switch>
+
+            <Switch>
                     <Route path="/" exact>
                         <Home />
                     </Route>
@@ -66,9 +67,9 @@ function App() {
                 <Route path="/register" exact>
                     <Register auth={auth} setAuth={setAuth}/>
                 </Route>
-                    <Route path="/message">
-                        <Message user={user} />
-                    </Route>
+                    {/*<Route path="/singlepitch">*/}
+                    {/*    <Single user={user} />*/}
+                    {/*</Route>*/}
                 <PrivateRouter auth={auth} user={user} path="/dashboard" exact Component={Dashboard} />
                 <PrivateRouter auth={auth} user={user} path="/recruiter" exact Component={DashboardRec} />
 
