@@ -62,6 +62,33 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
     async function postComment(e) {
         e.preventDefault()
 
+//         const chatName = item.title
+//         const firstMsg = prompt('Please enter a welcome message')
+//         if (chatName && firstMsg) {
+//             let chatId = ''
+//             let recId = ''
+//             let jsId = ''
+//             await axios.get(`/user/${user._id}`)
+//                 .then((res)=>{
+//                     recId = res.data.user._id
+//                     jsId = item.creator
+//                     console.log(recId)
+//                     console.log(jsId)
+//                 })
+//             await axios.post('/chat/new/conversation', {
+//                 chatName: chatName
+//             }).then((res) => {
+//                 chatId = res.data._id
+//             }).then(() => {
+//                 axios.post(`/chat/first/message?id=${chatId}&recId=${recId}&jsId=${jsId}`, {
+//                     message: firstMsg,
+//                     timestamp: Date.now(),
+//                     user: user
+//                 })
+//                 console.log(user)
+//                 alert("Message Sent")
+//             })
+
         try{
             await axios.put(`/pitch/editcomment/${item._id}`, comment);
             setShowComment(false)

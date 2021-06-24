@@ -1,4 +1,4 @@
-import React, {useRef, useEffect,useState} from "react";
+import React, {useRef, useEffect, useState} from "react";
 import './App.css';
 import axios from "axios";
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom"
@@ -6,6 +6,7 @@ import Register from "./Components/auth/Register";
 import Login from "./Components/auth/Login";
 import Dashboard from "./Components/Display/Dashboard"
 import DashboardRec from "./Components/Display/DashboardRec";
+import DashboardChat from "./Components/Chat/DashboardChat";
 import NotFound from "./Components/auth/NotFound";
 import Navigation from "./Components/Navigation";
 import {Container} from "react-bootstrap";
@@ -39,54 +40,53 @@ function App() {
 
         setUserStats()
     }, [auth])
-  
+
     return (
         <div>
             <BrowserRouter>
                 <div className="banner">
-                <Navigation setAuth={setAuth} setUser={setUser} user={user} />
+                    <Navigation setAuth={setAuth} setUser={setUser} user={user}/>
                 </div>
                 <Switch>
                     <Route path="/" exact>
-                        <Home />
+                        <Home/>
                     </Route>
                     <Route path="/about" exact>
                         <About/>
                     </Route>
+                    <Route path="/login">
+                        <Login auth={auth} setAuth={setAuth}/>
+                    </Route>
+                    <Route path="/register">
+                        <Register auth={auth} setAuth={setAuth}/>
+                    </Route>
+                    <PrivateRouter auth={auth} user={user} path="/dashboard" Component={Dashboard}/>
+                    <PrivateRouter auth={auth} user={user} path="/recruiter" Component={DashboardRec}/>
+                    <PrivateRouter auth={auth} user={user} path="/chat" Component={DashboardChat}/>
+                    {/*<Route path="/dashboard" exact>*/}
+                    {/*    <Dashboard auth={auth} user={user} logout={logout}/>*/}
+                    {/*</Route>*/}
 
-                <Route path="/login" exact>
-                    <Login auth={auth} setAuth={setAuth}/>
-                </Route>
-                    <Route path="/register" exact>
-                    <Register auth={auth} setAuth={setAuth}/>
-                </Route>
-                <PrivateRouter auth={auth} user={user} path="/dashboard" exact Component={Dashboard} />
-                <PrivateRouter auth={auth} user={user} path="/recruiter" exact Component={DashboardRec} />
-
-                {/*<Route path="/dashboard" exact>*/}
-                {/*    <Dashboard auth={auth} user={user} logout={logout}/>*/}
-                {/*</Route>*/}
-
-                <Route path="*">
-                    <NotFound />
-                </Route>
-            </Switch>
-        </BrowserRouter>
-    </div>
-  );
+                    <Route path="*">
+                        <NotFound/>
+                    </Route>
+                </Switch>
+            </BrowserRouter>
+        </div>
+    )
 
 }
 
-
-function PrivateRouter({auth, user, Component, path, ...rest}){
-    return(
+function PrivateRouter({auth, user, Component, path, ...rest}) {
+    return (
         <>
-            { (auth) ?
-                <Route path={path} >
-                    <Component />
-                </Route> : <Redirect to="/login" />
+            {(auth) ?
+                <Route path={path}>
+                    <Component user={user}/>
+                </Route> : <Redirect to="/login"/>
             }
         </>
     )
 }
+
 export default App;
