@@ -1,19 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Container, Card, Col, Row, Modal, Form} from "react-bootstrap";
+import {Col, Row, Modal, Form} from "react-bootstrap";
 import axios from "axios"
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import styles from "./PitchItem.module.css"
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 
-function PitchItem({item, user, setPitch}) {
+function PitchItem({item, setPitch}) {
     const [show, setShow] = useState(false);
     const [user, setUser] = useState({})
     const handleClose = () => setShow(false);

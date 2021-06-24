@@ -1,15 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {Col, Row, Form, Modal} from "react-bootstrap";
-import styles from "./PitchItem.module.css"
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import axios from "axios";
-import {BrowserRouter, Redirect, Route, Switch, NavLink} from "react-router-dom";
 import Message from "./Message";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
-function FavouritePitches({item, user, setShowFav}) {
-import VisibilityIcon from '@material-ui/icons/Visibility';
 
-  
+
 function FavouritePitches({item, setShowFav, user}) {
 
     const form = useRef(null)
@@ -43,7 +39,6 @@ function FavouritePitches({item, setShowFav, user}) {
                         authorization: `Bearer ${localStorage.token}`
                     }
                 })
-                getFave()
                 console.log(res.data)
 
             } catch (e) {

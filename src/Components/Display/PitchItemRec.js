@@ -37,7 +37,6 @@ function PitchItemRec({item, setPitch, user, setShowFav}) {
                         authorization: `Bearer ${localStorage.token}`
                     }
                 })
-                getFave()
                 console.log(res.data)
 
             } catch (e) {
