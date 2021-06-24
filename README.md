@@ -82,7 +82,11 @@ By Thursday we were 90% done. All that was left was to continue working on our c
 ### Problem-Solving Strategy
 
 Working on our problems together helped the team understand different complexities of the different components in the project.
-In addition to the point above, many heads tackling a single problem made project progression much smoother.
+
+It was the first time any of us were attempting to implement a live chat. Hence it was difficult understanding its complexities.
+We tried our best to break down this daunting task into smaller problems that we could take on and slowly worked our way up.
+
+Many heads tackling a single problem made project progression much smoother.
 
 ### Unsolved problems
 
